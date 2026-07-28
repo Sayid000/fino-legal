@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Fino Account & Data Deletion</title>
+<meta name="description" content="How to request deletion of your Fino account and all cloud data, and what is retained.">
+<style>
+  :root {
+    color-scheme: light dark;
+    --bg: #ffffff;
+    --fg: #1c1e21;
+    --muted: #5c6470;
+    --border: #e2e5ea;
+    --card: #f6f7f9;
+    --link: #0b6bcb;
+    --warn-bg: #fff8e6;
+    --warn-border: #e8c15a;
+    --warn-fg: #6b4e00;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #16181c;
+      --fg: #e6e8eb;
+      --muted: #9aa3ae;
+      --border: #2c3037;
+      --card: #1e2126;
+      --link: #6fb2f5;
+      --warn-bg: #2a2312;
+      --warn-border: #6e5a1e;
+      --warn-fg: #f0d99b;
+    }
+  }
+  * { box-sizing: border-box; }
+  html { -webkit-text-size-adjust: 100%; }
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--fg);
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Noto Sans TC",
+                 "PingFang TC", "Microsoft JhengHei", Roboto, Helvetica, Arial, sans-serif;
+    font-size: 17px;
+    line-height: 1.75;
+  }
+  main {
+    max-width: 720px;
+    margin: 0 auto;
+    padding: 40px 20px 80px;
+  }
+  h1 { font-size: 1.7rem; line-height: 1.35; margin: 0 0 8px; }
+  h2 {
+    font-size: 1.3rem;
+    margin: 44px 0 12px;
+    padding-top: 20px;
+    border-top: 1px solid var(--border);
+  }
+  h3 { font-size: 1.05rem; margin: 28px 0 8px; }
+  p, ul, ol { margin: 0 0 14px; }
+  ul, ol { padding-left: 1.4em; }
+  li { margin: 0 0 6px; }
+  a { color: var(--link); }
+  code {
+    font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+    font-size: 0.9em;
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    padding: 1px 5px;
+  }
+  .meta { color: var(--muted); font-size: 0.9rem; margin: 0 0 24px; }
+  nav.topnav {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px 16px;
+    padding: 12px 16px;
+    margin: 0 0 32px;
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    font-size: 0.92rem;
+  }
+  nav.topnav span { color: var(--muted); }
+  .card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 16px 18px;
+    margin: 0 0 18px;
+  }
+  .card p:last-child, .card ul:last-child, .card ol:last-child { margin-bottom: 0; }
+  .warn {
+    background: var(--warn-bg);
+    border: 1px solid var(--warn-border);
+    color: var(--warn-fg);
+    border-radius: 10px;
+    padding: 16px 18px;
+    margin: 0 0 18px;
+  }
+  .warn p:last-child { margin-bottom: 0; }
+  .warn strong { color: inherit; }
+  hr.lang {
+    border: 0;
+    border-top: 3px double var(--border);
+    margin: 64px 0 40px;
+  }
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.95rem;
+    margin: 0 0 18px;
+  }
+  th, td {
+    border: 1px solid var(--border);
+    padding: 8px 10px;
+    text-align: left;
+    vertical-align: top;
+  }
+  th { background: var(--card); font-weight: 600; }
+  .wrap { overflow-x: auto; }
+  footer {
+    margin-top: 56px;
+    padding-top: 20px;
+    border-top: 1px solid var(--border);
+    color: var(--muted);
+    font-size: 0.88rem;
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<nav class="langbar" aria-label="語言 / Language">
+  <a href="../data-deletion.html">繁體中文</a>
+  <a href="#" aria-current="page"><strong>English</strong></a>
+</nav>
+<h1>Fino — Account &amp; Data Deletion</h1>
+<p class="meta">
+  App: Fino ｜ Android package: <code>com.fino.android</code> ｜ iOS bundle ID: <code>com.fino.iosApp</code><br>
+  Last updated: 29 July 2026 ｜ <a href="#zh">切換至繁體中文</a>
+</p>
+
+<p>
+  This page explains how to request deletion of your Fino account and associated data, what gets deleted,
+  what may be retained, and how long it takes. For details on what data Fino collects and how it is used,
+  see the <a href="privacy.html">Privacy Policy</a>.
+</p>
+
+<h2>1. How to request account deletion</h2>
+
+<div class="warn">
+  <p>
+    <strong>Please note:</strong> Fino does <strong>not</strong> currently provide an in-app "delete account" button.
+    The only available way to request deletion today is to email the developer. (The developer is aware of this gap
+    and plans to add an in-app deletion entry point in a future release.)
+  </p>
+</div>
+
+<div class="card">
+  <p><strong>Email:</strong> <a href="mailto:liokhgf@gmail.com?subject=Fino%20Account%20Deletion%20Request">liokhgf@gmail.com</a></p>
+  <p><strong>Suggested subject:</strong> <code>Fino 帳號刪除申請</code> (or <code>Fino Account Deletion Request</code>)</p>
+  <p><strong>Please include:</strong></p>
+  <ul>
+    <li>The email address you used to register with Fino (the email behind your Google or Apple sign-in).</li>
+    <li>Which platform you use (Android or iOS) — this helps speed up verification.</li>
+    <li>If you only want part of your data deleted (for example only transaction photos), please say so.</li>
+  </ul>
+  <p>
+    After receiving your request, the developer will first <strong>verify your identity</strong> — for example by
+    confirming that the request comes from the same email address registered to the account, and replying to ask
+    for additional information if needed. Deletion is performed only after verification, so that nobody else can
+    delete your data on your behalf.
+  </p>
+</div>
+
+<h2>2. Data that will be deleted</h2>
+
+<p>Once your identity is verified, the following cloud data tied to your account (Firebase Auth <code>uid</code>) is deleted:</p>
+
+<ul>
+  <li><strong>Your Firebase Auth account</strong>, including the uid, email address, avatar URL and sign-in provider (Google / Apple).</li>
+  <li><strong>Everything in your cloud space</strong>, including:
+    <ul>
+      <li>All transaction fields (amount, original currency, exchange rate, income/expense type, category, date, notes you wrote yourself, account, travel mode, source marker)</li>
+      <li>Categories</li>
+      <li>Budget amounts</li>
+      <li>Recurring transaction rules</li>
+      <li>Quick-entry templates</li>
+      <li>Settings such as your primary currency</li>
+    </ul>
+  </li>
+  <li><strong>Transaction photos in Cloud Storage</strong> — photos you manually attached to transactions.</li>
+  <li><strong>Push notification (FCM) tokens</strong> — you will no longer receive Fino push notifications.</li>
+  <li><strong>Your personal shared-ledger side data</strong> — the list of ledgers you belong to and the private personal categories and rate snapshots you assigned to shared line items.</li>
+</ul>
+
+<div class="card">
+  <p>
+    <strong>For clarity:</strong> receipt images captured or selected for AI receipt scanning, along with OCR text
+    recognition and AI inference, are processed <strong>entirely on your device and are never uploaded to the cloud</strong>.
+    There is therefore no cloud copy of those images or of the inference to delete. To clear the cached receipt images
+    from your device, <strong>uninstall the app</strong> — the in-app "Reset App" clears local transactions, categories and
+    preferences but does <strong>not</strong> guarantee removal of cached receipt images.
+  </p>
+  <p>
+    ⚠️ One distinction to keep in mind: the recognition results you <strong>confirm and save</strong> (item names, amounts)
+    become fields of a transaction, and <strong>transactions do sync to the cloud once you are signed in</strong>. That text is
+    therefore part of the transaction data listed above and is removed together with your account.
+  </p>
+</div>
+
+<h2>3. Data that may be retained or cannot be fully deleted</h2>
+
+<p>
+  To preserve the integrity of other users' shared bookkeeping records and to comply with legal requirements,
+  the following may remain after your account is deleted:
+</p>
+
+<div class="wrap">
+<table>
+  <thead>
+    <tr><th>Data</th><th>Why it is retained</th><th>What we do about it</th></tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Shared-ledger content you shared with other members (entries, splits, item names, repayment records)</td>
+      <td>These records also belong to the other members of the same ledger and form their joint accounting history; deleting them outright would break their settlement balances.</td>
+      <td>The entries <strong>stay</strong> in that ledger. We clear your <strong>display name and avatar from that ledger's member record</strong>; entries, splits and repayments still carry your <strong>internal account identifier (uid)</strong>, because that is the field that determines whose money is whose — removing it would break the other members' balances outright.</td>
+    </tr>
+    <tr>
+      <td>Shared-ledger activity history (including previous and new values of changes)</td>
+      <td>This history is append-only by design — the server-side rules <strong>explicitly forbid any update or deletion</strong> — so members can trace changes and resolve disputes.</td>
+      <td><strong>Entries are retained exactly as written; we can neither edit nor delete them</strong> (the developer is bound by the same rules; only an out-of-band admin operation could alter them, and we do not do that). The history itself records only the actor's internal account identifier (uid), the field name and the before/after values — <strong>not</strong> your display name or email.</td>
+    </tr>
+    <tr>
+      <td>The minimum records required by law or for abuse / fraud prevention</td>
+      <td>In limited cases (for example a lawful request from an authority, or handling abuse) retaining certain records is legally necessary.</td>
+      <td>Only what is necessary is kept, it is not used for any other purpose, and it is deleted once no longer needed.</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+<p>
+  If you would prefer to leave your shared ledgers before deleting your account, or want to coordinate with the other
+  members about the ledger content, mention it in your email and the developer will help.
+</p>
+
+<h2>4. Timeline and retention period</h2>
+
+<ul>
+  <li><strong>Timeline:</strong> deletion is completed <strong>within 30 days of receiving your request</strong> (identity verification included in that window), and you will receive a confirmation reply.</li>
+  <li><strong>Backup residue:</strong> after deletion, short-lived residual copies may still exist in the backend provider's (Firebase) backup and logging systems.
+      These residual copies are cleared within a reasonable period as part of the routine backup cycle and are no longer used to provide the service.</li>
+  <li>Fino keeps no additional copies of personal data for marketing or analytics — the app contains no analytics, advertising or tracking SDKs.</li>
+</ul>
+
+<h2>5. If you only want to delete local data on your device</h2>
+
+<p>
+  If you do not want to delete your account and only want to clear the data on this device, you can use the
+  <strong>"Reset App"</strong> function inside the app, which clears your local <strong>transactions, categories and
+  preferences</strong>.
+</p>
+<p>
+  Note that "Reset App" has a limited scope: it does <strong>not</strong> clear shared-ledger local data or downloaded AI
+  model files, and it does <strong>not</strong> guarantee clearing cached receipt images. To remove everything Fino keeps on
+  the device, <strong>uninstall the app</strong>.
+</p>
+
+<div class="warn">
+  <p>
+    <strong>Important warning: "Reset App" is not the same as deleting your account.</strong>
+    As long as your account still exists, signing back in with the same account will
+    <strong>sync your cloud data (Firestore / Cloud Storage transactions, categories, budgets and photos) back onto the device</strong>.
+    To actually delete your cloud data, submit an account deletion request by email as described in section 1.
+  </p>
+</div>
+
+<h2>6. Contact</h2>
+<p>
+  For any question about data deletion, email <a href="mailto:liokhgf@gmail.com">liokhgf@gmail.com</a>.
+  Fino is built and maintained by an individual developer, who will reply as soon as possible.
+</p>
+<footer>
+  <p>Fino · <a href="../index.html">Home</a> · <a href="mailto:liokhgf@gmail.com">liokhgf@gmail.com</a> · <a href="privacy.html">Privacy Policy</a></p>
+  <p>Last updated: 29 July 2026</p>
+</footer>
+
+</div>
+</body>
+</html>
