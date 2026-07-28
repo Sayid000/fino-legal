@@ -39,7 +39,7 @@
     font-size: 17px;
     line-height: 1.75;
   }
-  .wrap {
+  .wrap, main {
     max-width: 720px;
     margin: 0 auto;
     padding: 32px 20px 80px;
@@ -78,6 +78,10 @@
     font-size: 0.92rem;
     margin: 0 0 1.4em;
   }
+  .tagline {
+    color: var(--muted);
+    margin: 0 0 4px;
+  }
   .langbar {
     display: flex;
     gap: 10px;
@@ -94,22 +98,29 @@
     text-decoration: none;
     font-size: 0.92rem;
   }
-  .summary {
+  .langbar a[aria-current="page"] {
+    background: var(--box-bg);
+    border-color: var(--accent);
+  }
+  /* 強調框：.summary/.card 一般，.note/.warn 警示 */
+  .summary, .card {
     background: var(--box-bg);
     border-left: 3px solid var(--accent);
     border-radius: 6px;
     padding: 14px 18px;
     margin: 1.4em 0;
   }
-  .note {
+  .note, .warn {
     background: var(--warn-bg);
     border: 1px solid var(--warn-line);
     border-radius: 6px;
     padding: 14px 18px;
     margin: 1.4em 0;
   }
-  .summary p:first-child, .note p:first-child { margin-top: 0; }
-  .summary p:last-child, .note p:last-child { margin-bottom: 0; }
+  .summary > :first-child, .card > :first-child,
+  .note > :first-child, .warn > :first-child { margin-top: 0; }
+  .summary > :last-child, .card > :last-child,
+  .note > :last-child, .warn > :last-child { margin-bottom: 0; }
   .tablescroll {
     overflow-x: auto;
     margin: 1.2em 0;
@@ -133,6 +144,30 @@
     font-weight: 600;
   }
   tr:last-child td { border-bottom: none; }
+  hr.lang { display: none; }
+  /* 首頁的文件連結卡片 */
+  .links {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 8px;
+  }
+  .links li { margin: 0 0 10px; }
+  .links a {
+    display: block;
+    background: var(--box-bg);
+    border: 1px solid var(--line);
+    border-radius: 10px;
+    padding: 14px 16px;
+    text-decoration: none;
+    font-weight: 600;
+  }
+  .links a:hover { border-color: var(--accent); }
+  .links span {
+    display: block;
+    font-weight: 400;
+    font-size: 0.9rem;
+    color: var(--muted);
+  }
   .top {
     display: inline-block;
     margin-top: 2.5em;
