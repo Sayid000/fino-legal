@@ -39,7 +39,7 @@
     font-size: 17px;
     line-height: 1.75;
   }
-  .wrap, main {
+  .wrap {
     max-width: 720px;
     margin: 0 auto;
     padding: 32px 20px 80px;
@@ -78,49 +78,23 @@
     font-size: 0.92rem;
     margin: 0 0 1.4em;
   }
-  .tagline {
-    color: var(--muted);
-    margin: 0 0 4px;
-  }
-  .langbar {
-    display: flex;
-    gap: 10px;
-    flex-wrap: wrap;
-    margin: 0 0 28px;
-    padding-bottom: 20px;
-    border-bottom: 1px solid var(--line);
-  }
-  .langbar a {
-    display: inline-block;
-    padding: 6px 14px;
-    border: 1px solid var(--line);
-    border-radius: 999px;
-    text-decoration: none;
-    font-size: 0.92rem;
-  }
-  .langbar a[aria-current="page"] {
-    background: var(--box-bg);
-    border-color: var(--accent);
-  }
-  /* 強調框：.summary/.card 一般，.note/.warn 警示 */
-  .summary, .card {
+  /* 強調框：.summary 一般，.note 警示 */
+  .summary {
     background: var(--box-bg);
     border-left: 3px solid var(--accent);
     border-radius: 6px;
     padding: 14px 18px;
     margin: 1.4em 0;
   }
-  .note, .warn {
+  .note {
     background: var(--warn-bg);
     border: 1px solid var(--warn-line);
     border-radius: 6px;
     padding: 14px 18px;
     margin: 1.4em 0;
   }
-  .summary > :first-child, .card > :first-child,
-  .note > :first-child, .warn > :first-child { margin-top: 0; }
-  .summary > :last-child, .card > :last-child,
-  .note > :last-child, .warn > :last-child { margin-bottom: 0; }
+  .summary > :first-child, .note > :first-child { margin-top: 0; }
+  .summary > :last-child, .note > :last-child { margin-bottom: 0; }
   .tablescroll {
     overflow-x: auto;
     margin: 1.2em 0;
@@ -144,7 +118,6 @@
     font-weight: 600;
   }
   tr:last-child td { border-bottom: none; }
-  hr.lang { display: none; }
   /* 首頁的文件連結卡片 */
   .links {
     list-style: none;
@@ -266,25 +239,25 @@
 <nav class="toc" aria-label="本頁內容">
   <p class="toc-title">本頁內容</p>
   <ul>
-    <li><a href="#how-to-request">一、如何要求刪除帳號</a></li>
-    <li><a href="#what-deleted">二、會被刪除的資料</a></li>
-    <li><a href="#what-retained">三、可能保留或無法完全刪除的資料</a></li>
-    <li><a href="#timeline">四、處理時間與保留期間</a></li>
-    <li><a href="#local-only">五、只想刪除裝置上的本機資料</a></li>
-    <li><a href="#contact">六、聯絡方式</a></li>
+    <li><a href="#how-to-request">如何要求刪除帳號</a></li>
+    <li><a href="#what-deleted">會被刪除的資料</a></li>
+    <li><a href="#what-retained">可能保留或無法完全刪除的資料</a></li>
+    <li><a href="#timeline">處理時間與保留期間</a></li>
+    <li><a href="#local-only">只想刪除裝置上的本機資料</a></li>
+    <li><a href="#contact">聯絡方式</a></li>
   </ul>
 </nav>
 
-<h2 id="how-to-request">一、如何要求刪除帳號</h2>
+<h2 id="how-to-request">如何要求刪除帳號</h2>
 
-<div class="warn">
+<div class="note">
   <p>
     <strong>請注意：</strong>Fino 目前<strong>尚未</strong>在 App 內提供「刪除帳號」按鈕。
     因此，目前唯一可行的刪除途徑是以電子郵件向開發者提出申請（開發者已知悉此待辦，未來版本會補上 App 內的刪除入口）。
   </p>
 </div>
 
-<div class="card">
+<div class="summary">
   <p><strong>寄信到：</strong><a href="mailto:liokhgf@gmail.com?subject=Fino%20%E5%B8%B3%E8%99%9F%E5%88%AA%E9%99%A4%E7%94%B3%E8%AB%8B">liokhgf@gmail.com</a></p>
   <p><strong>建議主旨：</strong><code>Fino 帳號刪除申請</code></p>
   <p><strong>信中請說明：</strong></p>
@@ -299,7 +272,7 @@
   </p>
 </div>
 
-<h2 id="what-deleted">二、會被刪除的資料</h2>
+<h2 id="what-deleted">會被刪除的資料</h2>
 
 <p>身分驗證完成後，以下與你的帳號（Firebase Auth <code>uid</code>）綁定的雲端資料會被刪除：</p>
 
@@ -320,7 +293,7 @@
   <li><strong>共享帳本的個人附屬資料</strong>：你加入哪些帳本的清單、你私下為共享明細標記的個人分類與匯率快照。</li>
 </ul>
 
-<div class="card">
+<div class="summary">
   <p>
     <strong>順帶說明：</strong>AI 收據掃描所拍攝／選取的原始收據圖片、以及 OCR 文字辨識與 AI 推論，
     <strong>一律只在你的裝置上處理，從未上傳到雲端</strong>，所以雲端本來就沒有這些圖片或推論過程可刪。
@@ -332,7 +305,7 @@
   </p>
 </div>
 
-<h2 id="what-retained">三、可能保留或無法完全刪除的資料</h2>
+<h2 id="what-retained">可能保留或無法完全刪除的資料</h2>
 
 <p>為了維持其他使用者帳務紀錄的完整性，以及遵循法律要求，下列資料在你的帳號刪除後仍可能保留：</p>
 
@@ -365,7 +338,7 @@
   如果你希望在刪除帳號前先退出共享帳本，或想與其他成員協調帳本內容的處理方式，請在申請信中一併說明，開發者會協助處理。
 </p>
 
-<h2 id="timeline">四、處理時間與保留期間</h2>
+<h2 id="timeline">處理時間與保留期間</h2>
 
 <ul>
   <li><strong>處理時間：</strong>開發者會在<strong>收到你的申請後 30 天內</strong>（含確認身分所需的時間）完成刪除，並回信通知你結果。</li>
@@ -374,7 +347,7 @@
   <li>Fino 不會保留額外的個人資料副本以供行銷或分析使用（Fino 沒有安裝任何分析、廣告或追蹤 SDK）。</li>
 </ul>
 
-<h2 id="local-only">五、只想刪除裝置上的本機資料</h2>
+<h2 id="local-only">只想刪除裝置上的本機資料</h2>
 
 <p>
   如果你不想刪除帳號，只想清掉這台裝置上的資料，可以在 App 內使用<strong>「重設 App」</strong>功能，
@@ -385,15 +358,15 @@
   也<strong>不保證</strong>清除收據圖片的暫存檔。若要把裝置上與 Fino 有關的資料完全清掉，請<strong>直接把 App 從裝置上移除</strong>。
 </p>
 
-<div class="warn">
+<div class="note">
   <p>
     <strong>重要警告：「重設 App」不等於刪除帳號。</strong>
     只要你的帳號仍然存在，當你之後重新登入同一個帳號時，雲端（Firestore / Cloud Storage）上的交易、分類、預算與照片
-    <strong>會同步回到裝置上</strong>。若你要真正刪除雲端資料，請依照上方第一節寄信提出帳號刪除申請。
+    <strong>會同步回到裝置上</strong>。若你要真正刪除雲端資料，請依照 <a href="#how-to-request">如何要求刪除帳號</a> 寄信提出申請。
   </p>
 </div>
 
-<h2 id="contact">六、聯絡方式</h2>
+<h2 id="contact">聯絡方式</h2>
 <p>
   任何關於資料刪除的問題，請寄信到 <a href="mailto:liokhgf@gmail.com">liokhgf@gmail.com</a>。
   Fino 由個人開發者開發與維護，會盡快回覆。

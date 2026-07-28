@@ -39,7 +39,7 @@
     font-size: 17px;
     line-height: 1.75;
   }
-  .wrap, main {
+  .wrap {
     max-width: 720px;
     margin: 0 auto;
     padding: 32px 20px 80px;
@@ -78,49 +78,23 @@
     font-size: 0.92rem;
     margin: 0 0 1.4em;
   }
-  .tagline {
-    color: var(--muted);
-    margin: 0 0 4px;
-  }
-  .langbar {
-    display: flex;
-    gap: 10px;
-    flex-wrap: wrap;
-    margin: 0 0 28px;
-    padding-bottom: 20px;
-    border-bottom: 1px solid var(--line);
-  }
-  .langbar a {
-    display: inline-block;
-    padding: 6px 14px;
-    border: 1px solid var(--line);
-    border-radius: 999px;
-    text-decoration: none;
-    font-size: 0.92rem;
-  }
-  .langbar a[aria-current="page"] {
-    background: var(--box-bg);
-    border-color: var(--accent);
-  }
-  /* 強調框：.summary/.card 一般，.note/.warn 警示 */
-  .summary, .card {
+  /* 強調框：.summary 一般，.note 警示 */
+  .summary {
     background: var(--box-bg);
     border-left: 3px solid var(--accent);
     border-radius: 6px;
     padding: 14px 18px;
     margin: 1.4em 0;
   }
-  .note, .warn {
+  .note {
     background: var(--warn-bg);
     border: 1px solid var(--warn-line);
     border-radius: 6px;
     padding: 14px 18px;
     margin: 1.4em 0;
   }
-  .summary > :first-child, .card > :first-child,
-  .note > :first-child, .warn > :first-child { margin-top: 0; }
-  .summary > :last-child, .card > :last-child,
-  .note > :last-child, .warn > :last-child { margin-bottom: 0; }
+  .summary > :first-child, .note > :first-child { margin-top: 0; }
+  .summary > :last-child, .note > :last-child { margin-bottom: 0; }
   .tablescroll {
     overflow-x: auto;
     margin: 1.2em 0;
@@ -144,7 +118,6 @@
     font-weight: 600;
   }
   tr:last-child td { border-bottom: none; }
-  hr.lang { display: none; }
   /* 首頁的文件連結卡片 */
   .links {
     list-style: none;
@@ -248,7 +221,7 @@
 <div class="wrap">
 
 <nav class="topnav" aria-label="Navigation">
-  <p class="crumb"><a href="../index.html">Fino</a> <span aria-hidden="true">›</span> <span aria-current="page">Account & Data Deletion</span></p>
+  <p class="crumb"><a href="index.html">Fino</a> <span aria-hidden="true">›</span> <span aria-current="page">Account & Data Deletion</span></p>
   <p class="langswitch"><a href="../data-deletion.html">繁體中文</a><a href="#" aria-current="page">English</a></p>
 </nav>
 <p class="peer"><a href="privacy.html">Privacy Policy →</a></p>
@@ -267,18 +240,18 @@
 <nav class="toc" aria-label="On this page">
   <p class="toc-title">On this page</p>
   <ul>
-    <li><a href="#how-to-request">1. How to request account deletion</a></li>
-    <li><a href="#what-deleted">2. Data that will be deleted</a></li>
-    <li><a href="#what-retained">3. Data that may be retained or cannot be fully deleted</a></li>
-    <li><a href="#timeline">4. Timeline and retention period</a></li>
-    <li><a href="#local-only">5. If you only want to delete local data on your device</a></li>
-    <li><a href="#contact">6. Contact</a></li>
+    <li><a href="#how-to-request">How to request account deletion</a></li>
+    <li><a href="#what-deleted">Data that will be deleted</a></li>
+    <li><a href="#what-retained">Data that may be retained or cannot be fully deleted</a></li>
+    <li><a href="#timeline">Timeline and retention period</a></li>
+    <li><a href="#local-only">If you only want to delete local data on your device</a></li>
+    <li><a href="#contact">Contact</a></li>
   </ul>
 </nav>
 
-<h2 id="how-to-request">1. How to request account deletion</h2>
+<h2 id="how-to-request">How to request account deletion</h2>
 
-<div class="warn">
+<div class="note">
   <p>
     <strong>Please note:</strong> Fino does <strong>not</strong> currently provide an in-app "delete account" button.
     The only available way to request deletion today is to email the developer. (The developer is aware of this gap
@@ -286,7 +259,7 @@
   </p>
 </div>
 
-<div class="card">
+<div class="summary">
   <p><strong>Email:</strong> <a href="mailto:liokhgf@gmail.com?subject=Fino%20Account%20Deletion%20Request">liokhgf@gmail.com</a></p>
   <p><strong>Suggested subject:</strong> <code>Fino 帳號刪除申請</code> (or <code>Fino Account Deletion Request</code>)</p>
   <p><strong>Please include:</strong></p>
@@ -303,7 +276,7 @@
   </p>
 </div>
 
-<h2 id="what-deleted">2. Data that will be deleted</h2>
+<h2 id="what-deleted">Data that will be deleted</h2>
 
 <p>Once your identity is verified, the following cloud data tied to your account (Firebase Auth <code>uid</code>) is deleted:</p>
 
@@ -324,7 +297,7 @@
   <li><strong>Your personal shared-ledger side data</strong> — the list of ledgers you belong to and the private personal categories and rate snapshots you assigned to shared line items.</li>
 </ul>
 
-<div class="card">
+<div class="summary">
   <p>
     <strong>For clarity:</strong> receipt images captured or selected for AI receipt scanning, along with OCR text
     recognition and AI inference, are processed <strong>entirely on your device and are never uploaded to the cloud</strong>.
@@ -339,7 +312,7 @@
   </p>
 </div>
 
-<h2 id="what-retained">3. Data that may be retained or cannot be fully deleted</h2>
+<h2 id="what-retained">Data that may be retained or cannot be fully deleted</h2>
 
 <p>
   To preserve the integrity of other users' shared bookkeeping records and to comply with legal requirements,
@@ -376,7 +349,7 @@
   members about the ledger content, mention it in your email and the developer will help.
 </p>
 
-<h2 id="timeline">4. Timeline and retention period</h2>
+<h2 id="timeline">Timeline and retention period</h2>
 
 <ul>
   <li><strong>Timeline:</strong> deletion is completed <strong>within 30 days of receiving your request</strong> (identity verification included in that window), and you will receive a confirmation reply.</li>
@@ -385,7 +358,7 @@
   <li>Fino keeps no additional copies of personal data for marketing or analytics — the app contains no analytics, advertising or tracking SDKs.</li>
 </ul>
 
-<h2 id="local-only">5. If you only want to delete local data on your device</h2>
+<h2 id="local-only">If you only want to delete local data on your device</h2>
 
 <p>
   If you do not want to delete your account and only want to clear the data on this device, you can use the
@@ -398,22 +371,22 @@
   the device, <strong>uninstall the app</strong>.
 </p>
 
-<div class="warn">
+<div class="note">
   <p>
     <strong>Important warning: "Reset App" is not the same as deleting your account.</strong>
     As long as your account still exists, signing back in with the same account will
     <strong>sync your cloud data (Firestore / Cloud Storage transactions, categories, budgets and photos) back onto the device</strong>.
-    To actually delete your cloud data, submit an account deletion request by email as described in section 1.
+    To actually delete your cloud data, submit an account deletion request by email as described in <a href="#how-to-request">How to request account deletion</a>.
   </p>
 </div>
 
-<h2 id="contact">6. Contact</h2>
+<h2 id="contact">Contact</h2>
 <p>
   For any question about data deletion, email <a href="mailto:liokhgf@gmail.com">liokhgf@gmail.com</a>.
   Fino is built and maintained by an individual developer, who will reply as soon as possible.
 </p>
 <footer>
-  <p>Fino · <a href="../index.html">Home</a> · <a href="mailto:liokhgf@gmail.com">liokhgf@gmail.com</a> · <a href="privacy.html">Privacy Policy</a></p>
+  <p>Fino · <a href="index.html">Home</a> · <a href="mailto:liokhgf@gmail.com">liokhgf@gmail.com</a> · <a href="privacy.html">Privacy Policy</a></p>
   <p>Last updated: 29 July 2026</p>
 </footer>
 
