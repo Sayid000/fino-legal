@@ -173,6 +173,68 @@
     margin-top: 2.5em;
     font-size: 0.9rem;
   }
+  /* 頂部導覽：麵包屑 + 語言切換 */
+  .topnav {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px 16px;
+    align-items: baseline;
+    justify-content: space-between;
+    margin: 0 0 14px;
+    padding-bottom: 16px;
+    border-bottom: 1px solid var(--line);
+    font-size: 0.92rem;
+  }
+  .topnav p { margin: 0; }
+  .crumb { color: var(--muted); }
+  .crumb a { text-decoration: none; font-weight: 600; }
+  .crumb [aria-current] { color: var(--fg); }
+  .langswitch { display: flex; gap: 8px; }
+  .langswitch a {
+    display: inline-block;
+    padding: 4px 12px;
+    border: 1px solid var(--line);
+    border-radius: 999px;
+    text-decoration: none;
+    color: var(--muted);
+  }
+  .langswitch a:hover { border-color: var(--accent); }
+  .langswitch a[aria-current="page"] {
+    background: var(--box-bg);
+    border-color: var(--accent);
+    color: var(--accent);
+    font-weight: 600;
+    cursor: default;
+  }
+  .peer { margin: 0 0 26px; font-size: 0.92rem; }
+  .peer a { text-decoration: none; }
+  .peer a:hover { text-decoration: underline; }
+  /* 章節目錄 */
+  .toc {
+    background: var(--box-bg);
+    border: 1px solid var(--line);
+    border-radius: 8px;
+    padding: 16px 18px;
+    margin: 1.6em 0 2.2em;
+  }
+  .toc-title {
+    margin: 0 0 10px;
+    font-weight: 700;
+    font-size: 0.92rem;
+    color: var(--muted);
+  }
+  .toc ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    columns: 2;
+    column-gap: 24px;
+  }
+  @media (max-width: 520px) { .toc ul { columns: 1; } }
+  .toc li { margin: 5px 0; break-inside: avoid; }
+  .toc a { text-decoration: none; }
+  .toc a:hover { text-decoration: underline; }
+  h2[id] { scroll-margin-top: 16px; }
   footer {
     margin-top: 3.5em;
     padding-top: 1.2em;

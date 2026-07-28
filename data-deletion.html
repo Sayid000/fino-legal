@@ -173,6 +173,68 @@
     margin-top: 2.5em;
     font-size: 0.9rem;
   }
+  /* 頂部導覽：麵包屑 + 語言切換 */
+  .topnav {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px 16px;
+    align-items: baseline;
+    justify-content: space-between;
+    margin: 0 0 14px;
+    padding-bottom: 16px;
+    border-bottom: 1px solid var(--line);
+    font-size: 0.92rem;
+  }
+  .topnav p { margin: 0; }
+  .crumb { color: var(--muted); }
+  .crumb a { text-decoration: none; font-weight: 600; }
+  .crumb [aria-current] { color: var(--fg); }
+  .langswitch { display: flex; gap: 8px; }
+  .langswitch a {
+    display: inline-block;
+    padding: 4px 12px;
+    border: 1px solid var(--line);
+    border-radius: 999px;
+    text-decoration: none;
+    color: var(--muted);
+  }
+  .langswitch a:hover { border-color: var(--accent); }
+  .langswitch a[aria-current="page"] {
+    background: var(--box-bg);
+    border-color: var(--accent);
+    color: var(--accent);
+    font-weight: 600;
+    cursor: default;
+  }
+  .peer { margin: 0 0 26px; font-size: 0.92rem; }
+  .peer a { text-decoration: none; }
+  .peer a:hover { text-decoration: underline; }
+  /* 章節目錄 */
+  .toc {
+    background: var(--box-bg);
+    border: 1px solid var(--line);
+    border-radius: 8px;
+    padding: 16px 18px;
+    margin: 1.6em 0 2.2em;
+  }
+  .toc-title {
+    margin: 0 0 10px;
+    font-weight: 700;
+    font-size: 0.92rem;
+    color: var(--muted);
+  }
+  .toc ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    columns: 2;
+    column-gap: 24px;
+  }
+  @media (max-width: 520px) { .toc ul { columns: 1; } }
+  .toc li { margin: 5px 0; break-inside: avoid; }
+  .toc a { text-decoration: none; }
+  .toc a:hover { text-decoration: underline; }
+  h2[id] { scroll-margin-top: 16px; }
   footer {
     margin-top: 3.5em;
     padding-top: 1.2em;
@@ -185,10 +247,11 @@
 <body>
 <div class="wrap">
 
-<nav class="langbar" aria-label="語言 / Language">
-  <a href="#" aria-current="page"><strong>繁體中文</strong></a>
-  <a href="en/data-deletion.html">English</a>
+<nav class="topnav" aria-label="Navigation">
+  <p class="crumb"><a href="index.html">Fino</a> <span aria-hidden="true">›</span> <span aria-current="page">帳號與資料刪除</span></p>
+  <p class="langswitch"><a href="#" aria-current="page">繁體中文</a><a href="en/data-deletion.html">English</a></p>
 </nav>
+<p class="peer"><a href="privacy.html">隱私政策 →</a></p>
 <h1>Fino — 帳號與資料刪除說明</h1>
 <p class="meta">
   App 名稱：Fino ｜ Android 套件名稱：<code>com.fino.android</code> ｜ iOS Bundle ID：<code>com.fino.iosApp</code><br>
@@ -200,7 +263,19 @@
   如果你想了解 Fino 平常收集與使用哪些資料，請參閱<a href="privacy.html">隱私政策</a>。
 </p>
 
-<h2>一、如何要求刪除帳號</h2>
+<nav class="toc" aria-label="本頁內容">
+  <p class="toc-title">本頁內容</p>
+  <ul>
+    <li><a href="#how-to-request">一、如何要求刪除帳號</a></li>
+    <li><a href="#what-deleted">二、會被刪除的資料</a></li>
+    <li><a href="#what-retained">三、可能保留或無法完全刪除的資料</a></li>
+    <li><a href="#timeline">四、處理時間與保留期間</a></li>
+    <li><a href="#local-only">五、只想刪除裝置上的本機資料</a></li>
+    <li><a href="#contact">六、聯絡方式</a></li>
+  </ul>
+</nav>
+
+<h2 id="how-to-request">一、如何要求刪除帳號</h2>
 
 <div class="warn">
   <p>
@@ -224,7 +299,7 @@
   </p>
 </div>
 
-<h2>二、會被刪除的資料</h2>
+<h2 id="what-deleted">二、會被刪除的資料</h2>
 
 <p>身分驗證完成後，以下與你的帳號（Firebase Auth <code>uid</code>）綁定的雲端資料會被刪除：</p>
 
@@ -257,7 +332,7 @@
   </p>
 </div>
 
-<h2>三、可能保留或無法完全刪除的資料</h2>
+<h2 id="what-retained">三、可能保留或無法完全刪除的資料</h2>
 
 <p>為了維持其他使用者帳務紀錄的完整性，以及遵循法律要求，下列資料在你的帳號刪除後仍可能保留：</p>
 
@@ -290,7 +365,7 @@
   如果你希望在刪除帳號前先退出共享帳本，或想與其他成員協調帳本內容的處理方式，請在申請信中一併說明，開發者會協助處理。
 </p>
 
-<h2>四、處理時間與保留期間</h2>
+<h2 id="timeline">四、處理時間與保留期間</h2>
 
 <ul>
   <li><strong>處理時間：</strong>開發者會在<strong>收到你的申請後 30 天內</strong>（含確認身分所需的時間）完成刪除，並回信通知你結果。</li>
@@ -299,7 +374,7 @@
   <li>Fino 不會保留額外的個人資料副本以供行銷或分析使用（Fino 沒有安裝任何分析、廣告或追蹤 SDK）。</li>
 </ul>
 
-<h2>五、只想刪除裝置上的本機資料</h2>
+<h2 id="local-only">五、只想刪除裝置上的本機資料</h2>
 
 <p>
   如果你不想刪除帳號，只想清掉這台裝置上的資料，可以在 App 內使用<strong>「重設 App」</strong>功能，
@@ -318,7 +393,7 @@
   </p>
 </div>
 
-<h2>六、聯絡方式</h2>
+<h2 id="contact">六、聯絡方式</h2>
 <p>
   任何關於資料刪除的問題，請寄信到 <a href="mailto:liokhgf@gmail.com">liokhgf@gmail.com</a>。
   Fino 由個人開發者開發與維護，會盡快回覆。

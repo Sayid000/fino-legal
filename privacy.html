@@ -173,6 +173,68 @@
     margin-top: 2.5em;
     font-size: 0.9rem;
   }
+  /* 頂部導覽：麵包屑 + 語言切換 */
+  .topnav {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px 16px;
+    align-items: baseline;
+    justify-content: space-between;
+    margin: 0 0 14px;
+    padding-bottom: 16px;
+    border-bottom: 1px solid var(--line);
+    font-size: 0.92rem;
+  }
+  .topnav p { margin: 0; }
+  .crumb { color: var(--muted); }
+  .crumb a { text-decoration: none; font-weight: 600; }
+  .crumb [aria-current] { color: var(--fg); }
+  .langswitch { display: flex; gap: 8px; }
+  .langswitch a {
+    display: inline-block;
+    padding: 4px 12px;
+    border: 1px solid var(--line);
+    border-radius: 999px;
+    text-decoration: none;
+    color: var(--muted);
+  }
+  .langswitch a:hover { border-color: var(--accent); }
+  .langswitch a[aria-current="page"] {
+    background: var(--box-bg);
+    border-color: var(--accent);
+    color: var(--accent);
+    font-weight: 600;
+    cursor: default;
+  }
+  .peer { margin: 0 0 26px; font-size: 0.92rem; }
+  .peer a { text-decoration: none; }
+  .peer a:hover { text-decoration: underline; }
+  /* 章節目錄 */
+  .toc {
+    background: var(--box-bg);
+    border: 1px solid var(--line);
+    border-radius: 8px;
+    padding: 16px 18px;
+    margin: 1.6em 0 2.2em;
+  }
+  .toc-title {
+    margin: 0 0 10px;
+    font-weight: 700;
+    font-size: 0.92rem;
+    color: var(--muted);
+  }
+  .toc ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    columns: 2;
+    column-gap: 24px;
+  }
+  @media (max-width: 520px) { .toc ul { columns: 1; } }
+  .toc li { margin: 5px 0; break-inside: avoid; }
+  .toc a { text-decoration: none; }
+  .toc a:hover { text-decoration: underline; }
+  h2[id] { scroll-margin-top: 16px; }
   footer {
     margin-top: 3.5em;
     padding-top: 1.2em;
@@ -185,10 +247,11 @@
 <body>
 <div class="wrap">
 
-<nav class="langbar" aria-label="語言 / Language">
-  <a href="#" aria-current="page"><strong>繁體中文</strong></a>
-  <a href="en/privacy.html">English</a>
+<nav class="topnav" aria-label="Navigation">
+  <p class="crumb"><a href="index.html">Fino</a> <span aria-hidden="true">›</span> <span aria-current="page">隱私政策</span></p>
+  <p class="langswitch"><a href="#" aria-current="page">繁體中文</a><a href="en/privacy.html">English</a></p>
 </nav>
+<p class="peer"><a href="data-deletion.html">帳號與資料刪除 →</a></p>
 <h1>Fino 隱私政策</h1>
 <p class="meta">最後更新：2026 年 7 月 29 日</p>
 
@@ -196,11 +259,30 @@
   <p><strong>一句話總結：</strong>Fino 的 AI 收據辨識<strong>完全在你的裝置上執行</strong>，收據原始圖片<strong>不會上傳</strong>到任何伺服器；Fino <strong>沒有任何廣告 SDK、沒有分析或崩潰追蹤 SDK、不販售你的資料</strong>。只有在你登入之後，你的記帳資料才會同步到你自己的雲端空間，方便你在多台裝置間使用。</p>
 </div>
 
-<h2>我們是誰</h2>
+<nav class="toc" aria-label="本頁內容">
+  <p class="toc-title">本頁內容</p>
+  <ul>
+    <li><a href="#who">我們是誰</a></li>
+    <li><a href="#collect">我們蒐集哪些資料</a></li>
+    <li><a href="#why">我們為什麼需要這些資料</a></li>
+    <li><a href="#shared-ledger">共享帳本</a></li>
+    <li><a href="#permissions">裝置權限</a></li>
+    <li><a href="#voice">語音記帳（請務必讀這段）</a></li>
+    <li><a href="#third-party">第三方服務</a></li>
+    <li><a href="#we-dont">我們不做的事</a></li>
+    <li><a href="#retention">資料保留與刪除</a></li>
+    <li><a href="#children">兒童</a></li>
+    <li><a href="#location">資料存放地點</a></li>
+    <li><a href="#security">安全措施</a></li>
+    <li><a href="#changes">政策變更</a></li>
+  </ul>
+</nav>
+
+<h2 id="who">我們是誰</h2>
 <p>Fino 是一款個人記帳 App，支援 Android（套件名稱 <code>com.fino.android</code>）與 iOS（Bundle ID <code>com.fino.iosApp</code>）。Fino 由一位個人開發者獨立開發與維運，不屬於任何公司。</p>
 <p>關於隱私的任何問題、要求刪除資料，或想知道我們手上有你哪些資料，請寄信到：<a href="mailto:liokhgf@gmail.com">liokhgf@gmail.com</a>。這是唯一的聯絡管道，信件由開發者本人閱讀。</p>
 
-<h2>我們蒐集哪些資料</h2>
+<h2 id="collect">我們蒐集哪些資料</h2>
 <p>下面分成兩類：<strong>會離開你裝置的</strong>，以及<strong>只留在你裝置上的</strong>。這是完整清單，沒有「其他」這一項。</p>
 
 <h3>一、會離開裝置的資料（記帳資料只在你登入後才同步）</h3>
@@ -287,7 +369,7 @@
   <p><strong>關於作業系統的備份，這裡要誠實說明：</strong>上面這些檔案存在 App 自己的沙盒裡，Fino 不會把它們傳到 Fino 的後端。但<strong>如果你開啟了作業系統的備份功能</strong>（Android 的自動備份、iPhone 的 iCloud 備份），作業系統可能把 App 沙盒內的資料庫與圖檔一併備份到<strong>你自己的</strong> Google 或 Apple 帳號。那是平台功能、由你的裝置設定決定，備份內容<strong>我們讀不到、也拿不到</strong>；你可以在系統設定中關閉對 Fino 的備份。</p>
 </div>
 
-<h2>我們為什麼需要這些資料</h2>
+<h2 id="why">我們為什麼需要這些資料</h2>
 <ul>
   <li><strong>帳號識別（uid / email / 顯示名稱 / 頭像 / 登入方式）</strong>：確認雲端資料屬於你、讓你在新裝置上登入後取回資料。在共享帳本中，顯示名稱（讀不到時退回 email 的 @ 前綴）與頭像用來讓其他成員認得你是誰。</li>
   <li><strong>交易紀錄、分類、預算、定期記帳、範本、幣別設定</strong>：這些就是 App 的功能本體，也讓你的資料能在手機與平板之間同步、換機不遺失。</li>
@@ -298,7 +380,7 @@
 </ul>
 <p>我們不會把上述任何資料用在原本目的以外的地方。</p>
 
-<h2>共享帳本</h2>
+<h2 id="shared-ledger">共享帳本</h2>
 <p>共享帳本是選用功能。只有在你主動建立帳本、或用邀請碼加入別人的帳本時，才會啟用。</p>
 <p><strong>加入共享帳本後，同一個帳本裡的其他成員會看到：</strong></p>
 <ul>
@@ -316,7 +398,7 @@
 </div>
 <p>共享帳本是與個人記帳分開的獨立子系統，有自己的資料存放位置與存取規則。你的個人交易紀錄不會因為加入帳本而被其他成員看到。</p>
 
-<h2>裝置權限</h2>
+<h2 id="permissions">裝置權限</h2>
 <ul>
   <li><strong>相機</strong>（Android <code>CAMERA</code> / iOS Camera）：拍攝收據，用於裝置內的 AI 收據辨識。</li>
   <li><strong>麥克風</strong>（Android <code>RECORD_AUDIO</code> / iOS Microphone）：語音記帳，讓你講一句話就記下一筆帳。詳見下一節。</li>
@@ -328,7 +410,7 @@
 </ul>
 <p>以上權限都只在對應功能被你使用時才會被請求。你可以拒絕，只是相關功能會無法使用。</p>
 
-<h2>語音記帳（請務必讀這段）</h2>
+<h2 id="voice">語音記帳（請務必讀這段）</h2>
 <div class="note">
   <p><strong>iOS 與 Android 的保證強度不一樣，請依你使用的平台閱讀。</strong></p>
   <p><strong>iOS：音訊完全不離開你的裝置。</strong>Fino 使用 <code>SFSpeechRecognizer</code> 並強制開啟裝置端辨識。開始聆聽前我們也會先確認該語言支援裝置端辨識，若不支援就直接顯示「無法使用」，<strong>不會</strong>改用 Apple 的伺服器。</p>
@@ -337,7 +419,7 @@
   <p><strong>Fino 自己的立場：</strong>我們<strong>不儲存</strong>你的音訊、<strong>不</strong>把音訊送到 Fino 的後端、<strong>不</strong>保留錄音檔。我們只使用辨識出來的文字來產生一筆記帳。如果你在 Android 上不希望音訊有任何可能離開裝置，請不要使用語音記帳功能——手動輸入與收據掃描完全不涉及語音。</p>
 </div>
 
-<h2>第三方服務</h2>
+<h2 id="third-party">第三方服務</h2>
 <div class="tablescroll">
 <table>
   <thead>
@@ -405,7 +487,7 @@
 
 <p><strong>對這些第三方的要求：</strong>我們只會把資料交給能提供與本政策<strong>同等或更高保護水準</strong>的第三方服務。上表中的每一項服務都受其自身的隱私政策與資料處理條款約束，我們僅在提供 Fino 功能的必要範圍內使用它們，<strong>不會</strong>為了廣告、分析或使用者剖繪而把你的資料交給任何第三方。我們也沒有嵌入任何廣告聯播網、分析或追蹤用的第三方 SDK。</p>
 
-<h2>我們不做的事</h2>
+<h2 id="we-dont">我們不做的事</h2>
 <ul>
   <li><strong>不販售你的資料</strong>，也不與任何人交換或出租你的資料。</li>
   <li><strong>不把你的資料用於廣告</strong>。App 內沒有廣告。</li>
@@ -417,7 +499,7 @@
   <li><strong>沒有任何金流</strong>：Fino 目前完全免費，App 內沒有內購、沒有訂閱、沒有付費牆。程式碼中相關的付費模組已全部移除。</li>
 </ul>
 
-<h2>資料保留與刪除</h2>
+<h2 id="retention">資料保留與刪除</h2>
 <p>你登入後同步的資料會一直保留在你的雲端空間，直到你要求刪除。</p>
 <div class="note">
   <p><strong>目前 App 內還沒有「刪除帳號」按鈕。</strong>這是我們已知、待完成的功能。在它上線之前，刪除的方式是：</p>
@@ -428,15 +510,15 @@
 <p>共享帳本的<strong>操作留痕是 append-only：伺服器端規則禁止任何修改與刪除</strong>。你退出或帳號被刪除後，帳本中既有的留痕紀錄仍會原樣留在該帳本裡（其他成員仍需要那份紀錄來核對帳目）。留痕只記錄操作者的內部帳號代號與變更前後的值，不含你的顯示名稱或 email。這一點在你加入帳本前就請一併考量。</p>
 <p>此外，第三方服務各有自己的保留機制：Google（Firebase / FCM、Android 雲端語音辨識）與 Apple（APNs）依其自身政策保留與刪除資料，我們無法代為刪除他們那一側的紀錄。</p>
 
-<h2>兒童</h2>
+<h2 id="children">兒童</h2>
 <p>Fino 是給一般成年使用者的記帳工具，<strong>不針對 13 歲以下兒童設計</strong>，也不會刻意向兒童行銷。我們不會主動蒐集兒童的個人資料。如果你是家長或監護人，發現孩子在未經你同意的情況下建立了 Fino 帳號，請寄信到 <a href="mailto:liokhgf@gmail.com">liokhgf@gmail.com</a>，我們會刪除該帳號與相關資料。</p>
 
-<h2>資料存放地點</h2>
+<h2 id="location">資料存放地點</h2>
 <p>Fino 的 Firebase 後端設定在 <strong><code>asia-east1</code>（台灣）</strong>，共享帳本的伺服器端推播函式也部署在同一區域。也就是說，你的雲端資料主要存放與處理於台灣。</p>
 <p><strong>一個要誠實講的例外：</strong>負責清理交易照片的那個伺服器端函式<strong>沒有指定區域</strong>，因此會在 Google 的預設區域（<strong>美國</strong>）執行。它在執行時會讀到該筆交易的欄位、並刪掉對應的照片檔。也就是說，你的交易照片與該筆交易的欄位<strong>會在美國的機房被處理</strong>（僅用於刪除對帳，不用於其他用途）。這是我們已知、待修正的設定。</p>
 <p>此外 Firebase 是 Google 營運的全球性服務，Google 在提供服務的過程中（例如網路傳輸、備援、推播派送）<strong>可能在其他地區的機房處理資料</strong>，這部分適用 Google 的資料處理政策，不由我們控制。同樣地，iOS 推播經由 Apple 的 APNs，Android 的語音辨識在改用雲端時會經由 Google 的伺服器，其地點由該公司決定。</p>
 
-<h2>安全措施</h2>
+<h2 id="security">安全措施</h2>
 <ul>
   <li><strong>Firestore 安全規則</strong>：伺服器端規則限制每份資料誰能讀寫。個人資料只有帳號本人能讀寫；共享帳本資料只有該帳本的成員能存取。唯一刻意公開給所有已登入使用者讀取的是邀請碼反查表（見「共享帳本」一節）。</li>
   <li><strong>Firebase App Check</strong>：透過 Android Play Integrity 與 iOS App Attest 驗證請求來自真正的 Fino App，阻擋偽造客戶端濫用後端。</li>
@@ -445,7 +527,7 @@
 </ul>
 <p>誠實補充：沒有任何系統是絕對安全的。Fino 由一位個人開發者維運，我們用平台提供的標準安全機制盡力保護你的資料，但無法保證絕不發生意外。如果發生會影響你的資料安全事件，我們會透過 App 內公告或這個頁面說明。</p>
 
-<h2>政策變更</h2>
+<h2 id="changes">政策變更</h2>
 <p>如果 Fino 的資料處理方式有變動，我們會更新這個頁面，並修改頁首的「最後更新」日期。<strong>如果是重大變更</strong>（例如開始蒐集新類型的資料、或改變資料上雲的範圍），我們會在 App 內以顯著方式告知，讓你在變更生效前知道。</p>
 <p>對本政策有任何疑問，請寄信到 <a href="mailto:liokhgf@gmail.com">liokhgf@gmail.com</a>。</p>
 <footer>
