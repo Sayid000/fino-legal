@@ -1,0 +1,444 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Fino 資料刪除說明 / Data Deletion</title>
+<meta name="description" content="Fino 帳號與資料刪除說明 — 如何要求刪除、會刪除哪些資料、處理時間。Fino account and data deletion instructions.">
+<style>
+  :root {
+    color-scheme: light dark;
+    --bg: #ffffff;
+    --fg: #1c1e21;
+    --muted: #5c6470;
+    --border: #e2e5ea;
+    --card: #f6f7f9;
+    --link: #0b6bcb;
+    --warn-bg: #fff8e6;
+    --warn-border: #e8c15a;
+    --warn-fg: #6b4e00;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #16181c;
+      --fg: #e6e8eb;
+      --muted: #9aa3ae;
+      --border: #2c3037;
+      --card: #1e2126;
+      --link: #6fb2f5;
+      --warn-bg: #2a2312;
+      --warn-border: #6e5a1e;
+      --warn-fg: #f0d99b;
+    }
+  }
+  * { box-sizing: border-box; }
+  html { -webkit-text-size-adjust: 100%; }
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--fg);
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Noto Sans TC",
+                 "PingFang TC", "Microsoft JhengHei", Roboto, Helvetica, Arial, sans-serif;
+    font-size: 17px;
+    line-height: 1.75;
+  }
+  main {
+    max-width: 720px;
+    margin: 0 auto;
+    padding: 40px 20px 80px;
+  }
+  h1 { font-size: 1.7rem; line-height: 1.35; margin: 0 0 8px; }
+  h2 {
+    font-size: 1.3rem;
+    margin: 44px 0 12px;
+    padding-top: 20px;
+    border-top: 1px solid var(--border);
+  }
+  h3 { font-size: 1.05rem; margin: 28px 0 8px; }
+  p, ul, ol { margin: 0 0 14px; }
+  ul, ol { padding-left: 1.4em; }
+  li { margin: 0 0 6px; }
+  a { color: var(--link); }
+  code {
+    font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+    font-size: 0.9em;
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    padding: 1px 5px;
+  }
+  .meta { color: var(--muted); font-size: 0.9rem; margin: 0 0 24px; }
+  nav.topnav {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px 16px;
+    padding: 12px 16px;
+    margin: 0 0 32px;
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    font-size: 0.92rem;
+  }
+  nav.topnav span { color: var(--muted); }
+  .card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 16px 18px;
+    margin: 0 0 18px;
+  }
+  .card p:last-child, .card ul:last-child, .card ol:last-child { margin-bottom: 0; }
+  .warn {
+    background: var(--warn-bg);
+    border: 1px solid var(--warn-border);
+    color: var(--warn-fg);
+    border-radius: 10px;
+    padding: 16px 18px;
+    margin: 0 0 18px;
+  }
+  .warn p:last-child { margin-bottom: 0; }
+  .warn strong { color: inherit; }
+  hr.lang {
+    border: 0;
+    border-top: 3px double var(--border);
+    margin: 64px 0 40px;
+  }
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.95rem;
+    margin: 0 0 18px;
+  }
+  th, td {
+    border: 1px solid var(--border);
+    padding: 8px 10px;
+    text-align: left;
+    vertical-align: top;
+  }
+  th { background: var(--card); font-weight: 600; }
+  .wrap { overflow-x: auto; }
+  footer {
+    margin-top: 56px;
+    padding-top: 20px;
+    border-top: 1px solid var(--border);
+    color: var(--muted);
+    font-size: 0.88rem;
+  }
+</style>
+</head>
+<body>
+<main>
+
+<nav class="topnav">
+  <a href="index.html">← 首頁 / Home</a>
+  <a href="privacy.html">隱私政策 / Privacy Policy</a>
+  <span>|</span>
+  <a href="#zh">繁體中文</a>
+  <a href="#en">English</a>
+</nav>
+
+<!-- ===================== 繁體中文 ===================== -->
+<section id="zh">
+
+<h1>Fino — 帳號與資料刪除說明</h1>
+<p class="meta">
+  App 名稱：Fino ｜ Android 套件名稱：<code>com.fino.android</code> ｜ iOS Bundle ID：<code>com.fino.iosApp</code><br>
+  最後更新：2026 年 7 月 28 日
+</p>
+
+<p>
+  本頁說明如何要求刪除你的 Fino 帳號與相關資料、哪些資料會被刪除、哪些資料可能會被保留，以及處理需要多久。
+  如果你想了解 Fino 平常收集與使用哪些資料，請參閱<a href="privacy.html">隱私政策</a>。
+</p>
+
+<h2>一、如何要求刪除帳號</h2>
+
+<div class="warn">
+  <p>
+    <strong>請注意：</strong>Fino 目前<strong>尚未</strong>在 App 內提供「刪除帳號」按鈕。
+    因此，目前唯一可行的刪除途徑是以電子郵件向開發者提出申請（開發者已知悉此待辦，未來版本會補上 App 內的刪除入口）。
+  </p>
+</div>
+
+<div class="card">
+  <p><strong>寄信到：</strong><a href="mailto:liokhgf@gmail.com?subject=Fino%20%E5%B8%B3%E8%99%9F%E5%88%AA%E9%99%A4%E7%94%B3%E8%AB%8B">liokhgf@gmail.com</a></p>
+  <p><strong>建議主旨：</strong><code>Fino 帳號刪除申請</code></p>
+  <p><strong>信中請說明：</strong></p>
+  <ul>
+    <li>你註冊 Fino 時使用的 email 位址（即 Google 或 Apple 登入所使用的那組 email）。</li>
+    <li>你使用的平台（Android 或 iOS），有助於加快確認。</li>
+    <li>如果你只想刪除部分資料（例如只刪除交易照片），請一併說明。</li>
+  </ul>
+  <p>
+    開發者收到申請後會先<strong>驗證你的身分</strong>（例如確認申請來源 email 與帳號註冊 email 一致，必要時會回信要求補充資訊），
+    確認無誤後才會執行刪除。這是為了避免他人冒用你的名義刪除你的資料。
+  </p>
+</div>
+
+<h2>二、會被刪除的資料</h2>
+
+<p>身分驗證完成後，以下與你的帳號（Firebase Auth <code>uid</code>）綁定的雲端資料會被刪除：</p>
+
+<ul>
+  <li><strong>Firebase Auth 帳號本身</strong>：包含 uid、email、頭像 URL、登入方式（Google / Apple）等帳號識別資料。</li>
+  <li><strong>Firestore <code>users/{uid}</code> 底下的所有個人資料</strong>，包括：
+    <ul>
+      <li>交易紀錄全部欄位（金額、原幣別、匯率、收支類型、分類、日期、你自己填寫的備註文字、帳戶、旅行模式、來源標記）</li>
+      <li>分類設定</li>
+      <li>預算金額</li>
+      <li>定期記帳規則</li>
+      <li>快速記帳範本</li>
+      <li>主要幣別等使用者設定</li>
+    </ul>
+  </li>
+  <li><strong>Cloud Storage 中的交易照片</strong>：你手動附加到交易的照片（<code>users/{uid}/txn-photos/</code>）。</li>
+  <li><strong>推播（FCM）token</strong>（<code>users/{uid}/pushTokens</code>）：刪除後不會再收到 Fino 的推播通知。</li>
+  <li><strong>共享帳本的個人附屬資料</strong>：你加入哪些帳本的清單（<code>users/{uid}/ledgerMemberships</code>）、你私下為共享明細標記的個人分類與匯率快照（<code>users/{uid}/itemCategories</code>）。</li>
+</ul>
+
+<div class="card">
+  <p>
+    <strong>順帶說明：</strong>AI 收據掃描所拍攝／選取的原始收據圖片、以及 OCR 文字辨識與 AI 推論，
+    <strong>一律只在你的裝置上處理，從未上傳到雲端</strong>，所以雲端本來就沒有這些圖片或推論過程可刪。
+    要把裝置上的收據圖片暫存檔完全清掉，請<strong>直接把 App 從裝置移除</strong>——App 內的「重設 App」只清交易紀錄、分類與偏好設定，<strong>不保證</strong>清除收據圖片的暫存檔。
+  </p>
+  <p>
+    ⚠️ 但要分清楚一件事：你在確認畫面<strong>按下儲存</strong>的那些辨識結果（品項名稱、金額）會變成一筆交易的欄位，
+    <strong>而交易在你登入後會同步到雲端</strong>。因此這部分屬於上面「會被刪除的資料」中的交易紀錄，會隨帳號刪除一併移除。
+  </p>
+</div>
+
+<h2>三、可能保留或無法完全刪除的資料</h2>
+
+<p>為了維持其他使用者帳務紀錄的完整性，以及遵循法律要求，下列資料在你的帳號刪除後仍可能保留：</p>
+
+<div class="wrap">
+<table>
+  <thead>
+    <tr><th>資料</th><th>為什麼保留</th><th>我們會怎麼處理</th></tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>共享帳本中，你曾與其他成員共用的帳務內容（帳目、攤帳、品項名稱、還款紀錄）</td>
+      <td>這些紀錄同時屬於同一帳本的其他成員，是他們共同的帳務資料；直接刪除會讓其他成員的分帳結果對不上。</td>
+      <td>帳目本身會<strong>保留</strong>在該帳本中。我們會清除你在該帳本<strong>成員資料中的顯示名稱與頭像</strong>；但帳目、攤帳與還款仍會以你的<strong>內部帳號代號（uid）</strong>標記——那是維持「這筆錢算誰的」所必需的欄位，移除它會讓其他成員的帳直接壞掉。</td>
+    </tr>
+    <tr>
+      <td>共享帳本的操作留痕（含變更前後的舊值／新值）</td>
+      <td>該留痕採 append-only 設計（伺服器端規則<strong>明文禁止任何更新與刪除</strong>），用於讓成員追溯帳目變更、避免爭議。</td>
+      <td><strong>留痕條目會原樣保留，我們無法修改也無法刪除</strong>（連開發者都受同一組規則約束，只有繞過規則的後台操作才可能改動，我們不會這麼做）。留痕本身只記錄操作者的內部帳號代號（uid）、欄位名稱與變更前後的值，<strong>不含</strong>你的顯示名稱或 email。</td>
+    </tr>
+    <tr>
+      <td>依法律義務或防止濫用／詐騙所必需的最少量紀錄</td>
+      <td>在少數情況下（例如收到主管機關要求，或需要處理濫用行為）法律要求保留必要紀錄。</td>
+      <td>僅保留必要範圍，且不用於其他用途；一旦不再需要即刪除。</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+<p>
+  如果你希望在刪除帳號前先退出共享帳本，或想與其他成員協調帳本內容的處理方式，請在申請信中一併說明，開發者會協助處理。
+</p>
+
+<h2>四、處理時間與保留期間</h2>
+
+<ul>
+  <li><strong>處理時間：</strong>開發者會在<strong>收到你的申請後 30 天內</strong>（含確認身分所需的時間）完成刪除，並回信通知你結果。</li>
+  <li><strong>備份殘留：</strong>刪除完成後，後端服務（Firebase）的備份與日誌系統中可能仍存在短期殘留副本；
+      這些殘留副本會在合理期間內依例行備份週期自動清除，且不會再用於提供服務。</li>
+  <li>Fino 不會保留額外的個人資料副本以供行銷或分析使用（Fino 沒有安裝任何分析、廣告或追蹤 SDK）。</li>
+</ul>
+
+<h2>五、只想刪除裝置上的本機資料</h2>
+
+<p>
+  如果你不想刪除帳號，只想清掉這台裝置上的資料，可以在 App 內使用<strong>「重設 App」</strong>功能，
+  它會清除本機的<strong>交易紀錄、分類與偏好設定</strong>。
+</p>
+<p>
+  請注意「重設 App」的範圍有限：它<strong>不會</strong>清除共享帳本的本機資料、已下載的 AI 模型檔案，
+  也<strong>不保證</strong>清除收據圖片的暫存檔。若要把裝置上與 Fino 有關的資料完全清掉，請<strong>直接把 App 從裝置上移除</strong>。
+</p>
+
+<div class="warn">
+  <p>
+    <strong>重要警告：「重設 App」不等於刪除帳號。</strong>
+    只要你的帳號仍然存在，當你之後重新登入同一個帳號時，雲端（Firestore / Cloud Storage）上的交易、分類、預算與照片
+    <strong>會同步回到裝置上</strong>。若你要真正刪除雲端資料，請依照上方第一節寄信提出帳號刪除申請。
+  </p>
+</div>
+
+<h2>六、聯絡方式</h2>
+<p>
+  任何關於資料刪除的問題，請寄信到 <a href="mailto:liokhgf@gmail.com">liokhgf@gmail.com</a>。
+  Fino 由個人開發者開發與維護，會盡快回覆。
+</p>
+
+</section>
+
+<hr class="lang">
+
+<!-- ===================== English ===================== -->
+<section id="en" lang="en">
+
+<h1>Fino — Account &amp; Data Deletion</h1>
+<p class="meta">
+  App: Fino ｜ Android package: <code>com.fino.android</code> ｜ iOS bundle ID: <code>com.fino.iosApp</code><br>
+  Last updated: 28 July 2026 ｜ <a href="#zh">切換至繁體中文</a>
+</p>
+
+<p>
+  This page explains how to request deletion of your Fino account and associated data, what gets deleted,
+  what may be retained, and how long it takes. For details on what data Fino collects and how it is used,
+  see the <a href="privacy.html">Privacy Policy</a>.
+</p>
+
+<h2>1. How to request account deletion</h2>
+
+<div class="warn">
+  <p>
+    <strong>Please note:</strong> Fino does <strong>not</strong> currently provide an in-app "delete account" button.
+    The only available way to request deletion today is to email the developer. (The developer is aware of this gap
+    and plans to add an in-app deletion entry point in a future release.)
+  </p>
+</div>
+
+<div class="card">
+  <p><strong>Email:</strong> <a href="mailto:liokhgf@gmail.com?subject=Fino%20Account%20Deletion%20Request">liokhgf@gmail.com</a></p>
+  <p><strong>Suggested subject:</strong> <code>Fino 帳號刪除申請</code> (or <code>Fino Account Deletion Request</code>)</p>
+  <p><strong>Please include:</strong></p>
+  <ul>
+    <li>The email address you used to register with Fino (the email behind your Google or Apple sign-in).</li>
+    <li>Which platform you use (Android or iOS) — this helps speed up verification.</li>
+    <li>If you only want part of your data deleted (for example only transaction photos), please say so.</li>
+  </ul>
+  <p>
+    After receiving your request, the developer will first <strong>verify your identity</strong> — for example by
+    confirming that the request comes from the same email address registered to the account, and replying to ask
+    for additional information if needed. Deletion is performed only after verification, so that nobody else can
+    delete your data on your behalf.
+  </p>
+</div>
+
+<h2>2. Data that will be deleted</h2>
+
+<p>Once your identity is verified, the following cloud data tied to your account (Firebase Auth <code>uid</code>) is deleted:</p>
+
+<ul>
+  <li><strong>Your Firebase Auth account</strong>, including the uid, email address, avatar URL and sign-in provider (Google / Apple).</li>
+  <li><strong>Everything under Firestore <code>users/{uid}</code></strong>, including:
+    <ul>
+      <li>All transaction fields (amount, original currency, exchange rate, income/expense type, category, date, notes you wrote yourself, account, travel mode, source marker)</li>
+      <li>Categories</li>
+      <li>Budget amounts</li>
+      <li>Recurring transaction rules</li>
+      <li>Quick-entry templates</li>
+      <li>Settings such as your primary currency</li>
+    </ul>
+  </li>
+  <li><strong>Transaction photos in Cloud Storage</strong> — photos you manually attached to transactions (<code>users/{uid}/txn-photos/</code>).</li>
+  <li><strong>Push notification (FCM) tokens</strong> (<code>users/{uid}/pushTokens</code>) — you will no longer receive Fino push notifications.</li>
+  <li><strong>Your personal shared-ledger side data</strong> — the list of ledgers you belong to (<code>users/{uid}/ledgerMemberships</code>) and the private personal categories and rate snapshots you assigned to shared line items (<code>users/{uid}/itemCategories</code>).</li>
+</ul>
+
+<div class="card">
+  <p>
+    <strong>For clarity:</strong> receipt images captured or selected for AI receipt scanning, along with OCR text
+    recognition and AI inference, are processed <strong>entirely on your device and are never uploaded to the cloud</strong>.
+    There is therefore no cloud copy of those images or of the inference to delete. To clear the cached receipt images
+    from your device, <strong>uninstall the app</strong> — the in-app "Reset App" clears local transactions, categories and
+    preferences but does <strong>not</strong> guarantee removal of cached receipt images.
+  </p>
+  <p>
+    ⚠️ One distinction to keep in mind: the recognition results you <strong>confirm and save</strong> (item names, amounts)
+    become fields of a transaction, and <strong>transactions do sync to the cloud once you are signed in</strong>. That text is
+    therefore part of the transaction data listed above and is removed together with your account.
+  </p>
+</div>
+
+<h2>3. Data that may be retained or cannot be fully deleted</h2>
+
+<p>
+  To preserve the integrity of other users' shared bookkeeping records and to comply with legal requirements,
+  the following may remain after your account is deleted:
+</p>
+
+<div class="wrap">
+<table>
+  <thead>
+    <tr><th>Data</th><th>Why it is retained</th><th>What we do about it</th></tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Shared-ledger content you shared with other members (entries, splits, item names, repayment records)</td>
+      <td>These records also belong to the other members of the same ledger and form their joint accounting history; deleting them outright would break their settlement balances.</td>
+      <td>The entries <strong>stay</strong> in that ledger. We clear your <strong>display name and avatar from that ledger's member record</strong>; entries, splits and repayments still carry your <strong>internal account identifier (uid)</strong>, because that is the field that determines whose money is whose — removing it would break the other members' balances outright.</td>
+    </tr>
+    <tr>
+      <td>Shared-ledger activity history (including previous and new values of changes)</td>
+      <td>This history is append-only by design — the server-side rules <strong>explicitly forbid any update or deletion</strong> — so members can trace changes and resolve disputes.</td>
+      <td><strong>Entries are retained exactly as written; we can neither edit nor delete them</strong> (the developer is bound by the same rules; only an out-of-band admin operation could alter them, and we do not do that). The history itself records only the actor's internal account identifier (uid), the field name and the before/after values — <strong>not</strong> your display name or email.</td>
+    </tr>
+    <tr>
+      <td>The minimum records required by law or for abuse / fraud prevention</td>
+      <td>In limited cases (for example a lawful request from an authority, or handling abuse) retaining certain records is legally necessary.</td>
+      <td>Only what is necessary is kept, it is not used for any other purpose, and it is deleted once no longer needed.</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+<p>
+  If you would prefer to leave your shared ledgers before deleting your account, or want to coordinate with the other
+  members about the ledger content, mention it in your email and the developer will help.
+</p>
+
+<h2>4. Timeline and retention period</h2>
+
+<ul>
+  <li><strong>Timeline:</strong> deletion is completed <strong>within 30 days of receiving your request</strong> (identity verification included in that window), and you will receive a confirmation reply.</li>
+  <li><strong>Backup residue:</strong> after deletion, short-lived residual copies may still exist in the backend provider's (Firebase) backup and logging systems.
+      These residual copies are cleared within a reasonable period as part of the routine backup cycle and are no longer used to provide the service.</li>
+  <li>Fino keeps no additional copies of personal data for marketing or analytics — the app contains no analytics, advertising or tracking SDKs.</li>
+</ul>
+
+<h2>5. If you only want to delete local data on your device</h2>
+
+<p>
+  If you do not want to delete your account and only want to clear the data on this device, you can use the
+  <strong>"Reset App"</strong> function inside the app, which clears your local <strong>transactions, categories and
+  preferences</strong>.
+</p>
+<p>
+  Note that "Reset App" has a limited scope: it does <strong>not</strong> clear shared-ledger local data or downloaded AI
+  model files, and it does <strong>not</strong> guarantee clearing cached receipt images. To remove everything Fino keeps on
+  the device, <strong>uninstall the app</strong>.
+</p>
+
+<div class="warn">
+  <p>
+    <strong>Important warning: "Reset App" is not the same as deleting your account.</strong>
+    As long as your account still exists, signing back in with the same account will
+    <strong>sync your cloud data (Firestore / Cloud Storage transactions, categories, budgets and photos) back onto the device</strong>.
+    To actually delete your cloud data, submit an account deletion request by email as described in section 1.
+  </p>
+</div>
+
+<h2>6. Contact</h2>
+<p>
+  For any question about data deletion, email <a href="mailto:liokhgf@gmail.com">liokhgf@gmail.com</a>.
+  Fino is built and maintained by an individual developer, who will reply as soon as possible.
+</p>
+
+</section>
+
+<footer>
+  Fino ｜ <a href="index.html">首頁 / Home</a> ｜ <a href="privacy.html">隱私政策 / Privacy Policy</a> ｜
+  <a href="mailto:liokhgf@gmail.com">liokhgf@gmail.com</a><br>
+  最後更新 / Last updated: 2026-07-28
+</footer>
+
+</main>
+</body>
+</html>

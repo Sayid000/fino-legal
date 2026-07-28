@@ -1,0 +1,695 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Fino 隱私政策 / Privacy Policy</title>
+<meta name="description" content="Fino 記帳 App 的隱私政策：AI 收據辨識完全在裝置上執行、收據原圖不上傳、無廣告與追蹤 SDK。">
+<style>
+  :root {
+    --bg: #ffffff;
+    --fg: #1b1b1f;
+    --muted: #5c5f66;
+    --line: #e2e4e8;
+    --accent: #1d5c46;
+    --box-bg: #f5f7f6;
+    --warn-bg: #fff8e8;
+    --warn-line: #e0c179;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #16181b;
+      --fg: #e6e7e9;
+      --muted: #a2a6ad;
+      --line: #2e3237;
+      --accent: #7fd2b1;
+      --box-bg: #1e2125;
+      --warn-bg: #2a2419;
+      --warn-line: #6d5a2c;
+    }
+  }
+  * { box-sizing: border-box; }
+  html { -webkit-text-size-adjust: 100%; }
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--fg);
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Noto Sans TC",
+                 "PingFang TC", "Microsoft JhengHei", Roboto, Helvetica, Arial, sans-serif;
+    font-size: 17px;
+    line-height: 1.75;
+  }
+  .wrap {
+    max-width: 720px;
+    margin: 0 auto;
+    padding: 32px 20px 80px;
+  }
+  h1 {
+    font-size: 1.85rem;
+    line-height: 1.3;
+    margin: 0 0 6px;
+  }
+  h2 {
+    font-size: 1.3rem;
+    line-height: 1.35;
+    margin: 2.6em 0 0.6em;
+    padding-top: 0.5em;
+    border-top: 1px solid var(--line);
+  }
+  h3 {
+    font-size: 1.05rem;
+    margin: 1.8em 0 0.4em;
+  }
+  p, ul, ol { margin: 0.7em 0; }
+  ul, ol { padding-left: 1.4em; }
+  li { margin: 0.35em 0; }
+  a { color: var(--accent); }
+  a:hover { text-decoration: none; }
+  code {
+    font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+    font-size: 0.88em;
+    background: var(--box-bg);
+    padding: 0.1em 0.35em;
+    border-radius: 4px;
+    word-break: break-all;
+  }
+  .meta {
+    color: var(--muted);
+    font-size: 0.92rem;
+    margin: 0 0 1.4em;
+  }
+  .langbar {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+    margin: 0 0 28px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid var(--line);
+  }
+  .langbar a {
+    display: inline-block;
+    padding: 6px 14px;
+    border: 1px solid var(--line);
+    border-radius: 999px;
+    text-decoration: none;
+    font-size: 0.92rem;
+  }
+  .summary {
+    background: var(--box-bg);
+    border-left: 3px solid var(--accent);
+    border-radius: 6px;
+    padding: 14px 18px;
+    margin: 1.4em 0;
+  }
+  .note {
+    background: var(--warn-bg);
+    border: 1px solid var(--warn-line);
+    border-radius: 6px;
+    padding: 14px 18px;
+    margin: 1.4em 0;
+  }
+  .summary p:first-child, .note p:first-child { margin-top: 0; }
+  .summary p:last-child, .note p:last-child { margin-bottom: 0; }
+  .tablescroll {
+    overflow-x: auto;
+    margin: 1.2em 0;
+    border: 1px solid var(--line);
+    border-radius: 6px;
+  }
+  table {
+    border-collapse: collapse;
+    width: 100%;
+    font-size: 0.94rem;
+    min-width: 480px;
+  }
+  th, td {
+    text-align: left;
+    vertical-align: top;
+    padding: 10px 12px;
+    border-bottom: 1px solid var(--line);
+  }
+  th {
+    background: var(--box-bg);
+    font-weight: 600;
+  }
+  tr:last-child td { border-bottom: none; }
+  .top {
+    display: inline-block;
+    margin-top: 2.5em;
+    font-size: 0.9rem;
+  }
+  footer {
+    margin-top: 3.5em;
+    padding-top: 1.2em;
+    border-top: 1px solid var(--line);
+    color: var(--muted);
+    font-size: 0.88rem;
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<nav class="langbar" id="top" aria-label="語言 / Language">
+  <a href="#zh">繁體中文</a>
+  <a href="#en">English</a>
+</nav>
+
+<!-- ==================== 繁體中文 ==================== -->
+<section id="zh" lang="zh-Hant">
+
+<h1>Fino 隱私政策</h1>
+<p class="meta">最後更新：2026 年 7 月 28 日</p>
+
+<div class="summary">
+  <p><strong>一句話總結：</strong>Fino 的 AI 收據辨識<strong>完全在你的裝置上執行</strong>，收據原始圖片<strong>不會上傳</strong>到任何伺服器；Fino <strong>沒有任何廣告 SDK、沒有分析或崩潰追蹤 SDK、不販售你的資料</strong>。只有在你登入之後，你的記帳資料才會同步到你自己的雲端空間，方便你在多台裝置間使用。</p>
+</div>
+
+<h2>我們是誰</h2>
+<p>Fino 是一款個人記帳 App，支援 Android（套件名稱 <code>com.fino.android</code>）與 iOS（Bundle ID <code>com.fino.iosApp</code>）。Fino 由一位個人開發者獨立開發與維運，不屬於任何公司。</p>
+<p>關於隱私的任何問題、要求刪除資料，或想知道我們手上有你哪些資料，請寄信到：<a href="mailto:liokhgf@gmail.com">liokhgf@gmail.com</a>。這是唯一的聯絡管道，信件由開發者本人閱讀。</p>
+
+<h2>我們蒐集哪些資料</h2>
+<p>下面分成兩類：<strong>會離開你裝置的</strong>，以及<strong>只留在你裝置上的</strong>。這是完整清單，沒有「其他」這一項。</p>
+
+<h3>一、會離開裝置的資料（記帳資料只在你登入後才同步）</h3>
+<p>Fino 的雲端後端是 Google 的 Firebase。<strong>如果你不登入，你的記帳資料完全不會有任何雲端同步。</strong>但即使你不登入，App 仍會為了三件事連上網路：下載裝置內 AI 模型（<code>huggingface.co</code>）、查詢匯率（<code>tw.rter.info</code>）、以及裝置完整性驗證（Firebase App Check）。這三件事都不會傳送你的記帳內容。</p>
+
+<div class="tablescroll">
+<table>
+  <thead>
+    <tr><th>資料項目</th><th>具體內容</th><th>存放位置</th></tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>帳號識別</td>
+      <td>Firebase Auth 的使用者 ID（uid）、email、頭像網址、顯示名稱、你使用的登入方式（Google 或 Apple）。這些由 Firebase Auth 保管；其中<strong>你的 email 另外會以明文寫進 Firestore 的使用者文件</strong>（該文件只有 email、主要幣別、建立時間與更新時間）。你的顯示名稱與頭像網址只有在你使用共享帳本時，才會另外寫進該帳本的成員資料。</td>
+      <td>Firebase Auth；Firestore <code>users/{uid}</code></td>
+    </tr>
+    <tr>
+      <td>交易紀錄（全欄位）</td>
+      <td>金額、原始幣別、匯率、收支類型、分類、日期、<strong>備註文字</strong>、帳戶、旅行模式標記、來源標記，以及讓資料彼此對得上的技術欄位（附加照片 ID、收據／語音群組 ID、定期規則 ID、明細序號、來源帳本名稱、建立與更新時間）。<br><strong>關於備註文字：</strong>如果這筆帳是你手打的，備註就是你打的字；如果是用 AI 收據掃描或語音記帳建立的，<strong>備註會是辨識出來的品項名稱或語音轉出的文字</strong>。也就是說，收據的<strong>原始圖片</strong>與<strong>音訊</strong>不會上傳，但你確認存檔的那段<strong>文字</strong>會隨交易一起同步到雲端。</td>
+      <td>Firestore <code>users/{uid}/transactions/*</code></td>
+    </tr>
+    <tr>
+      <td>設定與規則</td>
+      <td>你建立的分類與其<strong>預算金額</strong>（預算是分類上的一個欄位）、定期記帳規則、快速記帳範本（三個資料集合），以及主要幣別設定（寫在使用者文件上）。</td>
+      <td>Firestore <code>users/{uid}/</code> 底下</td>
+    </tr>
+    <tr>
+      <td><strong>你手動附加到交易的照片</strong></td>
+      <td>你在編輯交易時主動選擇附加的照片。上傳前會壓縮成 WebP 格式（一張大約 224KB，單張上限 5MB）。<strong>這些照片會上傳到雲端</strong>，這是為了讓你換裝置時照片還在。</td>
+      <td>Cloud Storage <code>users/{uid}/txn-photos/*</code></td>
+    </tr>
+    <tr>
+      <td>共享帳本內容</td>
+      <td>見下方「共享帳本」一節。只有你主動建立或加入帳本時才會產生。</td>
+      <td>Firestore <code>ledgers/{ledgerId}/*</code></td>
+    </tr>
+    <tr>
+      <td>共享帳本的個人附屬資料</td>
+      <td>你加入了哪些帳本的清單（帳本名稱、外觀標籤、你的角色、加入時間），以及你<strong>私下</strong>為共享帳本明細標記的個人分類與當時的匯率快照。這些放在你自己的空間，<strong>同帳本的其他成員讀不到</strong>。</td>
+      <td>Firestore <code>users/{uid}/ledgerMemberships</code>、<code>users/{uid}/itemCategories</code></td>
+    </tr>
+    <tr>
+      <td>推播 token</td>
+      <td>Firebase Cloud Messaging（FCM）配發給你這台裝置的推播識別碼。你登入後會把它寫進你自己的雲端空間，伺服器才知道要推給哪台裝置。推播訊息內容可能包含成員名字、金額、帳本名稱。</td>
+      <td>Firestore <code>users/{uid}/pushTokens</code>；Google FCM；iOS 再經 Apple APNs 送達</td>
+    </tr>
+    <tr>
+      <td>裝置完整性訊號</td>
+      <td>Android 的 Play Integrity 與 iOS 的 App Attest 訊號（透過 Firebase App Check）。這是平台產生的技術性證明，不包含你的個人資料，用來阻止他人偽造 App 濫用我們的後端。<strong>這一項在 App 啟動時就會啟用，不以你登入為前提。</strong></td>
+      <td>Google / Apple 平台服務與 Firebase App Check</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+<h3>二、只留在你裝置上的資料</h3>
+<div class="tablescroll">
+<table>
+  <thead>
+    <tr><th>資料項目</th><th>說明</th></tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><strong>AI 收據掃描的原始圖片</strong></td>
+      <td><strong>純本機，不上傳。</strong>你用相機拍的收據、或從相簿選的收據圖片，只會留在你裝置上 App 自己的暫存區，供裝置內辨識使用。資料庫裡對應的遠端路徑欄位（<code>image_remote_path</code>）永遠是空值，本機路徑欄位目前也不會被填入——我們的程式碼裡沒有任何一條路徑會把收據原圖送上雲端。</td>
+    </tr>
+    <tr>
+      <td><strong>收據的文字辨識與 AI 推論</strong></td>
+      <td><strong>完全在你的裝置上執行。</strong>Android 使用 ML Kit 做文字辨識（OCR）＋裝置內的 Gemma 模型做理解；iOS 使用 Apple Vision 做文字辨識＋Apple Foundation Models 或裝置內的 MLX Qwen3-VL 模型做理解。整個過程沒有任何雲端 AI 呼叫——我們的程式碼裡完全沒有 Gemini、Vertex AI、OpenAI 或 Cloud Vision 的呼叫。</td>
+    </tr>
+    <tr>
+      <td>本機資料庫</td>
+      <td>裝置上的 Room 資料庫（5 張個人資料表 ＋ 9 張共享帳本表）。這是 App 離線也能用的基礎。</td>
+    </tr>
+    <tr>
+      <td>偏好設定</td>
+      <td>本機設定鍵（例如主要幣別、主題、語言、旅行模式、AI 引擎選擇、推播開關、上次同步時間）。不上傳。</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+<div class="note">
+  <p><strong>關於作業系統的備份，這裡要誠實說明：</strong>上面這些檔案存在 App 自己的沙盒裡，Fino 不會把它們傳到 Fino 的後端。但<strong>如果你開啟了作業系統的備份功能</strong>（Android 的自動備份、iPhone 的 iCloud 備份），作業系統可能把 App 沙盒內的資料庫與圖檔一併備份到<strong>你自己的</strong> Google 或 Apple 帳號。那是平台功能、由你的裝置設定決定，備份內容<strong>我們讀不到、也拿不到</strong>；你可以在系統設定中關閉對 Fino 的備份。</p>
+</div>
+
+<h2>我們為什麼需要這些資料</h2>
+<ul>
+  <li><strong>帳號識別（uid / email / 顯示名稱 / 頭像 / 登入方式）</strong>：確認雲端資料屬於你、讓你在新裝置上登入後取回資料。在共享帳本中，顯示名稱（讀不到時退回 email 的 @ 前綴）與頭像用來讓其他成員認得你是誰。</li>
+  <li><strong>交易紀錄、分類、預算、定期記帳、範本、幣別設定</strong>：這些就是 App 的功能本體，也讓你的資料能在手機與平板之間同步、換機不遺失。</li>
+  <li><strong>交易照片</strong>：讓你為一筆支出留存單據，並在換裝置後仍看得到。</li>
+  <li><strong>共享帳本內容</strong>：讓帳本成員看到同一份帳並正確攤帳。</li>
+  <li><strong>推播 token</strong>：在共享帳本有新記錄或還款時通知你。沒有推播 token 就無法送通知。</li>
+  <li><strong>裝置完整性訊號</strong>：防止有人用改造過的客戶端濫用或攻擊我們的後端。這是安全用途，不用於識別你。</li>
+</ul>
+<p>我們不會把上述任何資料用在原本目的以外的地方。</p>
+
+<h2>共享帳本</h2>
+<p>共享帳本是選用功能。只有在你主動建立帳本、或用邀請碼加入別人的帳本時，才會啟用。</p>
+<p><strong>加入共享帳本後，同一個帳本裡的其他成員會看到：</strong></p>
+<ul>
+  <li>你的<strong>顯示名稱</strong>（如果讀不到顯示名稱，會退回顯示你 email 的 @ 前綴，例如 <code>abc@example.com</code> 會顯示為 <code>abc</code>）</li>
+  <li>你的<strong>頭像圖片網址</strong></li>
+  <li>你在該帳本內記下的<strong>所有帳目內容</strong>，包含金額、<strong>品項名稱</strong>與該筆帳的<strong>備註文字</strong></li>
+  <li><strong>攤帳結果</strong>與<strong>還款紀錄</strong>（誰付給誰、多少錢、有沒有確認收到）</li>
+  <li><strong>操作留痕</strong>：誰在什麼時候改了什麼，含<strong>修改前的舊值與修改後的新值</strong></li>
+</ul>
+<p><strong>其他成員看不到的：</strong>你私下為共享帳目標記的<strong>個人分類</strong>不會進入共享資料——伺服器端規則<strong>硬性禁止</strong>把分類資訊寫入共享明細，個人分類只存在你自己的空間。你的個人交易紀錄、預算與個人帳本內容也不會因為加入帳本而被看到。</p>
+<div class="note">
+  <p><strong>請特別注意兩件事：</strong></p>
+  <p>1. <strong>操作留痕是「只能新增、不能修改、不能刪除」（append-only）。</strong>一旦寫入，你和我們都無法把它從帳本中移除。這是為了讓多人記帳時有可信的紀錄、避免爭議。請把它當成永久紀錄來使用。</p>
+  <p>2. <strong>邀請碼反查表是公開可讀的。</strong>6 位邀請碼與它對應的帳本 ID、建立者，存放在 Firestore 的 <code>inviteCodes/{code}</code>，<strong>任何已登入 Fino 的使用者都可以讀取</strong>。這是刻意的設計——別人要輸入邀請碼加入帳本，就必須能查到這張表。這張表<strong>只有</strong>邀請碼、帳本 ID、建立者，<strong>不含</strong>帳本內容或金額；但這意味著邀請碼並非機密，請只把邀請碼給你信任的人，並在成員到齊後請帳本管理者處理掉不再需要的邀請碼。</p>
+</div>
+<p>共享帳本是與個人記帳分開的獨立子系統，有自己的資料存放位置與存取規則。你的個人交易紀錄不會因為加入帳本而被其他成員看到。</p>
+
+<h2>裝置權限</h2>
+<ul>
+  <li><strong>相機</strong>（Android <code>CAMERA</code> / iOS Camera）：拍攝收據，用於裝置內的 AI 收據辨識。</li>
+  <li><strong>麥克風</strong>（Android <code>RECORD_AUDIO</code> / iOS Microphone）：語音記帳，讓你講一句話就記下一筆帳。詳見下一節。</li>
+  <li><strong>照片圖庫</strong>（iOS PhotoLibrary）：從相簿選取收據圖片，或選取要附加到交易的照片。</li>
+  <li><strong>通知</strong>（Android <code>POST_NOTIFICATIONS</code>）：共享帳本的新記錄與還款提醒。</li>
+  <li><strong>語音辨識</strong>（iOS SpeechRecognition）：把你的語音轉成文字。</li>
+  <li><strong>網路</strong>（Android <code>INTERNET</code>）：雲端同步、匯率查詢、AI 模型下載。</li>
+  <li><strong>前景服務</strong>（Android <code>FOREGROUND_SERVICE</code> / <code>FOREGROUND_SERVICE_DATA_SYNC</code>）：讓 AI 模型檔案能在背景穩定下載完成，不會因為你切到別的 App 而中斷。</li>
+</ul>
+<p>以上權限都只在對應功能被你使用時才會被請求。你可以拒絕，只是相關功能會無法使用。</p>
+
+<h2>語音記帳（請務必讀這段）</h2>
+<div class="note">
+  <p><strong>iOS 與 Android 的保證強度不一樣，請依你使用的平台閱讀。</strong></p>
+  <p><strong>iOS：音訊完全不離開你的裝置。</strong>Fino 使用 <code>SFSpeechRecognizer</code> 並強制開啟裝置端辨識（<code>requiresOnDeviceRecognition = true</code>）。開始聆聽前我們也會先確認該語言支援裝置端辨識，若不支援就直接顯示「無法使用」，<strong>不會</strong>改用 Apple 的伺服器。</p>
+  <p><strong>Android：優先在裝置上辨識，但無法保證。</strong>Fino 使用系統語音辨識服務並要求偏好離線辨識（<code>EXTRA_PREFER_OFFLINE = true</code>）。但這在 Android 上只是「偏好」而非強制——當你的裝置沒有該語言的本機模型時，<strong>系統仍可能改用 Google 的伺服器辨識，且不會通知我們</strong>。因此在 Android 上，<strong>你的錄音內容有可能被送到 Google 的語音辨識伺服器處理</strong>。</p>
+  <p>音訊若確實離開裝置，該處理適用<strong>該平台自己的隱私政策</strong>：請另見 Google 的隱私政策（Google 官方網站的隱私權政策，以及 Android 系統設定中關於語音與語音輸入的說明）。我們刻意不在此處放外部網址，以免連結日後失效。</p>
+  <p><strong>Fino 自己的立場：</strong>我們<strong>不儲存</strong>你的音訊、<strong>不</strong>把音訊送到 Fino 的後端、<strong>不</strong>保留錄音檔。我們只使用辨識出來的文字來產生一筆記帳。如果你在 Android 上不希望音訊有任何可能離開裝置，請不要使用語音記帳功能——手動輸入與收據掃描完全不涉及語音。</p>
+</div>
+
+<h2>第三方服務</h2>
+<div class="tablescroll">
+<table>
+  <thead>
+    <tr><th>服務</th><th>提供者</th><th>它拿到什麼</th></tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Firebase Authentication</td>
+      <td>Google</td>
+      <td>你的登入身分：uid、email、頭像網址、登入方式。</td>
+    </tr>
+    <tr>
+      <td>Cloud Firestore</td>
+      <td>Google</td>
+      <td>你的交易紀錄全欄位（含備註文字）、分類、預算、定期記帳、範本、幣別設定、共享帳本內容與操作留痕、邀請碼反查表。</td>
+    </tr>
+    <tr>
+      <td>Cloud Storage</td>
+      <td>Google</td>
+      <td>你手動附加到交易的照片（WebP）。<strong>不含</strong> AI 收據掃描的原始圖片。</td>
+    </tr>
+    <tr>
+      <td>Cloud Functions</td>
+      <td>Google</td>
+      <td>執行伺服器端邏輯（例如共享帳本的通知與一致性處理），處理過程中會接觸到上述 Firestore 資料。</td>
+    </tr>
+    <tr>
+      <td>Firebase App Check</td>
+      <td>Google（搭配 Play Integrity / Apple App Attest）</td>
+      <td>裝置完整性證明，不含個人資料。</td>
+    </tr>
+    <tr>
+      <td>Firebase Cloud Messaging（FCM）</td>
+      <td>Google</td>
+      <td>你的推播 token 與推播訊息內容（可能含成員名字、金額、帳本名稱）。</td>
+    </tr>
+    <tr>
+      <td>Apple Push Notification service（APNs）</td>
+      <td>Apple</td>
+      <td>iOS 上的推播傳遞：裝置推播識別與推播訊息內容。</td>
+    </tr>
+    <tr>
+      <td>Google 登入 / Apple 登入</td>
+      <td>Google / Apple</td>
+      <td>你選擇用哪一家登入，該公司就會知道你登入了 Fino，並提供給我們你的 email 與（如有）頭像與顯示名稱。</td>
+    </tr>
+    <tr>
+      <td>Google Play 服務（ML Kit 文字辨識模型）</td>
+      <td>Google</td>
+      <td>僅 Android：為了在<strong>裝置內</strong>做文字辨識，中文／日文／韓文 OCR 模型會由 Google Play 服務下載到你的裝置。<strong>不傳送收據圖片，也不傳送任何記帳資料</strong>。</td>
+    </tr>
+    <tr>
+      <td><code>huggingface.co</code></td>
+      <td>Hugging Face</td>
+      <td>下載裝置內 AI 模型的權重檔。<strong>不傳送任何使用者資料</strong>；對方只看得到一般網路請求會有的資訊（你的 IP 位址與 User-Agent）。</td>
+    </tr>
+    <tr>
+      <td><code>tw.rter.info</code></td>
+      <td>rter.info</td>
+      <td>查詢即時匯率。<strong>不傳送任何使用者資料</strong>（我們只抓整份匯率表，不會告訴它你要換多少錢）；對方只看得到你的 IP 位址與 User-Agent。</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+<h2>我們不做的事</h2>
+<ul>
+  <li><strong>不販售你的資料</strong>，也不與任何人交換或出租你的資料。</li>
+  <li><strong>不把你的資料用於廣告</strong>。App 內沒有廣告。</li>
+  <li><strong>沒有廣告 SDK</strong>、<strong>沒有第三方追蹤 SDK</strong>。</li>
+  <li><strong>沒有使用分析工具，也沒有崩潰回報工具</strong>——沒有 Firebase Analytics、沒有 Crashlytics。我們看不到你怎麼操作 App、也收不到你的崩潰紀錄。</li>
+  <li><strong>不使用廣告識別碼</strong>（Android 廣告 ID / iOS IDFA）。</li>
+  <li><strong>不對你做剖繪</strong>，不從你的消費紀錄推導任何用於行銷或評分的畫像。</li>
+  <li><strong>AI 推論不送雲端</strong>：收據的文字辨識與內容理解完全在你的裝置上完成。</li>
+  <li><strong>沒有任何金流</strong>：Fino 目前完全免費，App 內沒有內購、沒有訂閱、沒有付費牆。程式碼中相關的付費模組已全部移除。</li>
+</ul>
+
+<h2>資料保留與刪除</h2>
+<p>你登入後同步的資料會一直保留在你的雲端空間，直到你要求刪除。</p>
+<div class="note">
+  <p><strong>目前 App 內還沒有「刪除帳號」按鈕。</strong>這是我們已知、待完成的功能。在它上線之前，刪除的方式是：</p>
+  <p><strong>寄信到 <a href="mailto:liokhgf@gmail.com">liokhgf@gmail.com</a></strong>，說明你要刪除 Fino 帳號與所有雲端資料，並請使用你登入 Fino 的那個 email 寄出（以便我們確認是你本人）。開發者會在<strong>收到請求後 30 天內</strong>（含確認身分所需的時間）刪除你的 Firebase Auth 帳號、Firestore 上 <code>users/{uid}</code> 底下的所有個人資料（含推播 token、共享帳本清單與個人分類標記），以及 Cloud Storage 上你的交易照片。</p>
+  <p>詳細步驟另見：<a href="data-deletion.html">帳號與資料刪除說明</a>。</p>
+</div>
+<p><strong>App 內的「重設 App」功能只會清除這台裝置上的資料，而且範圍有限</strong>：它會清掉本機的交易紀錄、分類與偏好設定，<strong>不會</strong>清掉共享帳本的本機資料、已下載的 AI 模型檔，也不保證清掉收據圖片的暫存檔（要完整清掉請直接把 App 從裝置移除）。它<strong>更不會</strong>刪除雲端資料——如果你重設之後再用同一個帳號登入，雲端的資料會同步回來。要真正刪除雲端資料，請走上面的 email 流程。</p>
+<p>共享帳本的<strong>操作留痕是 append-only：伺服器端規則禁止任何修改與刪除</strong>。你退出或帳號被刪除後，帳本中既有的留痕紀錄仍會原樣留在該帳本裡（其他成員仍需要那份紀錄來核對帳目）。留痕只記錄操作者的內部帳號代號與變更前後的值，不含你的顯示名稱或 email。這一點在你加入帳本前就請一併考量。</p>
+<p>此外，第三方服務各有自己的保留機制：Google（Firebase / FCM、Android 雲端語音辨識）與 Apple（APNs）依其自身政策保留與刪除資料，我們無法代為刪除他們那一側的紀錄。</p>
+
+<h2>兒童</h2>
+<p>Fino 是給一般成年使用者的記帳工具，<strong>不針對 13 歲以下兒童設計</strong>，也不會刻意向兒童行銷。我們不會主動蒐集兒童的個人資料。如果你是家長或監護人，發現孩子在未經你同意的情況下建立了 Fino 帳號，請寄信到 <a href="mailto:liokhgf@gmail.com">liokhgf@gmail.com</a>，我們會刪除該帳號與相關資料。</p>
+
+<h2>資料存放地點</h2>
+<p>Fino 的 Firebase 後端設定在 <strong><code>asia-east1</code>（台灣）</strong>，共享帳本的伺服器端推播函式也部署在同一區域。也就是說，你的雲端資料主要存放與處理於台灣。</p>
+<p><strong>一個要誠實講的例外：</strong>負責清理交易照片的那個伺服器端函式<strong>沒有指定區域</strong>，因此會在 Google 的預設區域（<strong>美國</strong>）執行。它在執行時會讀到該筆交易的欄位、並刪掉對應的照片檔。也就是說，你的交易照片與該筆交易的欄位<strong>會在美國的機房被處理</strong>（僅用於刪除對帳，不用於其他用途）。這是我們已知、待修正的設定。</p>
+<p>此外 Firebase 是 Google 營運的全球性服務，Google 在提供服務的過程中（例如網路傳輸、備援、推播派送）<strong>可能在其他地區的機房處理資料</strong>，這部分適用 Google 的資料處理政策，不由我們控制。同樣地，iOS 推播經由 Apple 的 APNs，Android 的語音辨識在改用雲端時會經由 Google 的伺服器，其地點由該公司決定。</p>
+
+<h2>安全措施</h2>
+<ul>
+  <li><strong>Firestore 安全規則</strong>：伺服器端規則限制每份資料誰能讀寫。個人資料只有帳號本人能讀寫；共享帳本資料只有該帳本的成員能存取。唯一刻意公開給所有已登入使用者讀取的是邀請碼反查表（見「共享帳本」一節）。</li>
+  <li><strong>Firebase App Check</strong>：透過 Android Play Integrity 與 iOS App Attest 驗證請求來自真正的 Fino App，阻擋偽造客戶端濫用後端。</li>
+  <li><strong>傳輸加密</strong>：App 與後端之間、以及與第三方服務之間的所有連線都走 HTTPS/TLS 加密。</li>
+  <li><strong>最小化上傳</strong>：能在裝置上做的就不上雲。收據原圖與 AI 推論都留在本機，這本身就是最有效的保護。</li>
+</ul>
+<p>誠實補充：沒有任何系統是絕對安全的。Fino 由一位個人開發者維運，我們用平台提供的標準安全機制盡力保護你的資料，但無法保證絕不發生意外。如果發生會影響你的資料安全事件，我們會透過 App 內公告或這個頁面說明。</p>
+
+<h2>政策變更</h2>
+<p>如果 Fino 的資料處理方式有變動，我們會更新這個頁面，並修改頁首的「最後更新」日期。<strong>如果是重大變更</strong>（例如開始蒐集新類型的資料、或改變資料上雲的範圍），我們會在 App 內以顯著方式告知，讓你在變更生效前知道。</p>
+<p>對本政策有任何疑問，請寄信到 <a href="mailto:liokhgf@gmail.com">liokhgf@gmail.com</a>。</p>
+
+<p><a class="top" href="#top">↑ 回到頂端</a> · <a class="top" href="#en">English version</a></p>
+
+</section>
+
+<!-- ==================== English ==================== -->
+<section id="en" lang="en">
+
+<h1 style="margin-top:3em;">Fino Privacy Policy</h1>
+<p class="meta">Last updated: 28 July 2026</p>
+
+<div class="summary">
+  <p><strong>The short version:</strong> Fino's AI receipt scanning runs <strong>entirely on your device</strong>, and receipt images are <strong>never uploaded</strong> to any server. Fino contains <strong>no advertising SDKs, no analytics SDKs, no crash-reporting SDKs, and we do not sell your data</strong>. Your bookkeeping data syncs to your own cloud space only after you sign in, so you can use it across devices.</p>
+</div>
+
+<h2>Who we are</h2>
+<p>Fino is a personal bookkeeping app for Android (package <code>com.fino.android</code>) and iOS (bundle ID <code>com.fino.iosApp</code>). Fino is built and operated by a single independent developer, not a company.</p>
+<p>For any privacy question, a data deletion request, or to ask what data we hold about you, email <a href="mailto:liokhgf@gmail.com">liokhgf@gmail.com</a>. This is the only contact channel, and the developer reads it personally.</p>
+
+<h2>What data we collect</h2>
+<p>Below is the split between <strong>what leaves your device</strong> and <strong>what stays on your device</strong>. This is the complete list; there is no "and other data" catch-all.</p>
+
+<h3>1. Data that leaves your device (bookkeeping data syncs only after you sign in)</h3>
+<p>Fino's cloud backend is Google Firebase. <strong>If you never sign in, none of your bookkeeping data is ever synced.</strong> Even without signing in, however, the app still makes three kinds of network request: downloading on-device AI models (<code>huggingface.co</code>), fetching exchange rates (<code>tw.rter.info</code>), and device integrity verification (Firebase App Check). None of these send your bookkeeping content.</p>
+
+<div class="tablescroll">
+<table>
+  <thead>
+    <tr><th>Data</th><th>Specifically</th><th>Stored in</th></tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Account identity</td>
+      <td>Your Firebase Auth user ID (uid), email address, avatar URL, display name, and which sign-in provider you used (Google or Apple). These are held by Firebase Auth; in addition, <strong>your email is stored in plain text in your Firestore user document</strong> (that document holds only your email, primary currency, creation time and last-updated time). Your display name and avatar URL are written into a ledger's member record only if you use shared ledgers.</td>
+      <td>Firebase Auth; Firestore <code>users/{uid}</code></td>
+    </tr>
+    <tr>
+      <td>Transaction records (all fields)</td>
+      <td>Amount, original currency, exchange rate, income/expense type, category, date, <strong>note text</strong>, account, travel-mode flag, source flag, plus the technical fields that tie records together (attached-photo ID, receipt/voice group ID, recurring-rule ID, line index, source ledger name, created and updated timestamps).<br><strong>About the note text:</strong> if you typed the entry by hand, the note is what you typed. If the entry came from AI receipt scanning or voice entry, <strong>the note is the recognised item name or the transcribed text</strong>. In other words: the receipt <strong>image</strong> and the <strong>audio</strong> are never uploaded, but the <strong>text</strong> you confirm and save does sync to the cloud with the transaction.</td>
+      <td>Firestore <code>users/{uid}/transactions/*</code></td>
+    </tr>
+    <tr>
+      <td>Settings and rules</td>
+      <td>Your categories with their <strong>budget amounts</strong> (a budget is a field on a category), recurring-transaction rules, and quick-entry templates (three collections), plus your primary currency setting (stored on the user document).</td>
+      <td>Firestore under <code>users/{uid}/</code></td>
+    </tr>
+    <tr>
+      <td><strong>Photos you manually attach to a transaction</strong></td>
+      <td>Photos you deliberately attach while editing a transaction. They are compressed to WebP before upload (roughly 224KB each, 5MB max per photo). <strong>These photos are uploaded to the cloud</strong> so they are still there when you switch devices.</td>
+      <td>Cloud Storage <code>users/{uid}/txn-photos/*</code></td>
+    </tr>
+    <tr>
+      <td>Shared ledger content</td>
+      <td>See the "Shared ledgers" section below. This only exists if you create or join a ledger yourself.</td>
+      <td>Firestore <code>ledgers/{ledgerId}/*</code></td>
+    </tr>
+    <tr>
+      <td>Your personal shared-ledger side data</td>
+      <td>The list of ledgers you belong to (ledger name, appearance tag, your role, join time), plus the <strong>private</strong> personal category you assign to a shared line item and the exchange-rate snapshot taken at that time. These live in your own space and <strong>other members of the ledger cannot read them</strong>.</td>
+      <td>Firestore <code>users/{uid}/ledgerMemberships</code>, <code>users/{uid}/itemCategories</code></td>
+    </tr>
+    <tr>
+      <td>Push notification token</td>
+      <td>The Firebase Cloud Messaging (FCM) token issued to this device. Once you sign in it is written to your own cloud space so the server knows which device to notify. Notification content may include a member's name, an amount, and a ledger name.</td>
+      <td>Firestore <code>users/{uid}/pushTokens</code>; Google FCM; on iOS, delivered onward via Apple APNs</td>
+    </tr>
+    <tr>
+      <td>Device integrity signals</td>
+      <td>Android Play Integrity and iOS App Attest signals, via Firebase App Check. These are platform-generated technical attestations; they contain no personal data and exist to stop tampered clients from abusing our backend. <strong>This one is enabled at app launch and does not require you to sign in.</strong></td>
+      <td>Google / Apple platform services and Firebase App Check</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+<h3>2. Data that stays on your device</h3>
+<div class="tablescroll">
+<table>
+  <thead>
+    <tr><th>Data</th><th>Details</th></tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><strong>Original images from AI receipt scanning</strong></td>
+      <td><strong>On-device only; never uploaded.</strong> Receipts you photograph with the camera or pick from your photo library stay in the app's own scratch area on your device, for on-device recognition. The corresponding remote-path field in the database (<code>image_remote_path</code>) is always null, and the local-path field is not populated either — there is no code path in Fino that sends an original receipt image to the cloud.</td>
+    </tr>
+    <tr>
+      <td><strong>Receipt text recognition and AI inference</strong></td>
+      <td><strong>Runs entirely on your device.</strong> On Android: ML Kit for text recognition (OCR) plus an on-device Gemma model for understanding. On iOS: Apple Vision for text recognition plus Apple Foundation Models or an on-device MLX Qwen3-VL model. No cloud AI is involved at any point — our codebase contains no calls to Gemini, Vertex AI, OpenAI, or Cloud Vision.</td>
+    </tr>
+    <tr>
+      <td>Local database</td>
+      <td>An on-device Room database (5 personal tables plus 9 shared-ledger tables). This is what lets the app work offline.</td>
+    </tr>
+    <tr>
+      <td>Preferences</td>
+      <td>Local preference keys (primary currency, theme, language, travel mode, AI engine choice, notification toggle, last sync time, and similar). Not uploaded.</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+<div class="note">
+  <p><strong>An honest note about operating-system backups:</strong> the files above live in the app's own sandbox and Fino never sends them to Fino's backend. However, <strong>if you have your operating system's backup enabled</strong> (Android Auto Backup, or iPhone iCloud backup), the OS may include the app's sandboxed database and image files in a backup to <strong>your own</strong> Google or Apple account. That is a platform feature governed by your device settings; <strong>we cannot read or obtain</strong> those backups. You can turn backup off for Fino in your system settings.</p>
+</div>
+
+<h2>Why we need this data</h2>
+<ul>
+  <li><strong>Account identity (uid / email / display name / avatar / provider):</strong> to confirm the cloud data is yours and to restore it when you sign in on a new device. In shared ledgers, your display name (falling back to the part of your email before the @) and avatar let other members recognise you.</li>
+  <li><strong>Transactions, categories, budgets, recurring rules, templates, currency setting:</strong> this is the app's core function, and it is what lets your data sync between phone and tablet and survive a device change.</li>
+  <li><strong>Transaction photos:</strong> so you can keep a receipt attached to a specific expense and still see it after switching devices.</li>
+  <li><strong>Shared ledger content:</strong> so ledger members see the same set of records and splits are calculated correctly.</li>
+  <li><strong>Push token:</strong> to notify you when there is a new entry or a repayment in a shared ledger. Without the token, notifications cannot be delivered.</li>
+  <li><strong>Device integrity signals:</strong> to stop modified clients from abusing or attacking our backend. This is a security measure and is not used to identify you.</li>
+</ul>
+<p>We do not use any of the above for purposes other than the ones listed here.</p>
+
+<h2>Shared ledgers</h2>
+<p>Shared ledgers are optional. Nothing here applies unless you create a ledger yourself or join someone else's with an invite code.</p>
+<p><strong>Once you join a shared ledger, the other members of that ledger can see:</strong></p>
+<ul>
+  <li>Your <strong>display name</strong> (if no display name is available, it falls back to the part of your email before the @ — for example <code>abc@example.com</code> shows as <code>abc</code>)</li>
+  <li>Your <strong>avatar image URL</strong></li>
+  <li><strong>All entries you record in that ledger</strong>, including amounts, <strong>item names</strong> and the entry's <strong>note text</strong></li>
+  <li><strong>Split results</strong> and <strong>repayment records</strong> (who paid whom, how much, whether receipt was confirmed)</li>
+  <li>An <strong>audit trail of actions</strong>: who changed what and when, including <strong>the old value and the new value</strong></li>
+</ul>
+<p><strong>What other members cannot see:</strong> the <strong>personal category</strong> you privately assign to a shared line item never enters the shared data — the server-side rules <strong>hard-block</strong> category information from being written into shared line items, and your personal categories stay in your own space. Your personal transactions, budgets and personal ledger are likewise not exposed by joining a shared ledger.</p>
+<div class="note">
+  <p><strong>Two things to be aware of:</strong></p>
+  <p>1. <strong>The audit trail is append-only: it cannot be edited or deleted.</strong> Once written, neither you nor we can remove it from the ledger. This is deliberate — shared bookkeeping needs a trustworthy record to settle disputes. Treat it as permanent.</p>
+  <p>2. <strong>The invite-code lookup table is readable by anyone signed in.</strong> The 6-digit invite code, together with its ledger ID and creator, is stored at Firestore <code>inviteCodes/{code}</code>, and <strong>any signed-in Fino user can read it</strong>. This is by design: someone entering an invite code must be able to look it up in order to join. The table contains <strong>only</strong> the code, ledger ID, and creator — <strong>not</strong> ledger content or amounts. But it does mean an invite code is not a secret: share codes only with people you trust, and ask the ledger admin to clean up codes you no longer need once everyone has joined.</p>
+</div>
+<p>Shared ledgers are a separate subsystem from personal bookkeeping, with their own storage location and access rules. Joining a ledger does not expose your personal transaction records to other members.</p>
+
+<h2>Device permissions</h2>
+<ul>
+  <li><strong>Camera</strong> (Android <code>CAMERA</code> / iOS Camera): to photograph receipts for on-device AI receipt scanning.</li>
+  <li><strong>Microphone</strong> (Android <code>RECORD_AUDIO</code> / iOS Microphone): for voice entry, so you can record an expense by saying one sentence. See the next section.</li>
+  <li><strong>Photo library</strong> (iOS PhotoLibrary): to pick a receipt image from your library, or a photo to attach to a transaction.</li>
+  <li><strong>Notifications</strong> (Android <code>POST_NOTIFICATIONS</code>): for shared-ledger entry and repayment alerts.</li>
+  <li><strong>Speech recognition</strong> (iOS SpeechRecognition): to turn your speech into text.</li>
+  <li><strong>Internet</strong> (Android <code>INTERNET</code>): cloud sync, exchange-rate lookup, and AI model downloads.</li>
+  <li><strong>Foreground service</strong> (Android <code>FOREGROUND_SERVICE</code> / <code>FOREGROUND_SERVICE_DATA_SYNC</code>): so AI model files can finish downloading reliably in the background instead of being killed when you switch apps.</li>
+</ul>
+<p>Each permission is requested only when you use the feature that needs it. You can decline; the related feature simply will not work.</p>
+
+<h2>Voice entry (please read this section)</h2>
+<div class="note">
+  <p><strong>The guarantee differs between iOS and Android. Please read the part that applies to you.</strong></p>
+  <p><strong>iOS: audio never leaves your device.</strong> Fino uses <code>SFSpeechRecognizer</code> with on-device recognition enforced (<code>requiresOnDeviceRecognition = true</code>). Before listening starts we also check that the language supports on-device recognition; if it does not, we simply report the feature as unavailable rather than falling back to Apple's servers.</p>
+  <p><strong>Android: on-device recognition is preferred, but not guaranteed.</strong> Fino uses the system speech recogniser and requests offline recognition (<code>EXTRA_PREFER_OFFLINE = true</code>). On Android this is only a <em>preference</em>, not a hard constraint — if your device has no local model for that language, <strong>the system may still fall back to Google's servers, without telling us</strong>. So on Android, <strong>your recorded audio may be sent to Google's speech recognition servers for processing</strong>.</p>
+  <p>If audio does leave the device, that processing is governed by <strong>the platform's own privacy policy</strong>. Please also read Google's privacy policy (the privacy policy on Google's official website, plus the voice and voice-input notes in Android Settings). We deliberately do not print external URLs here so they cannot rot.</p>
+  <p><strong>Where Fino stands:</strong> we do <strong>not</strong> store your audio, do <strong>not</strong> send audio to Fino's backend, and do <strong>not</strong> keep recordings. We only use the recognised text to create one bookkeeping entry. If you are on Android and do not want audio to have any chance of leaving your device, do not use voice entry — manual entry and receipt scanning involve no audio at all.</p>
+</div>
+
+<h2>Third-party services</h2>
+<div class="tablescroll">
+<table>
+  <thead>
+    <tr><th>Service</th><th>Provider</th><th>What it receives</th></tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Firebase Authentication</td>
+      <td>Google</td>
+      <td>Your sign-in identity: uid, email, avatar URL, sign-in provider.</td>
+    </tr>
+    <tr>
+      <td>Cloud Firestore</td>
+      <td>Google</td>
+      <td>All fields of your transactions (including your note text), categories, budgets, recurring rules, templates, currency setting, shared-ledger content and audit trail, and the invite-code lookup table.</td>
+    </tr>
+    <tr>
+      <td>Cloud Storage</td>
+      <td>Google</td>
+      <td>Photos you manually attach to transactions (WebP). <strong>Not</strong> the original images from AI receipt scanning.</td>
+    </tr>
+    <tr>
+      <td>Cloud Functions</td>
+      <td>Google</td>
+      <td>Runs server-side logic (for example shared-ledger notifications and consistency handling), which touches the Firestore data above while doing so.</td>
+    </tr>
+    <tr>
+      <td>Firebase App Check</td>
+      <td>Google (with Play Integrity / Apple App Attest)</td>
+      <td>Device integrity attestations. No personal data.</td>
+    </tr>
+    <tr>
+      <td>Firebase Cloud Messaging (FCM)</td>
+      <td>Google</td>
+      <td>Your push token and the notification content (which may include a member's name, an amount, and a ledger name).</td>
+    </tr>
+    <tr>
+      <td>Apple Push Notification service (APNs)</td>
+      <td>Apple</td>
+      <td>Push delivery on iOS: the device push identifier and the notification content.</td>
+    </tr>
+    <tr>
+      <td>Sign in with Google / Sign in with Apple</td>
+      <td>Google / Apple</td>
+      <td>Whichever provider you choose learns that you signed in to Fino, and gives us your email plus your avatar and display name if available.</td>
+    </tr>
+    <tr>
+      <td>Google Play services (ML Kit text recognition models)</td>
+      <td>Google</td>
+      <td>Android only: the Chinese / Japanese / Korean OCR models used for <strong>on-device</strong> text recognition are downloaded to your device through Google Play services. <strong>No receipt images and no bookkeeping data are sent.</strong></td>
+    </tr>
+    <tr>
+      <td><code>huggingface.co</code></td>
+      <td>Hugging Face</td>
+      <td>Serves the on-device AI model weight files we download. <strong>No user data is sent.</strong> They see only what any web request reveals: your IP address and User-Agent.</td>
+    </tr>
+    <tr>
+      <td><code>tw.rter.info</code></td>
+      <td>rter.info</td>
+      <td>Provides live exchange rates. <strong>No user data is sent</strong> — we fetch the whole rate table and never tell it what you are converting. They see only your IP address and User-Agent.</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+<h2>What we do not do</h2>
+<ul>
+  <li><strong>We do not sell your data</strong>, and we do not trade or rent it to anyone.</li>
+  <li><strong>We do not use your data for advertising.</strong> There are no ads in the app.</li>
+  <li><strong>No advertising SDKs. No third-party tracking SDKs.</strong></li>
+  <li><strong>No analytics and no crash reporting</strong> — no Firebase Analytics, no Crashlytics. We cannot see how you use the app and we do not receive your crash reports.</li>
+  <li><strong>No advertising identifiers</strong> (Android Advertising ID / iOS IDFA).</li>
+  <li><strong>No profiling.</strong> We do not derive any marketing or scoring profile from your spending.</li>
+  <li><strong>No cloud AI inference.</strong> Receipt text recognition and understanding happen entirely on your device.</li>
+  <li><strong>No payments of any kind.</strong> Fino is currently completely free: no in-app purchases, no subscriptions, no paywall. The payment-related modules have been removed from the codebase.</li>
+</ul>
+
+<h2>Data retention and deletion</h2>
+<p>Data you sync after signing in stays in your cloud space until you ask us to delete it.</p>
+<div class="note">
+  <p><strong>There is currently no "delete account" button inside the app.</strong> This is a known, outstanding feature. Until it ships, deletion works like this:</p>
+  <p><strong>Email <a href="mailto:liokhgf@gmail.com">liokhgf@gmail.com</a></strong> stating that you want your Fino account and all cloud data deleted, sending from the email address you use to sign in to Fino (so we can confirm it is you). The developer will delete your Firebase Auth account, everything under <code>users/{uid}</code> in Firestore (including push tokens, your ledger list and your personal category assignments), and your transaction photos in Cloud Storage <strong>within 30 days of receiving the request</strong> (identity verification included in that window).</p>
+  <p>Full instructions: <a href="data-deletion.html">Account and data deletion</a>.</p>
+</div>
+<p><strong>The in-app "Reset app" function only clears data on that device, and its scope is limited</strong>: it clears local transactions, categories and preferences. It does <strong>not</strong> clear shared-ledger local data or downloaded AI model files, and it does not guarantee clearing cached receipt images (uninstall the app for that). It certainly does <strong>not</strong> delete cloud data — if you reset and then sign in again with the same account, your cloud data syncs back. To actually delete cloud data, use the email process above.</p>
+<p>The shared-ledger <strong>audit trail is append-only: the server-side rules forbid any update or deletion</strong>. If you leave a ledger or your account is deleted, the audit entries already written stay in that ledger exactly as they are, because the remaining members still need that record to reconcile their accounts. The audit trail records only the actor's internal account identifier and the before/after values — not your display name or email. Please factor this in before joining a ledger.</p>
+<p>Third-party services also have their own retention behaviour: Google (Firebase, FCM, Android cloud speech recognition) and Apple (APNs) retain and delete data according to their own policies, and we cannot delete records on their side on your behalf.</p>
+
+<h2>Children</h2>
+<p>Fino is a bookkeeping tool for general adult users. It is <strong>not designed for children under 13</strong> and is not marketed to children. We do not knowingly collect personal data from children. If you are a parent or guardian and find that your child created a Fino account without your consent, email <a href="mailto:liokhgf@gmail.com">liokhgf@gmail.com</a> and we will delete the account and its data.</p>
+
+<h2>Where your data is stored</h2>
+<p>Fino's Firebase backend is configured in <strong><code>asia-east1</code> (Taiwan)</strong>, and the shared-ledger server-side notification functions are deployed in that same region, so your cloud data is primarily stored and processed in Taiwan.</p>
+<p><strong>One exception we should state plainly:</strong> the server-side function that cleans up transaction photos has <strong>no region specified</strong>, so it runs in Google's default region (the <strong>United States</strong>). When it runs it reads the fields of the transaction in question and deletes the matching photo file. That means your transaction photos and that transaction's fields <strong>are processed in a US data centre</strong> (solely for that clean-up, no other purpose). This is a known configuration issue we intend to fix.</p>
+<p>Beyond that, Firebase is a global service operated by Google, and in the course of delivering it (network transit, redundancy, notification delivery) <strong>Google may process data in facilities in other regions</strong>. That part is governed by Google's data processing terms and is outside our control. Likewise, iOS notifications travel through Apple's APNs, and on Android speech recognition may run on Google's servers when the system falls back to the cloud, in locations those companies determine.</p>
+
+<h2>Security</h2>
+<ul>
+  <li><strong>Firestore security rules:</strong> server-side rules control who can read and write each document. Personal data is readable and writable only by its owner; shared-ledger data only by members of that ledger. The one deliberate exception, readable by all signed-in users, is the invite-code lookup table (see "Shared ledgers").</li>
+  <li><strong>Firebase App Check:</strong> uses Android Play Integrity and iOS App Attest to verify that requests come from the genuine Fino app, blocking forged clients from abusing the backend.</li>
+  <li><strong>Encryption in transit:</strong> all connections between the app and our backend, and to third-party services, use HTTPS/TLS.</li>
+  <li><strong>Minimised uploads:</strong> anything that can be done on the device is not sent to the cloud. Keeping original receipt images and AI inference local is itself the strongest protection.</li>
+</ul>
+<p>To be honest about it: no system is perfectly secure. Fino is run by one independent developer. We use the standard security mechanisms the platforms provide and do our best, but we cannot guarantee that nothing will ever go wrong. If an incident affects the security of your data, we will explain it here and in the app.</p>
+
+<h2>Changes to this policy</h2>
+<p>If the way Fino handles data changes, we will update this page and change the "Last updated" date at the top. <strong>For significant changes</strong> — for example collecting a new category of data, or changing what gets uploaded to the cloud — we will tell you prominently inside the app before the change takes effect.</p>
+<p>Questions about this policy: <a href="mailto:liokhgf@gmail.com">liokhgf@gmail.com</a>.</p>
+
+<p><a class="top" href="#top">↑ Back to top</a> · <a class="top" href="#zh">繁體中文版</a></p>
+
+</section>
+
+<footer>
+  <p>Fino · <a href="index.html">首頁 / Home</a> · <a href="mailto:liokhgf@gmail.com">liokhgf@gmail.com</a> · <a href="data-deletion.html">帳號與資料刪除 / Account &amp; data deletion</a></p>
+  <p>最後更新 / Last updated: 2026-07-28</p>
+</footer>
+
+</div>
+</body>
+</html>
