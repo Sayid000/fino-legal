@@ -42,7 +42,7 @@
   .wrap {
     max-width: 720px;
     margin: 0 auto;
-    padding: 32px 20px 80px;
+    padding: 18px 20px 80px;
   }
   h1 {
     font-size: 1.85rem;
@@ -148,13 +148,18 @@
   }
   /* 頂部導覽：麵包屑 + 語言切換 */
   .topnav {
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    /* 捲動時內容會從底下經過，必須是不透明的 */
+    background: var(--bg);
     display: flex;
     flex-wrap: wrap;
     gap: 10px 16px;
     align-items: baseline;
     justify-content: space-between;
     margin: 0 0 14px;
-    padding-bottom: 16px;
+    padding: 14px 0 16px;
     border-bottom: 1px solid var(--line);
     font-size: 0.92rem;
   }
@@ -207,7 +212,8 @@
   .toc li { margin: 5px 0; break-inside: avoid; }
   .toc a { text-decoration: none; }
   .toc a:hover { text-decoration: underline; }
-  h2[id] { scroll-margin-top: 16px; }
+  /* 錨點跳轉時避開固定導覽列的高度 */
+  h2[id] { scroll-margin-top: 72px; }
   footer {
     margin-top: 3.5em;
     padding-top: 1.2em;
