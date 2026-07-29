@@ -235,27 +235,27 @@
 <nav class="toc" aria-label="On this page">
   <p class="toc-title">On this page</p>
   <ul>
-    <li><a href="#who">Who we are</a></li>
-    <li><a href="#collect">What data we collect</a></li>
-    <li><a href="#why">Why we need this data</a></li>
-    <li><a href="#shared-ledger">Shared ledgers</a></li>
-    <li><a href="#permissions">Device permissions</a></li>
-    <li><a href="#voice">Voice entry (please read this section)</a></li>
-    <li><a href="#third-party">Third-party services</a></li>
-    <li><a href="#we-dont">What we do not do</a></li>
-    <li><a href="#retention">Data retention and deletion</a></li>
-    <li><a href="#children">Children</a></li>
-    <li><a href="#location">Where your data is stored</a></li>
-    <li><a href="#security">Security</a></li>
-    <li><a href="#changes">Changes to this policy</a></li>
+    <li><a href="#who">1. Who we are</a></li>
+    <li><a href="#collect">2. What data we collect</a></li>
+    <li><a href="#why">3. Why we need this data</a></li>
+    <li><a href="#shared-ledger">4. Shared ledgers</a></li>
+    <li><a href="#permissions">5. Device permissions</a></li>
+    <li><a href="#voice">6. Voice entry (please read this section)</a></li>
+    <li><a href="#third-party">7. Third-party services</a></li>
+    <li><a href="#we-dont">8. What we do not do</a></li>
+    <li><a href="#retention">9. Data retention and deletion</a></li>
+    <li><a href="#children">10. Children</a></li>
+    <li><a href="#location">11. Where your data is stored</a></li>
+    <li><a href="#security">12. Security</a></li>
+    <li><a href="#changes">13. Changes to this policy</a></li>
   </ul>
 </nav>
 
-<h2 id="who">Who we are</h2>
+<h2 id="who">1. Who we are</h2>
 <p>Fino is a personal bookkeeping app for Android (package <code>com.fino.android</code>) and iOS (bundle ID <code>com.fino.iosApp</code>). Fino is built and operated by a single independent developer, not a company.</p>
 <p>For any privacy question, a data deletion request, or to ask what data we hold about you, email <a href="mailto:liokhgf@gmail.com">liokhgf@gmail.com</a>. This is the only contact channel, and the developer reads it personally.</p>
 
-<h2 id="collect">What data we collect</h2>
+<h2 id="collect">2. What data we collect</h2>
 <p>Below is the split between <strong>what leaves your device</strong> and <strong>what stays on your device</strong>. This is the complete list; there is no "and other data" catch-all.</p>
 
 <h3>1. Data that leaves your device (bookkeeping data syncs only after you sign in)</h3>
@@ -342,7 +342,7 @@
   <p><strong>An honest note about operating-system backups:</strong> the files above live in the app's own sandbox and Fino never sends them to Fino's backend. However, <strong>if you have your operating system's backup enabled</strong> (Android Auto Backup, or iPhone iCloud backup), the OS may include the app's sandboxed database and image files in a backup to <strong>your own</strong> Google or Apple account. That is a platform feature governed by your device settings; <strong>we cannot read or obtain</strong> those backups. You can turn backup off for Fino in your system settings.</p>
 </div>
 
-<h2 id="why">Why we need this data</h2>
+<h2 id="why">3. Why we need this data</h2>
 <ul>
   <li><strong>Account identity (uid / email / display name / avatar / provider):</strong> to confirm the cloud data is yours and to restore it when you sign in on a new device. In shared ledgers, your display name (falling back to the part of your email before the @) and avatar let other members recognise you.</li>
   <li><strong>Transactions, categories, budgets, recurring rules, templates, currency setting:</strong> this is the app's core function, and it is what lets your data sync between phone and tablet and survive a device change.</li>
@@ -353,7 +353,7 @@
 </ul>
 <p>We do not use any of the above for purposes other than the ones listed here.</p>
 
-<h2 id="shared-ledger">Shared ledgers</h2>
+<h2 id="shared-ledger">4. Shared ledgers</h2>
 <p>Shared ledgers are optional. Nothing here applies unless you create a ledger yourself or join someone else's with an invite code.</p>
 <p><strong>Once you join a shared ledger, the other members of that ledger can see:</strong></p>
 <ul>
@@ -371,7 +371,7 @@
 </div>
 <p>Shared ledgers are a separate subsystem from personal bookkeeping, with their own storage location and access rules. Joining a ledger does not expose your personal transaction records to other members.</p>
 
-<h2 id="permissions">Device permissions</h2>
+<h2 id="permissions">5. Device permissions</h2>
 <ul>
   <li><strong>Camera</strong> (Android <code>CAMERA</code> / iOS Camera): to photograph receipts for on-device AI receipt scanning.</li>
   <li><strong>Microphone</strong> (Android <code>RECORD_AUDIO</code> / iOS Microphone): for voice entry, so you can record an expense by saying one sentence. See the next section.</li>
@@ -383,7 +383,7 @@
 </ul>
 <p>Each permission is requested only when you use the feature that needs it. You can decline; the related feature simply will not work.</p>
 
-<h2 id="voice">Voice entry (please read this section)</h2>
+<h2 id="voice">6. Voice entry (please read this section)</h2>
 <div class="note">
   <p><strong>The guarantee differs between iOS and Android. Please read the part that applies to you.</strong></p>
   <p><strong>iOS: audio never leaves your device.</strong> Fino uses <code>SFSpeechRecognizer</code> with on-device recognition enforced . Before listening starts we also check that the language supports on-device recognition; if it does not, we simply report the feature as unavailable rather than falling back to Apple's servers.</p>
@@ -392,7 +392,7 @@
   <p><strong>Where Fino stands:</strong> we do <strong>not</strong> store your audio, do <strong>not</strong> send audio to Fino's backend, and do <strong>not</strong> keep recordings. We only use the recognised text to create one bookkeeping entry. If you are on Android and do not want audio to have any chance of leaving your device, do not use voice entry — manual entry and receipt scanning involve no audio at all.</p>
 </div>
 
-<h2 id="third-party">Third-party services</h2>
+<h2 id="third-party">7. Third-party services</h2>
 <div class="tablescroll">
 <table>
   <thead>
@@ -460,7 +460,7 @@
 
 <p><strong>What we require of these third parties:</strong> we only share data with third-party services that provide <strong>the same or equal protection of user data</strong> as stated in this policy. Each service listed above is governed by its own privacy policy and data processing terms, and we use them solely to the extent necessary to deliver Fino's features. We do <strong>not</strong> hand your data to any third party for advertising, analytics, or user profiling, and we embed no third-party advertising networks, analytics, or tracking SDKs.</p>
 
-<h2 id="we-dont">What we do not do</h2>
+<h2 id="we-dont">8. What we do not do</h2>
 <ul>
   <li><strong>We do not sell your data</strong>, and we do not trade or rent it to anyone.</li>
   <li><strong>We do not use your data for advertising.</strong> There are no ads in the app.</li>
@@ -472,7 +472,7 @@
   <li><strong>No payments of any kind.</strong> Fino is currently completely free: no in-app purchases, no subscriptions, no paywall. The payment-related modules have been removed from the codebase.</li>
 </ul>
 
-<h2 id="retention">Data retention and deletion</h2>
+<h2 id="retention">9. Data retention and deletion</h2>
 <p>Data you sync after signing in stays in your cloud space until you ask us to delete it.</p>
 <div class="note">
   <p><strong>There is currently no "delete account" button inside the app.</strong> This is a known, outstanding feature. Until it ships, deletion works like this:</p>
@@ -483,15 +483,15 @@
 <p>The shared-ledger <strong>audit trail is append-only: the server-side rules forbid any update or deletion</strong>. If you leave a ledger or your account is deleted, the audit entries already written stay in that ledger exactly as they are, because the remaining members still need that record to reconcile their accounts. The audit trail records only the actor's internal account identifier and the before/after values — not your display name or email. Please factor this in before joining a ledger.</p>
 <p>Third-party services also have their own retention behaviour: Google (Firebase, FCM, Android cloud speech recognition) and Apple (APNs) retain and delete data according to their own policies, and we cannot delete records on their side on your behalf.</p>
 
-<h2 id="children">Children</h2>
+<h2 id="children">10. Children</h2>
 <p>Fino is a bookkeeping tool for general adult users. It is <strong>not designed for children under 13</strong> and is not marketed to children. We do not knowingly collect personal data from children. If you are a parent or guardian and find that your child created a Fino account without your consent, email <a href="mailto:liokhgf@gmail.com">liokhgf@gmail.com</a> and we will delete the account and its data.</p>
 
-<h2 id="location">Where your data is stored</h2>
+<h2 id="location">11. Where your data is stored</h2>
 <p>Fino's Firebase backend is configured in <strong><code>asia-east1</code> (Taiwan)</strong>, and the shared-ledger server-side notification functions are deployed in that same region, so your cloud data is primarily stored and processed in Taiwan.</p>
 <p><strong>One exception we should state plainly:</strong> the server-side function that cleans up transaction photos has <strong>no region specified</strong>, so it runs in Google's default region (the <strong>United States</strong>). When it runs it reads the fields of the transaction in question and deletes the matching photo file. That means your transaction photos and that transaction's fields <strong>are processed in a US data centre</strong> (solely for that clean-up, no other purpose). This is a known configuration issue we intend to fix.</p>
 <p>Beyond that, Firebase is a global service operated by Google, and in the course of delivering it (network transit, redundancy, notification delivery) <strong>Google may process data in facilities in other regions</strong>. That part is governed by Google's data processing terms and is outside our control. Likewise, iOS notifications travel through Apple's APNs, and on Android speech recognition may run on Google's servers when the system falls back to the cloud, in locations those companies determine.</p>
 
-<h2 id="security">Security</h2>
+<h2 id="security">12. Security</h2>
 <ul>
   <li><strong>Firestore security rules:</strong> server-side rules control who can read and write each document. Personal data is readable and writable only by its owner; shared-ledger data only by members of that ledger. The one deliberate exception, readable by all signed-in users, is the invite-code lookup table (see "Shared ledgers").</li>
   <li><strong>Firebase App Check:</strong> uses Android Play Integrity and iOS App Attest to verify that requests come from the genuine Fino app, blocking forged clients from abusing the backend.</li>
@@ -500,7 +500,7 @@
 </ul>
 <p>To be honest about it: no system is perfectly secure. Fino is run by one independent developer. We use the standard security mechanisms the platforms provide and do our best, but we cannot guarantee that nothing will ever go wrong. If an incident affects the security of your data, we will explain it here and in the app.</p>
 
-<h2 id="changes">Changes to this policy</h2>
+<h2 id="changes">13. Changes to this policy</h2>
 <p>If the way Fino handles data changes, we will update this page and change the "Last updated" date at the top. <strong>For significant changes</strong> — for example collecting a new category of data, or changing what gets uploaded to the cloud — we will tell you prominently inside the app before the change takes effect.</p>
 <p>Questions about this policy: <a href="mailto:liokhgf@gmail.com">liokhgf@gmail.com</a>.</p>
 <footer>
