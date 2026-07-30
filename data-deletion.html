@@ -205,11 +205,8 @@
     margin: 0;
     padding: 0;
     list-style: none;
-    columns: 2;
-    column-gap: 24px;
   }
-  @media (max-width: 520px) { .toc ul { columns: 1; } }
-  .toc li { margin: 5px 0; break-inside: avoid; }
+  .toc li { margin: 5px 0; }
   .toc a { text-decoration: none; }
   .toc a:hover { text-decoration: underline; }
   /* 錨點跳轉時避開固定導覽列的高度 */
@@ -256,31 +253,34 @@
 
 <h2 id="how-to-request">1. 如何要求刪除帳號</h2>
 
-<div class="note">
+<div class="summary">
+  <p><strong>在 App 內：</strong>開啟 Fino →「設定」分頁 → 捲到最下方的「刪除帳號」。</p>
+  <p>接著會有四個步驟：</p>
+  <ul>
+    <li><strong>①&nbsp;離開之前</strong>：如果你是某些共享帳本的管理員，這裡會請你指定接手的人，或選擇連同帳本一起刪除。若你在共享帳本裡還有未結清的款項，也會一併列出金額與對象。</li>
+    <li><strong>②&nbsp;確認後果</strong>：說明哪些資料會消失、哪些會保留，並請你輸入「刪除帳號」四個字才能繼續。</li>
+    <li><strong>③&nbsp;重新登入</strong>：用你正要刪除的那個 Google 或 Apple 帳號再登入一次。這是為了確認是本人操作；如果你在帳號選擇畫面選到別的帳號，流程會中止而不會誤刪。</li>
+    <li><strong>④&nbsp;執行</strong>：刪除在伺服器端進行。完成後 App 會自動登出並回到登入畫面，這台裝置上的本機資料也會同時清空。</li>
+  </ul>
   <p>
-    <strong>請注意：</strong>Fino 目前<strong>尚未</strong>在 App 內提供「刪除帳號」按鈕。
-    因此，目前唯一可行的刪除途徑是以電子郵件向開發者提出申請（開發者已知悉此待辦，未來版本會補上 App 內的刪除入口）。
+    整個過程通常在數十秒內完成，<strong>不需要等待人工處理</strong>。
+    若中途失敗，App 會顯示原因並讓你重試；不會留下刪到一半的狀態。
   </p>
 </div>
 
-<div class="summary">
-  <p><strong>寄信到：</strong><a href="mailto:liokhgf@gmail.com?subject=Fino%20%E5%B8%B3%E8%99%9F%E5%88%AA%E9%99%A4%E7%94%B3%E8%AB%8B">liokhgf@gmail.com</a></p>
-  <p><strong>建議主旨：</strong><code>Fino 帳號刪除申請</code></p>
-  <p><strong>信中請說明：</strong></p>
-  <ul>
-    <li>你註冊 Fino 時使用的 email 位址（即 Google 或 Apple 登入所使用的那組 email）。</li>
-    <li>你使用的平台（Android 或 iOS），有助於加快確認。</li>
-    <li>如果你只想刪除部分資料（例如只刪除交易照片），請一併說明。</li>
-  </ul>
+<div class="note">
   <p>
-    開發者收到申請後會先<strong>驗證你的身分</strong>（例如確認申請來源 email 與帳號註冊 email 一致，必要時會回信要求補充資訊），
-    確認無誤後才會執行刪除。這是為了避免他人冒用你的名義刪除你的資料。
+    <strong>沒有裝置在手邊？</strong>如果你已經解除安裝 App、或無法登入，可以改寄信到
+    <a href="mailto:liokhgf@gmail.com?subject=Fino%20%E5%B8%B3%E8%99%9F%E5%88%AA%E9%99%A4%E7%94%B3%E8%AB%8B">liokhgf@gmail.com</a>（建議主旨：<code>Fino 帳號刪除申請</code>），
+    信中請說明你註冊 Fino 時使用的 email 位址與使用的平台。
+    開發者會先<strong>驗證你的身分</strong>（確認申請來源 email 與帳號註冊 email 一致，必要時回信要求補充資訊）後才執行刪除，
+    以免他人冒用你的名義刪除你的資料。這是 App 內入口之外的備援管道，並非必要途徑。
   </p>
 </div>
 
 <h2 id="what-deleted">2. 會被刪除的資料</h2>
 
-<p>身分驗證完成後，以下與你的帳號（Firebase Auth <code>uid</code>）綁定的雲端資料會被刪除：</p>
+<p>刪除執行後，以下與你的帳號（Firebase Auth <code>uid</code>）綁定的雲端資料會被刪除：</p>
 
 <ul>
   <li><strong>Firebase Auth 帳號本身</strong>：包含 uid、email、頭像 URL、登入方式（Google / Apple）等帳號識別資料。</li>
@@ -303,7 +303,7 @@
   <p>
     <strong>順帶說明：</strong>AI 收據掃描所拍攝／選取的原始收據圖片、以及 OCR 文字辨識與 AI 推論，
     <strong>一律只在你的裝置上處理，從未上傳到雲端</strong>，所以雲端本來就沒有這些圖片或推論過程可刪。
-    要把裝置上的收據圖片暫存檔完全清掉，請<strong>直接把 App 從裝置移除</strong>——App 內的「重設 App」只清交易紀錄、分類與偏好設定，<strong>不保證</strong>清除收據圖片的暫存檔。
+    要把裝置上的收據圖片暫存檔完全清掉，請<strong>直接把 App 從裝置移除</strong>。
   </p>
   <p>
     ⚠️ 但要分清楚一件事：你在確認畫面<strong>按下儲存</strong>的那些辨識結果（品項名稱、金額）會變成一筆交易的欄位，
@@ -322,9 +322,9 @@
   </thead>
   <tbody>
     <tr>
-      <td>共享帳本中，你曾與其他成員共用的帳務內容（帳目、攤帳、品項名稱、還款紀錄）</td>
+      <td>共享帳本中，你曾與其他成員共用的帳務內容（帳目、攤帳、品項名稱、帳目備註、還款紀錄）</td>
       <td>這些紀錄同時屬於同一帳本的其他成員，是他們共同的帳務資料；直接刪除會讓其他成員的分帳結果對不上。</td>
-      <td>帳目本身會<strong>保留</strong>在該帳本中。我們會清除你在該帳本<strong>成員資料中的顯示名稱與頭像</strong>；但帳目、攤帳與還款仍會以你的<strong>內部帳號代號（uid）</strong>標記——那是維持「這筆錢算誰的」所必需的欄位，移除它會讓其他成員的帳直接壞掉。</td>
+      <td>帳目本身會<strong>保留</strong>在該帳本中。我們會清除你在該帳本<strong>成員資料中的顯示名稱與頭像</strong>，其他成員之後在該帳本裡看到的會是<strong>「已刪除的使用者」</strong>而不是你的名字；但帳目、攤帳與還款仍會以你的<strong>內部帳號代號（uid）</strong>標記——那是維持「這筆錢算誰的」所必需的欄位，移除它會讓其他成員的帳直接壞掉。此外，你自己輸入的<strong>品項名稱與帳目備註會原樣保留</strong>（那是帳本內容本身，其他成員仍需要它來核對帳目），所以請避免在共享帳本的自由文字欄位裡填寫你不希望留下的個人資訊。</td>
     </tr>
     <tr>
       <td>共享帳本的操作留痕（含變更前後的舊值／新值）</td>
@@ -341,13 +341,14 @@
 </div>
 
 <p>
-  如果你希望在刪除帳號前先退出共享帳本，或想與其他成員協調帳本內容的處理方式，請在申請信中一併說明，開發者會協助處理。
+  如果你是某些共享帳本的<strong>管理員</strong>，App 內的刪除流程第一步會請你指定接手的成員，或選擇連同帳本一起刪除——不處理就無法繼續，這是為了避免留下沒有人管得動的帳本。若你想在刪除前先自行退出某些帳本，也可以先到該帳本的設定頁操作。
 </p>
 
 <h2 id="timeline">4. 處理時間與保留期間</h2>
 
 <ul>
-  <li><strong>處理時間：</strong>開發者會在<strong>收到你的申請後 30 天內</strong>（含確認身分所需的時間）完成刪除，並回信通知你結果。</li>
+  <li><strong>App 內刪除：</strong>確認身分後<strong>立即執行</strong>，通常數十秒內完成，不需要等待人工處理。</li>
+  <li><strong>email 申請（備援管道）：</strong>開發者會在<strong>收到你的申請後 30 天內</strong>（含確認身分所需的時間）完成刪除，並回信通知你結果。</li>
   <li><strong>備份殘留：</strong>刪除完成後，後端服務（Firebase）的備份與日誌系統中可能仍存在短期殘留副本；
       這些殘留副本會在合理期間內依例行備份週期自動清除，且不會再用於提供服務。</li>
   <li>Fino 不會保留額外的個人資料副本以供行銷或分析使用（Fino 沒有安裝任何分析、廣告或追蹤 SDK）。</li>
@@ -356,23 +357,24 @@
 <h2 id="local-only">5. 只想刪除裝置上的本機資料</h2>
 
 <p>
-  如果你不想刪除帳號，只想清掉這台裝置上的資料，可以在 App 內使用<strong>「重設 App」</strong>功能，
-  它會清除本機的<strong>交易紀錄、分類與偏好設定</strong>。
+  如果你不想刪除帳號，只想清掉這台裝置上的資料，可以把 <strong>Fino 從裝置上解除安裝</strong>——
+  那是唯一能把裝置上與 Fino 有關的資料（含已下載的 AI 模型檔）完全清乾淨的方式。
 </p>
+
 <p>
-  請注意「重設 App」的範圍有限：它<strong>不會</strong>清除共享帳本的本機資料、已下載的 AI 模型檔案，
-  也<strong>不保證</strong>清除收據圖片的暫存檔。若要把裝置上與 Fino 有關的資料完全清掉，請<strong>直接把 App 從裝置上移除</strong>。
+  App 內另有一個「初始化資料」選項，位於<strong>變更主要幣別</strong>的精靈裡，但它只清除歷史交易紀錄，
+  是換幣別時的資料處理方式，並不是完整的重設。
 </p>
 
 <div class="note">
   <p>
-    <strong>重要警告：「重設 App」不等於刪除帳號。</strong>
-    只要你的帳號仍然存在，當你之後重新登入同一個帳號時，雲端（Firestore / Cloud Storage）上的交易、分類、預算與照片
-    <strong>會同步回到裝置上</strong>。若你要真正刪除雲端資料，請依照第 1 節〈<a href="#how-to-request">如何要求刪除帳號</a>〉寄信提出申請。
+    <strong>重要警告：清除本機資料不等於刪除帳號。</strong>
+    只要你的帳號仍然存在，當你之後重新登入同一個帳號時，雲端上的交易、分類、預算與照片會同步回到裝置上。
+    若你要真正刪除雲端資料，請依照第 1 節〈如何要求刪除帳號〉在 App 內執行刪除。
   </p>
 </div>
 
-<h2 id="contact">6. 聯絡方式</h2>
+id="contact">6. 聯絡方式</h2>
 <p>
   任何關於資料刪除的問題，請寄信到 <a href="mailto:liokhgf@gmail.com">liokhgf@gmail.com</a>。
   Fino 由個人開發者開發與維護，會盡快回覆。

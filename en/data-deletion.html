@@ -205,11 +205,8 @@
     margin: 0;
     padding: 0;
     list-style: none;
-    columns: 2;
-    column-gap: 24px;
   }
-  @media (max-width: 520px) { .toc ul { columns: 1; } }
-  .toc li { margin: 5px 0; break-inside: avoid; }
+  .toc li { margin: 5px 0; }
   .toc a { text-decoration: none; }
   .toc a:hover { text-decoration: underline; }
   /* 錨點跳轉時避開固定導覽列的高度 */
@@ -234,7 +231,7 @@
 <h1>Fino — Account &amp; Data Deletion</h1>
 <p class="meta">
   App: Fino ｜ Android package: <code>com.fino.android</code> ｜ iOS bundle ID: <code>com.fino.iosApp</code><br>
-  Last updated: 29 July 2026 ｜ <a href="#zh">切換至繁體中文</a>
+  Last updated: 29 July 2026
 </p>
 
 <p>
@@ -257,34 +254,35 @@
 
 <h2 id="how-to-request">1. How to request account deletion</h2>
 
-<div class="note">
+<div class="summary">
+  <p><strong>In the app:</strong> open Fino &rarr; the <strong>Settings</strong> tab &rarr; scroll to <strong>Delete Account</strong> at the bottom.</p>
+  <p>You will be taken through four steps:</p>
+  <ul>
+    <li><strong>1.&nbsp;Before you go</strong> &mdash; if you administer any shared ledgers, you are asked to hand each one over to another member or delete it along with your account. Any unsettled balances you have in shared ledgers are listed here too, with the amounts and the people involved.</li>
+    <li><strong>2.&nbsp;Confirm the consequences</strong> &mdash; what disappears, what stays, and a confirmation phrase you have to type before you can continue.</li>
+    <li><strong>3.&nbsp;Sign in again</strong> &mdash; with the same Google or Apple account you are deleting. This confirms it is really you; if you pick a different account in the account chooser, the flow stops instead of deleting the wrong account.</li>
+    <li><strong>4.&nbsp;Deletion runs</strong> &mdash; on the server. When it finishes the app signs you out, returns to the login screen, and wipes the local data on that device.</li>
+  </ul>
   <p>
-    <strong>Please note:</strong> Fino does <strong>not</strong> currently provide an in-app "delete account" button.
-    The only available way to request deletion today is to email the developer. (The developer is aware of this gap
-    and plans to add an in-app deletion entry point in a future release.)
+    This usually completes within seconds and <strong>does not require any manual processing</strong>.
+    If something fails midway, the app tells you why and lets you retry &mdash; it does not leave your account half-deleted.
   </p>
 </div>
 
-<div class="summary">
-  <p><strong>Email:</strong> <a href="mailto:liokhgf@gmail.com?subject=Fino%20Account%20Deletion%20Request">liokhgf@gmail.com</a></p>
-  <p><strong>Suggested subject:</strong> <code>Fino 帳號刪除申請</code> (or <code>Fino Account Deletion Request</code>)</p>
-  <p><strong>Please include:</strong></p>
-  <ul>
-    <li>The email address you used to register with Fino (the email behind your Google or Apple sign-in).</li>
-    <li>Which platform you use (Android or iOS) — this helps speed up verification.</li>
-    <li>If you only want part of your data deleted (for example only transaction photos), please say so.</li>
-  </ul>
+<div class="note">
   <p>
-    After receiving your request, the developer will first <strong>verify your identity</strong> — for example by
-    confirming that the request comes from the same email address registered to the account, and replying to ask
-    for additional information if needed. Deletion is performed only after verification, so that nobody else can
-    delete your data on your behalf.
+    <strong>No device at hand?</strong> If you have already uninstalled the app or cannot sign in, you can instead email
+    <a href="mailto:liokhgf@gmail.com?subject=Fino%20Account%20Deletion%20Request">liokhgf@gmail.com</a>
+    (suggested subject: <code>Fino Account Deletion Request</code>), stating the email address you registered with and the
+    platform you use. The developer will first <strong>verify your identity</strong> &mdash; confirming the request comes from the
+    same email address registered to the account, and asking for more information if needed &mdash; before performing the deletion,
+    so that nobody else can delete your data on your behalf. This is a fallback alongside the in-app entry point, not the required route.
   </p>
 </div>
 
 <h2 id="what-deleted">2. Data that will be deleted</h2>
 
-<p>Once your identity is verified, the following cloud data tied to your account (Firebase Auth <code>uid</code>) is deleted:</p>
+<p>Once deletion runs, the following cloud data tied to your account (Firebase Auth <code>uid</code>) is deleted:</p>
 
 <ul>
   <li><strong>Your Firebase Auth account</strong>, including the uid, email address, avatar URL and sign-in provider (Google / Apple).</li>
@@ -307,9 +305,7 @@
   <p>
     <strong>For clarity:</strong> receipt images captured or selected for AI receipt scanning, along with OCR text
     recognition and AI inference, are processed <strong>entirely on your device and are never uploaded to the cloud</strong>.
-    There is therefore no cloud copy of those images or of the inference to delete. To clear the cached receipt images
-    from your device, <strong>uninstall the app</strong> — the in-app "Reset App" clears local transactions, categories and
-    preferences but does <strong>not</strong> guarantee removal of cached receipt images.
+    There is therefore no cloud copy of those images or of the inference to delete. To clear the cached receipt images from the device, uninstall the app.
   </p>
   <p>
     ⚠️ One distinction to keep in mind: the recognition results you <strong>confirm and save</strong> (item names, amounts)
@@ -332,9 +328,9 @@
   </thead>
   <tbody>
     <tr>
-      <td>Shared-ledger content you shared with other members (entries, splits, item names, repayment records)</td>
+      <td>Shared-ledger content you shared with other members (entries, splits, item names, entry notes, repayment records)</td>
       <td>These records also belong to the other members of the same ledger and form their joint accounting history; deleting them outright would break their settlement balances.</td>
-      <td>The entries <strong>stay</strong> in that ledger. We clear your <strong>display name and avatar from that ledger's member record</strong>; entries, splits and repayments still carry your <strong>internal account identifier (uid)</strong>, because that is the field that determines whose money is whose — removing it would break the other members' balances outright.</td>
+      <td>The entries <strong>stay</strong> in that ledger. We clear your <strong>display name and avatar from that ledger's member record</strong>, so other members will see <strong>“Deleted user”</strong> where your name used to be; entries, splits and repayments still carry your <strong>internal account identifier (uid)</strong>, because that is the field that determines whose money is whose &mdash; removing it would break the other members' balances outright. The <strong>item names and entry notes you typed are kept as-is</strong> (they are the ledger's content, which the other members still need to reconcile their accounts), so avoid putting personal information you would not want left behind into shared-ledger free-text fields.</td>
     </tr>
     <tr>
       <td>Shared-ledger activity history (including previous and new values of changes)</td>
@@ -351,14 +347,16 @@
 </div>
 
 <p>
-  If you would prefer to leave your shared ledgers before deleting your account, or want to coordinate with the other
-  members about the ledger content, mention it in your email and the developer will help.
+  If you <strong>administer</strong> any shared ledgers, the first step of the in-app deletion flow asks you to name a member to
+  take over, or to delete the ledger along with your account &mdash; you cannot continue without deciding, so that no ledger is
+  left without an owner. If you would rather leave some ledgers yourself first, you can do that from each ledger's settings page.
 </p>
 
 <h2 id="timeline">4. Timeline and retention period</h2>
 
 <ul>
-  <li><strong>Timeline:</strong> deletion is completed <strong>within 30 days of receiving your request</strong> (identity verification included in that window), and you will receive a confirmation reply.</li>
+  <li><strong>In-app deletion:</strong> runs <strong>immediately</strong> once your identity is confirmed &mdash; usually within seconds, with no manual processing.</li>
+  <li><strong>Email request (fallback):</strong> deletion is completed <strong>within 30 days of receiving your request</strong> (identity verification included in that window), and you will receive a confirmation reply.</li>
   <li><strong>Backup residue:</strong> after deletion, short-lived residual copies may still exist in the backend provider's (Firebase) backup and logging systems.
       These residual copies are cleared within a reasonable period as part of the routine backup cycle and are no longer used to provide the service.</li>
   <li>Fino keeps no additional copies of personal data for marketing or analytics — the app contains no analytics, advertising or tracking SDKs.</li>
@@ -367,26 +365,24 @@
 <h2 id="local-only">5. If you only want to delete local data on your device</h2>
 
 <p>
-  If you do not want to delete your account and only want to clear the data on this device, you can use the
-  <strong>"Reset App"</strong> function inside the app, which clears your local <strong>transactions, categories and
-  preferences</strong>.
+  If you do not want to delete your account and only want the data on this device gone, <strong>uninstall Fino</strong> &mdash;
+  that is the only way to fully clear everything Fino-related from the device, including any downloaded AI model files.
 </p>
+
 <p>
-  Note that "Reset App" has a limited scope: it does <strong>not</strong> clear shared-ledger local data or downloaded AI
-  model files, and it does <strong>not</strong> guarantee clearing cached receipt images. To remove everything Fino keeps on
-  the device, <strong>uninstall the app</strong>.
+  The app does offer a &ldquo;reset data&rdquo; option inside the <strong>change main currency</strong> wizard, but it only clears
+  historical transactions as part of switching currency &mdash; it is not a full reset.
 </p>
 
 <div class="note">
   <p>
-    <strong>Important warning: "Reset App" is not the same as deleting your account.</strong>
-    As long as your account still exists, signing back in with the same account will
-    <strong>sync your cloud data (Firestore / Cloud Storage transactions, categories, budgets and photos) back onto the device</strong>.
-    To actually delete your cloud data, submit an account deletion request by email as described in section 1, <a href="#how-to-request">How to request account deletion</a>.
+    <strong>Important: clearing local data is not the same as deleting your account.</strong>
+    As long as your account still exists, signing in again with it syncs your cloud transactions, categories, budgets and photos
+    back onto the device. To actually delete cloud data, follow section 1, &ldquo;How to request account deletion&rdquo;, in the app.
   </p>
 </div>
 
-<h2 id="contact">6. Contact</h2>
+id="contact">6. Contact</h2>
 <p>
   For any question about data deletion, email <a href="mailto:liokhgf@gmail.com">liokhgf@gmail.com</a>.
   Fino is built and maintained by an individual developer, who will reply as soon as possible.

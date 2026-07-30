@@ -205,11 +205,8 @@
     margin: 0;
     padding: 0;
     list-style: none;
-    columns: 2;
-    column-gap: 24px;
   }
-  @media (max-width: 520px) { .toc ul { columns: 1; } }
-  .toc li { margin: 5px 0; break-inside: avoid; }
+  .toc li { margin: 5px 0; }
   .toc a { text-decoration: none; }
   .toc a:hover { text-decoration: underline; }
   /* 錨點跳轉時避開固定導覽列的高度 */
@@ -481,11 +478,14 @@
 <h2 id="retention">9. Data retention and deletion</h2>
 <p>Data you sync after signing in stays in your cloud space until you ask us to delete it.</p>
 <div class="note">
-  <p><strong>There is currently no "delete account" button inside the app.</strong> This is a known, outstanding feature. Until it ships, deletion works like this:</p>
-  <p><strong>Email <a href="mailto:liokhgf@gmail.com">liokhgf@gmail.com</a></strong> stating that you want your Fino account and all cloud data deleted, sending from the email address you use to sign in to Fino (so we can confirm it is you). The developer will delete your Firebase Authentication account, everything in your cloud space (including push tokens, your ledger list and your personal category assignments), and your transaction photos in Cloud Storage <strong>within 30 days of receiving the request</strong> (identity verification included in that window).</p>
+  <p><strong>You can delete your account from inside the app at any time:</strong> the <strong>Delete Account</strong> entry at the bottom of the <strong>Settings</strong> tab.</p>
+  <p>The flow first asks you to deal with any shared ledgers you administer (hand them over or delete them), then to confirm the consequences and type a confirmation phrase, then to sign in again with the same Google/Apple account so we know it is you. Deletion runs immediately after that and <strong>requires no manual processing</strong>: your Firebase Authentication account, everything in your cloud space (including push tokens, your ledger list and your personal category assignments), your transaction photos in Cloud Storage, and the local data on that device are all removed.</p>
+  <p>If you have already uninstalled the app or cannot sign in, you can still <strong>email <a href="mailto:liokhgf@gmail.com">liokhgf@gmail.com</a></strong> from the address you use to sign in to Fino (so we can confirm it is you); the developer will complete the same deletion <strong>within 30 days of receiving the request</strong>.</p>
   <p>Full instructions: <a href="data-deletion.html">Account and data deletion</a>.</p>
 </div>
-<p><strong>The in-app "Reset app" function only clears data on that device, and its scope is limited</strong>: it clears local transactions, categories and preferences. It does <strong>not</strong> clear shared-ledger local data or downloaded AI model files, and it does not guarantee clearing cached receipt images (uninstall the app for that). It certainly does <strong>not</strong> delete cloud data — if you reset and then sign in again with the same account, your cloud data syncs back. To actually delete cloud data, use the email process above.</p>
+<p><strong>There are two ways to clear the local data on a device:</strong> (1)&nbsp;<strong>Delete Account</strong> (above) &mdash; once the cloud deletion finishes, the app also wipes that device's transactions, categories, budgets, recurring rules, quick-add presets, receipt groups, shared-ledger cache, transaction photos and preferences; (2)&nbsp;<strong>uninstall the app</strong>, which additionally removes any downloaded AI model files. Separately, the change-main-currency wizard offers a &ldquo;reset data&rdquo; option, but that only clears historical transactions as part of switching currency &mdash; it is not a full reset.</p>
+<p><strong>Clearing local data is not the same as deleting cloud data</strong> &mdash; as long as the account still exists, signing in again with it syncs your cloud data back. To actually delete cloud data, use <strong>Delete Account</strong> above.</p>
+<p><strong>After account deletion, shared-ledger entries are kept but you are anonymised</strong>: your display name and avatar are cleared, and other members see &ldquo;Deleted user&rdquo; in your place. Entries, splits and repayments still carry your internal account identifier (it determines whose money is whose &mdash; removing it would break the other members' balances outright), and the <strong>item names and entry notes you typed are kept as-is</strong>, because they are the ledger's content. Avoid putting personal information you would not want left behind into shared-ledger free-text fields.</p>
 <p>The shared-ledger <strong>audit trail is append-only: the server-side rules forbid any update or deletion</strong>. If you leave a ledger or your account is deleted, the audit entries already written stay in that ledger exactly as they are, because the remaining members still need that record to reconcile their accounts. The audit trail records only the actor's internal account identifier and the before/after values — not your display name or email. Please factor this in before joining a ledger.</p>
 <p>Third-party services also have their own retention behaviour: Google (Firebase, FCM, Android cloud speech recognition) and Apple (APNs) retain and delete data according to their own policies, and we cannot delete records on their side on your behalf.</p>
 

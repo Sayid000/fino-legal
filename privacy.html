@@ -205,11 +205,8 @@
     margin: 0;
     padding: 0;
     list-style: none;
-    columns: 2;
-    column-gap: 24px;
   }
-  @media (max-width: 520px) { .toc ul { columns: 1; } }
-  .toc li { margin: 5px 0; break-inside: avoid; }
+  .toc li { margin: 5px 0; }
   .toc a { text-decoration: none; }
   .toc a:hover { text-decoration: underline; }
   /* 錨點跳轉時避開固定導覽列的高度 */
@@ -481,11 +478,14 @@
 <h2 id="retention">9. 資料保留與刪除</h2>
 <p>你登入後同步的資料會一直保留在你的雲端空間，直到你要求刪除。</p>
 <div class="note">
-  <p><strong>目前 App 內還沒有「刪除帳號」按鈕。</strong>這是我們已知、待完成的功能。在它上線之前，刪除的方式是：</p>
-  <p><strong>寄信到 <a href="mailto:liokhgf@gmail.com">liokhgf@gmail.com</a></strong>，說明你要刪除 Fino 帳號與所有雲端資料，並請使用你登入 Fino 的那個 email 寄出（以便我們確認是你本人）。開發者會在<strong>收到請求後 30 天內</strong>（含確認身分所需的時間）刪除你的 Firebase Authentication 帳號、你雲端空間中的所有個人資料（含推播 token、共享帳本清單與個人分類標記），以及 Cloud Storage 上你的交易照片。</p>
+  <p><strong>你可以隨時在 App 內刪除帳號：</strong>「設定」分頁最下方的<strong>「刪除帳號」</strong>。</p>
+  <p>流程會請你先處置你管理的共享帳本（指定接手人或連同刪除）、確認後果並輸入確認字串，再用同一個 Google／Apple 帳號重新登入以確認身分。確認後刪除立即執行，<strong>不需要等待人工處理</strong>：你的 Firebase Authentication 帳號、雲端空間中的所有個人資料（含推播 token、共享帳本清單與個人分類標記）、Cloud Storage 上的交易照片，以及這台裝置上的本機資料都會一併清除。</p>
+  <p>如果你已經解除安裝 App 或無法登入，仍可<strong>寄信到 <a href="mailto:liokhgf@gmail.com">liokhgf@gmail.com</a></strong>（請用你登入 Fino 的那個 email 寄出，以便確認是你本人），開發者會在<strong>收到請求後 30 天內</strong>完成同樣範圍的刪除。</p>
   <p>詳細步驟另見：<a href="data-deletion.html">帳號與資料刪除說明</a>。</p>
 </div>
-<p><strong>App 內的「重設 App」功能只會清除這台裝置上的資料，而且範圍有限</strong>：它會清掉本機的交易紀錄、分類與偏好設定，<strong>不會</strong>清掉共享帳本的本機資料、已下載的 AI 模型檔，也不保證清掉收據圖片的暫存檔（要完整清掉請直接把 App 從裝置移除）。它<strong>更不會</strong>刪除雲端資料——如果你重設之後再用同一個帳號登入，雲端的資料會同步回來。要真正刪除雲端資料，請走上面的 email 流程。</p>
+<p><strong>要清除這台裝置上的本機資料，有兩個途徑：</strong>①&nbsp;<strong>刪除帳號</strong>（見上）會在雲端刪除完成後，一併清空這台裝置上的交易紀錄、分類、預算、定期記帳規則、快速記帳範本、收據群組、共享帳本快取、交易照片與偏好設定；②&nbsp;把 <strong>App 從裝置解除安裝</strong>，這會連同已下載的 AI 模型檔一起移除。另外，變更主要幣別的精靈裡有一個「初始化資料」選項，它只清除歷史交易紀錄，是換幣別時的資料處理方式，不是完整的重設。</p>
+<p><strong>清除本機資料不等於刪除雲端資料</strong>——只要帳號還在，用同一個帳號重新登入，雲端的資料就會同步回來。要真正刪除雲端資料，請用上面的「刪除帳號」。</p>
+<p><strong>刪除帳號後，共享帳本裡的帳目會保留，但你會被匿名化</strong>：你的顯示名稱與頭像會被清除，其他成員之後看到的是「已刪除的使用者」。帳目、攤帳與還款仍以你的內部帳號代號標記（那是「這筆錢算誰的」所必需，移除會讓其他人的帳直接壞掉），你自己輸入的<strong>品項名稱與帳目備註也會原樣保留</strong>——那是帳本內容本身。請避免在共享帳本的自由文字欄位裡填寫你不希望留下的個人資訊。</p>
 <p>共享帳本的<strong>操作留痕是 append-only：伺服器端規則禁止任何修改與刪除</strong>。你退出或帳號被刪除後，帳本中既有的留痕紀錄仍會原樣留在該帳本裡（其他成員仍需要那份紀錄來核對帳目）。留痕只記錄操作者的內部帳號代號與變更前後的值，不含你的顯示名稱或 email。這一點在你加入帳本前就請一併考量。</p>
 <p>此外，第三方服務各有自己的保留機制：Google（Firebase / FCM、Android 雲端語音辨識）與 Apple（APNs）依其自身政策保留與刪除資料，我們無法代為刪除他們那一側的紀錄。</p>
 
