@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Fino Support</title>
+<meta name="description" content="Support for the Fino expense tracking app: AI receipt scanning, voice input, sync and accounts, shared ledgers, and how to get in touch.">
+<style>
+  :root {
+    --bg: #ffffff;
+    --fg: #1b1b1f;
+    --muted: #5c5f66;
+    --line: #e2e4e8;
+    --accent: #1d5c46;
+    --box-bg: #f5f7f6;
+    --warn-bg: #fff8e8;
+    --warn-line: #e0c179;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #16181b;
+      --fg: #e6e7e9;
+      --muted: #a2a6ad;
+      --line: #2e3237;
+      --accent: #7fd2b1;
+      --box-bg: #1e2125;
+      --warn-bg: #2a2419;
+      --warn-line: #6d5a2c;
+    }
+  }
+  * { box-sizing: border-box; }
+  html { -webkit-text-size-adjust: 100%; }
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--fg);
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Noto Sans TC",
+                 "PingFang TC", "Microsoft JhengHei", Roboto, Helvetica, Arial, sans-serif;
+    font-size: 17px;
+    line-height: 1.75;
+  }
+  .wrap {
+    max-width: 720px;
+    margin: 0 auto;
+    padding: 18px 20px 80px;
+  }
+  h1 {
+    font-size: 1.85rem;
+    line-height: 1.3;
+    margin: 0 0 6px;
+  }
+  h2 {
+    font-size: 1.3rem;
+    line-height: 1.35;
+    margin: 2.6em 0 0.6em;
+    padding-top: 0.5em;
+    border-top: 1px solid var(--line);
+  }
+  h3 {
+    font-size: 1.05rem;
+    margin: 1.8em 0 0.4em;
+  }
+  p, ul, ol { margin: 0.7em 0; }
+  ul, ol { padding-left: 1.4em; }
+  li { margin: 0.35em 0; }
+  a { color: var(--accent); }
+  a:hover { text-decoration: none; }
+  code {
+    font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+    font-size: 0.88em;
+    background: var(--box-bg);
+    padding: 0.1em 0.35em;
+    border-radius: 4px;
+    word-break: break-all;
+  }
+  .meta {
+    color: var(--muted);
+    font-size: 0.92rem;
+    margin: 0 0 1.4em;
+  }
+  /* 強調框：.summary 一般，.note 警示 */
+  .summary {
+    background: var(--box-bg);
+    border-left: 3px solid var(--accent);
+    border-radius: 6px;
+    padding: 14px 18px;
+    margin: 1.4em 0;
+  }
+  .note {
+    background: var(--warn-bg);
+    border: 1px solid var(--warn-line);
+    border-radius: 6px;
+    padding: 14px 18px;
+    margin: 1.4em 0;
+  }
+  .summary > :first-child, .note > :first-child { margin-top: 0; }
+  .summary > :last-child, .note > :last-child { margin-bottom: 0; }
+  .tablescroll {
+    overflow-x: auto;
+    margin: 1.2em 0;
+    border: 1px solid var(--line);
+    border-radius: 6px;
+  }
+  table {
+    border-collapse: collapse;
+    width: 100%;
+    font-size: 0.94rem;
+    min-width: 480px;
+  }
+  th, td {
+    text-align: left;
+    vertical-align: top;
+    padding: 10px 12px;
+    border-bottom: 1px solid var(--line);
+  }
+  th {
+    background: var(--box-bg);
+    font-weight: 600;
+  }
+  tr:last-child td { border-bottom: none; }
+  /* 首頁的文件連結卡片 */
+  .links {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 8px;
+  }
+  .links li { margin: 0 0 10px; }
+  .links a {
+    display: block;
+    background: var(--box-bg);
+    border: 1px solid var(--line);
+    border-radius: 10px;
+    padding: 14px 16px;
+    text-decoration: none;
+    font-weight: 600;
+  }
+  .links a:hover { border-color: var(--accent); }
+  .links span {
+    display: block;
+    font-weight: 400;
+    font-size: 0.9rem;
+    color: var(--muted);
+  }
+  .top {
+    display: inline-block;
+    margin-top: 2.5em;
+    font-size: 0.9rem;
+  }
+  /* 頂部導覽：麵包屑 + 語言切換 */
+  .topnav {
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    /* 捲動時內容會從底下經過，必須是不透明的 */
+    background: var(--bg);
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px 16px;
+    align-items: baseline;
+    justify-content: space-between;
+    margin: 0 0 14px;
+    padding: 14px 0 16px;
+    border-bottom: 1px solid var(--line);
+    font-size: 0.92rem;
+  }
+  .topnav p { margin: 0; }
+  .crumb { color: var(--muted); }
+  .crumb a { text-decoration: none; font-weight: 600; }
+  .crumb [aria-current] { color: var(--fg); }
+  .langswitch { display: flex; gap: 8px; }
+  .langswitch a {
+    display: inline-block;
+    padding: 4px 12px;
+    border: 1px solid var(--line);
+    border-radius: 999px;
+    text-decoration: none;
+    color: var(--muted);
+  }
+  .langswitch a:hover { border-color: var(--accent); }
+  .langswitch a[aria-current="page"] {
+    background: var(--box-bg);
+    border-color: var(--accent);
+    color: var(--accent);
+    font-weight: 600;
+    cursor: default;
+  }
+  .peer { margin: 0 0 26px; font-size: 0.92rem; }
+  .peer a { text-decoration: none; }
+  .peer a:hover { text-decoration: underline; }
+  /* 章節目錄 */
+  .toc {
+    background: var(--box-bg);
+    border: 1px solid var(--line);
+    border-radius: 8px;
+    padding: 16px 18px;
+    margin: 1.6em 0 2.2em;
+  }
+  .toc-title {
+    margin: 0 0 10px;
+    font-weight: 700;
+    font-size: 0.92rem;
+    color: var(--muted);
+  }
+  .toc ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+  .toc li { margin: 5px 0; }
+  .toc a { text-decoration: none; }
+  .toc a:hover { text-decoration: underline; }
+  /* 錨點跳轉時避開固定導覽列的高度 */
+  h2[id] { scroll-margin-top: 72px; }
+  footer {
+    margin-top: 3.5em;
+    padding-top: 1.2em;
+    border-top: 1px solid var(--line);
+    color: var(--muted);
+    font-size: 0.88rem;
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<nav class="topnav" aria-label="Navigation">
+  <p class="crumb"><a href="index.html">Fino</a> <span aria-hidden="true">&rsaquo;</span> <span aria-current="page">Support</span></p>
+  <p class="langswitch"><a href="../support.html">繁體中文</a><a href="#" aria-current="page">English</a></p>
+</nav>
+
+<p class="peer"><a href="privacy.html">Privacy Policy &rarr;</a></p>
+
+<h1>Fino Support</h1>
+<p class="meta">Last updated: 1 August 2026</p>
+
+<div class="summary">
+  <p><strong>Can't find your answer?</strong> Email <a href="mailto:liokhgf@gmail.com">liokhgf@gmail.com</a>.
+  Mail is read by the developer personally, usually answered within one or two working days.
+  Fino is built and maintained by a single independent developer.</p>
+</div>
+
+<nav class="toc" aria-label="On this page">
+  <p><a href="#ai">AI receipt scanning</a> &middot; <a href="#voice">Voice input</a> &middot; <a href="#sync">Sync and accounts</a>
+  &middot; <a href="#ledger">Shared ledgers</a> &middot; <a href="#data">Your data</a> &middot; <a href="#contact">Contact</a></p>
+</nav>
+
+<h2 id="ai">AI receipt scanning</h2>
+
+<h3>Why do I have to download such a large file?</h3>
+<p>Because recognition runs entirely on your phone, the model has to live on your device.
+<strong>Receipt photos are never uploaded to any server</strong> &mdash; that is a deliberate design choice,
+and this one-time download is its cost. Once downloaded, it works offline.</p>
+
+<h3>Will it work on my phone?</h3>
+<p>On iPhone you need an iPhone 12 or later running iOS 17 or later. If your iPhone supports
+Apple Intelligence, Fino uses the built-in system model and <strong>no download is needed</strong>.</p>
+<p>On Android it depends on memory: the smaller model needs 3 GB or more, the more accurate one needs 6 GB or more.
+Devices that don't qualify can still use every other feature of Fino &mdash; only AI photo capture is unavailable.</p>
+
+<h3>The recognition result is wrong. What now?</h3>
+<p>Results are always shown for you to confirm before anything is saved, and you can edit the merchant,
+amount and every line item. Creases, glare, small print and faint thermal printing all hurt accuracy &mdash;
+flattening the receipt and using even lighting helps a lot.</p>
+
+<h2 id="voice">Voice input</h2>
+
+<h3>How do I use it?</h3>
+<p>Tap the microphone in the app and say something like "lunch 120". On iPhone you can also say
+<strong>"Record with Fino"</strong> to Siri, and Siri will ask what you want to record.</p>
+
+<h3>Is my audio uploaded?</h3>
+<p><strong>iPhone: no.</strong> Fino forces on-device recognition and will not start if the device doesn't support it.</p>
+<p><strong>Android: on-device is preferred, but it cannot be guaranteed.</strong> When your device has no local
+model for the language, the system may fall back to Google's servers &mdash; and it does not tell us when it does.
+If you don't want your audio to have any chance of leaving the device, use manual entry or receipt scanning instead;
+neither involves voice at all. See the <a href="privacy.html">Privacy Policy</a> for details.</p>
+
+<h2 id="sync">Sync and accounts</h2>
+
+<h3>Do I have to sign in?</h3>
+<p>No. <strong>Every core feature of Fino works without signing in</strong>, with your data stored on your phone.
+Signing in only enables cloud sync (so your data survives a phone change) and shared ledgers.</p>
+
+<h3>I got a new phone. How do I move my data?</h3>
+<p>Sign in on the old phone and sync once, then sign in with the same account on the new phone.
+If you have never signed in, your data exists only on the old device &mdash; sign in and sync before switching.</p>
+
+<h3>What happens if I sign in with a different account on the same phone?</h3>
+<p>Fino clears the local data and replaces it with the new account's data, so that the previous account's records
+cannot leak into the new one. The old account's data remains intact in its own cloud storage and comes back
+when you sign in again.</p>
+
+<h2 id="ledger">Shared ledgers</h2>
+
+<h3>Can someone on a different phone system join?</h3>
+<p>Yes. When anyone records an entry, it appears on every member's screen immediately &mdash; no pull-to-refresh needed.</p>
+
+<h3>What can other members see?</h3>
+<p>Only what you record in that ledger: display name, avatar, amounts, item names and entry notes.
+<strong>Your personal categories and personal ledger are never visible to them.</strong></p>
+
+<h2 id="data">Your data</h2>
+
+<h3>I want to delete my account</h3>
+<p>In the app: <strong>Settings tab &rarr; scroll to the bottom &rarr; Delete Account</strong>.
+It runs immediately after identity confirmation, usually within seconds.
+Full details in <a href="data-deletion.html">Account and Data Deletion</a>.</p>
+
+<h3>I only want to clear the data on this device</h3>
+<p>Uninstall Fino from the device. This does not affect your data in the cloud.</p>
+
+<h3>Does Fino have ads or subscriptions?</h3>
+<p>No. <strong>Fino is free</strong> &mdash; no subscriptions, no in-app purchases, no ads,
+and no analytics, advertising or tracking SDKs of any kind.</p>
+
+<h2 id="contact">Contact</h2>
+<p>Bug reports, feature requests and privacy-related requests all go to
+<a href="mailto:liokhgf@gmail.com">liokhgf@gmail.com</a>.</p>
+<p>When reporting a problem, including your <strong>device model, OS version and Fino version</strong>
+(at the bottom of the Settings tab) plus the steps that led to it helps enormously.</p>
+
+<footer>
+  <p>Fino &middot; <a href="privacy.html">Privacy Policy</a> &middot; <a href="data-deletion.html">Account and Data Deletion</a></p>
+  <p class="meta">Last updated: 1 August 2026</p>
+</footer>
+
+</div>
+</body>
+</html>
