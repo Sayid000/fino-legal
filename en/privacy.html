@@ -229,7 +229,7 @@
 </nav>
 <p class="peer"><a href="data-deletion.html">Account & Data Deletion →</a></p>
 <h1>Fino Privacy Policy</h1>
-<p class="meta">Last updated: 29 July 2026</p>
+<p class="meta">Last updated: 3 August 2026</p>
 
 <div class="summary">
   <p><strong>The short version:</strong> Fino's AI receipt scanning runs <strong>entirely on your device</strong>, and receipt images are <strong>never uploaded</strong> to any server. Fino contains <strong>no advertising SDKs, no analytics SDKs, no crash-reporting SDKs, and we do not sell your data</strong>. Your bookkeeping data syncs to your own cloud space only after you sign in, so you can use it across devices.</p>
@@ -370,7 +370,7 @@
 <div class="note">
   <p><strong>Two things to be aware of:</strong></p>
   <p>1. <strong>The audit trail is append-only: it cannot be edited or deleted.</strong> Once written, neither you nor we can remove it from the ledger. This is deliberate — shared bookkeeping needs a trustworthy record to settle disputes. Treat it as permanent.</p>
-  <p>2. <strong>The invite-code lookup table is readable by anyone signed in.</strong> The 6-digit invite code, together with its ledger ID and creator, is stored at Firestore 邀請碼對照表, and <strong>any signed-in Fino user can read it</strong>. This is by design: someone entering an invite code must be able to look it up in order to join. The table contains <strong>only</strong> the code, ledger ID, and creator — <strong>not</strong> ledger content or amounts. But it does mean an invite code is not a secret: share codes only with people you trust, and ask the ledger admin to clean up codes you no longer need once everyone has joined.</p>
+  <p>2. <strong>The invite-code lookup table is readable by anyone signed in.</strong> The 6-digit invite code, together with the details of the ledger it points to, is stored in an invite-code lookup table, and <strong>any signed-in Fino user can read it</strong>. This is by design: someone entering an invite code must be able to look it up in order to join. The table contains the code, ledger ID, and creator, plus <strong>the ledger's name, the admin's display name, and the ledger's icon and colour</strong> (so that after entering a code, and before deciding whether to join, you can confirm you found the right ledger) — <strong>not</strong> ledger content or amounts. But it does mean an invite code is not a secret — nor are the ledger name and admin name that come with it: share codes only with people you trust, and ask the ledger admin to clean up codes you no longer need once everyone has joined.</p>
 </div>
 <p>Shared ledgers are a separate subsystem from personal bookkeeping, with their own storage location and access rules. Joining a ledger does not expose your personal transaction records to other members.</p>
 
@@ -511,7 +511,7 @@
 <p>Questions about this policy: <a href="mailto:liokhgf@gmail.com">liokhgf@gmail.com</a>.</p>
 <footer>
   <p>Fino · <a href="index.html">Home</a> · <a href="mailto:liokhgf@gmail.com">liokhgf@gmail.com</a> · <a href="data-deletion.html">Account & data deletion</a> &middot; <a href="support.html">Support</a></p>
-  <p>Last updated: 29 July 2026</p>
+  <p>Last updated: 3 August 2026</p>
 </footer>
 
 </div>
