@@ -229,7 +229,7 @@
 </nav>
 <p class="peer"><a href="data-deletion.html">Account & Data Deletion →</a></p>
 <h1>Fino Privacy Policy</h1>
-<p class="meta">Last updated: 3 August 2026</p>
+<p class="meta">Last updated: 12 September 2026</p>
 
 <div class="summary">
   <p><strong>The short version:</strong> Fino's AI receipt scanning runs <strong>entirely on your device</strong>, and receipt images are <strong>never uploaded</strong> to any server. Fino contains <strong>no advertising SDKs, no analytics SDKs, no crash-reporting SDKs, and we do not sell your data</strong>. Your bookkeeping data syncs to your own cloud space only after you sign in, so you can use it across devices.</p>
@@ -262,7 +262,7 @@
 <p>Below is the split between <strong>what leaves your device</strong> and <strong>what stays on your device</strong>. This is the complete list; there is no "and other data" catch-all.</p>
 
 <h3>1. Data that leaves your device (bookkeeping data syncs only after you sign in)</h3>
-<p>Fino's cloud backend is Google Firebase. <strong>If you never sign in, none of your bookkeeping data is ever synced.</strong> Even without signing in, however, the app still makes three kinds of network request: downloading on-device AI models (<code>huggingface.co</code>), fetching exchange rates (<code>tw.rter.info</code>), and device integrity verification (Firebase App Check). None of these send your bookkeeping content.</p>
+<p>Fino's cloud backend is Google Firebase. <strong>If you never sign in, none of your bookkeeping data is ever synced.</strong> Even without signing in, however, the app still makes four kinds of network request: downloading on-device AI models (<code>huggingface.co</code>), downloading translation language packs (on Android, from Google), fetching exchange rates (<code>tw.rter.info</code>), and device integrity verification (Firebase App Check). None of these send your bookkeeping content.</p>
 
 <div class="tablescroll">
 <table>
@@ -328,6 +328,10 @@
     <tr>
       <td><strong>Receipt text recognition and AI inference</strong></td>
       <td><strong>Runs entirely on your device.</strong> On Android: ML Kit for text recognition (OCR) plus an on-device Gemma model for understanding. On iOS: Apple Vision for text recognition plus Apple Foundation Models or an on-device MLX Qwen3-VL model. No cloud AI is involved at any point — our codebase contains no calls to Gemini, Vertex AI, OpenAI, or Cloud Vision.</td>
+    </tr>
+    <tr>
+      <td><strong>Translation of item names</strong></td>
+      <td><strong>Translation runs on your device; the item text itself is never sent anywhere.</strong> On the AI confirmation screen you can tap once to translate foreign-language item names into the app's display language. Android uses Google ML Kit's on-device translation; iOS uses the system's built-in Apple Translation. The language packs this needs are downloaded to your device by the platform (on Android from Google's servers, roughly 30MB per language; on iOS managed by the system), after which translation happens entirely offline.</td>
     </tr>
     <tr>
       <td>Local database</td>
@@ -443,9 +447,9 @@
       <td>Whichever provider you choose learns that you signed in to Fino, and gives us your email plus your avatar and display name if available.</td>
     </tr>
     <tr>
-      <td>Google Play services (ML Kit text recognition models)</td>
+      <td>Google Play services (ML Kit text recognition and translation models)</td>
       <td>Google</td>
-      <td>Android only: the Chinese / Japanese / Korean OCR models used for <strong>on-device</strong> text recognition are downloaded to your device through Google Play services. <strong>No receipt images and no bookkeeping data are sent.</strong></td>
+      <td>Android only: the Chinese / Japanese / Korean OCR models used for <strong>on-device</strong> text recognition are downloaded to your device through Google Play services, as are the language packs used to translate item names. <strong>No receipt images and no bookkeeping data are sent.</strong> Per Google's own disclosure, ML Kit Translation reports the <strong>source and target language codes</strong> and Language ID reports the <strong>detected language</strong>, for diagnostics and usage statistics — what is sent is language codes, <strong>not your item text</strong>.</td>
     </tr>
     <tr>
       <td><code>huggingface.co</code></td>
@@ -511,7 +515,7 @@
 <p>Questions about this policy: <a href="mailto:liokhgf@gmail.com">liokhgf@gmail.com</a>.</p>
 <footer>
   <p>Fino · <a href="index.html">Home</a> · <a href="mailto:liokhgf@gmail.com">liokhgf@gmail.com</a> · <a href="data-deletion.html">Account & data deletion</a> &middot; <a href="support.html">Support</a></p>
-  <p>Last updated: 3 August 2026</p>
+  <p>Last updated: 12 September 2026</p>
 </footer>
 
 </div>

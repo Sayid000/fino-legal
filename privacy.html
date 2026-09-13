@@ -229,7 +229,7 @@
 </nav>
 <p class="peer"><a href="data-deletion.html">帳號與資料刪除 →</a></p>
 <h1>Fino 隱私政策</h1>
-<p class="meta">最後更新：2026 年 8 月 3 日</p>
+<p class="meta">最後更新：2026 年 9 月 12 日</p>
 
 <div class="summary">
   <p><strong>一句話總結：</strong>Fino 的 AI 收據辨識<strong>完全在你的裝置上執行</strong>，收據原始圖片<strong>不會上傳</strong>到任何伺服器；Fino <strong>沒有任何廣告 SDK、沒有分析或崩潰追蹤 SDK、不販售你的資料</strong>。只有在你登入之後，你的記帳資料才會同步到你自己的雲端空間，方便你在多台裝置間使用。</p>
@@ -262,7 +262,7 @@
 <p>下面分成兩類：<strong>會離開你裝置的</strong>，以及<strong>只留在你裝置上的</strong>。這是完整清單，沒有「其他」這一項。</p>
 
 <h3>一、會離開裝置的資料（記帳資料只在你登入後才同步）</h3>
-<p>Fino 的雲端後端是 Google 的 Firebase。<strong>如果你不登入，你的記帳資料完全不會有任何雲端同步。</strong>但即使你不登入，App 仍會為了三件事連上網路：下載裝置內 AI 模型（<code>huggingface.co</code>）、查詢匯率（<code>tw.rter.info</code>）、以及裝置完整性驗證（Firebase App Check）。這三件事都不會傳送你的記帳內容。</p>
+<p>Fino 的雲端後端是 Google 的 Firebase。<strong>如果你不登入，你的記帳資料完全不會有任何雲端同步。</strong>但即使你不登入，App 仍會為了四件事連上網路：下載裝置內 AI 模型（<code>huggingface.co</code>）、下載翻譯語言包（Android，由 Google 提供）、查詢匯率（<code>tw.rter.info</code>）、以及裝置完整性驗證（Firebase App Check）。這四件事都不會傳送你的記帳內容。</p>
 
 <div class="tablescroll">
 <table>
@@ -328,6 +328,10 @@
     <tr>
       <td><strong>收據的文字辨識與 AI 推論</strong></td>
       <td><strong>完全在你的裝置上執行。</strong>Android 使用 ML Kit 做文字辨識（OCR）＋裝置內的 Gemma 模型做理解；iOS 使用 Apple Vision 做文字辨識＋Apple Foundation Models 或裝置內的 MLX Qwen3-VL 模型做理解。整個過程沒有任何雲端 AI 呼叫——我們的程式碼裡完全沒有 Gemini、Vertex AI、OpenAI 或 Cloud Vision 的呼叫。</td>
+    </tr>
+    <tr>
+      <td><strong>品項名稱的翻譯</strong></td>
+      <td><strong>翻譯在你的裝置上進行，品項文字不會被送出。</strong>在 AI 辨識的確認頁上，你可以按一下把外文品項名稱翻成 App 的顯示語言。Android 使用 Google ML Kit 的裝置內翻譯，iOS 使用系統內建的 Apple 翻譯。翻譯需要的語言包由平台下載到你的裝置（Android 由 Google 的伺服器提供，每種語言約 30MB；iOS 由系統管理），之後翻譯本身完全離線完成。</td>
     </tr>
     <tr>
       <td>本機資料庫</td>
@@ -443,9 +447,9 @@
       <td>你選擇用哪一家登入，該公司就會知道你登入了 Fino，並提供給我們你的 email 與（如有）頭像與顯示名稱。</td>
     </tr>
     <tr>
-      <td>Google Play 服務（ML Kit 文字辨識模型）</td>
+      <td>Google Play 服務（ML Kit 文字辨識與翻譯模型）</td>
       <td>Google</td>
-      <td>僅 Android：為了在<strong>裝置內</strong>做文字辨識，中文／日文／韓文 OCR 模型會由 Google Play 服務下載到你的裝置。<strong>不傳送收據圖片，也不傳送任何記帳資料</strong>。</td>
+      <td>僅 Android：為了在<strong>裝置內</strong>做文字辨識，中文／日文／韓文 OCR 模型會由 Google Play 服務下載到你的裝置；品項名稱翻譯所需的語言包同樣由 Google 下載。<strong>不傳送收據圖片，也不傳送任何記帳資料</strong>。依 Google 的官方揭露，ML Kit 翻譯會回報<strong>來源與目標語言代碼</strong>、語言辨識會回報<strong>偵測到的語言</strong>，用於診斷與使用統計——送出的是語言代碼，<strong>不是你的品項文字</strong>。</td>
     </tr>
     <tr>
       <td><code>huggingface.co</code></td>
@@ -511,7 +515,7 @@
 <p>對本政策有任何疑問，請寄信到 <a href="mailto:liokhgf@gmail.com">liokhgf@gmail.com</a>。</p>
 <footer>
   <p>Fino · <a href="index.html">首頁</a> · <a href="mailto:liokhgf@gmail.com">liokhgf@gmail.com</a> · <a href="data-deletion.html">帳號與資料刪除</a> ・ <a href="support.html">支援</a></p>
-  <p>最後更新：2026 年 8 月 3 日</p>
+  <p>最後更新：2026 年 9 月 12 日</p>
 </footer>
 
 </div>
