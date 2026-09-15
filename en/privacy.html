@@ -229,7 +229,7 @@
 </nav>
 <p class="peer"><a href="data-deletion.html">Account & Data Deletion →</a></p>
 <h1>Fino Privacy Policy</h1>
-<p class="meta">Last updated: 12 September 2026</p>
+<p class="meta">Last updated: 16 September 2026</p>
 
 <div class="summary">
   <p><strong>The short version:</strong> Fino's AI receipt scanning runs <strong>entirely on your device</strong>, and receipt images are <strong>never uploaded</strong> to any server. Fino contains <strong>no advertising SDKs, no analytics SDKs, no crash-reporting SDKs, and we do not sell your data</strong>. Your bookkeeping data syncs to your own cloud space only after you sign in, so you can use it across devices.</p>
@@ -481,6 +481,7 @@
 
 <h2 id="retention">9. Data retention and deletion</h2>
 <p>Data you sync after signing in stays in your cloud space until you ask us to delete it.</p>
+<p><strong>When transaction photos are deleted:</strong> when you delete a transaction, or remove its photo while editing it, that change reaches the cloud on the next sync; the photo file in the cloud is then removed by a clean-up job that runs once a day, <strong>within about 8 days</strong> &mdash; not the moment you delete it. If the same photo is attached to several transactions (for example several items recognised from one receipt), it is only deleted once all of those transactions have been deleted or had the photo removed. <strong>Deleting your account is different: photos are deleted immediately</strong> (see below).</p>
 <div class="note">
   <p><strong>You can delete your account from inside the app at any time:</strong> the <strong>Delete Account</strong> entry at the bottom of the <strong>Settings</strong> tab.</p>
   <p>The flow first asks you to deal with any shared ledgers you administer (hand them over or delete them), then to confirm the consequences and type a confirmation phrase, then to sign in again with the same Google/Apple account so we know it is you. Deletion runs immediately after that and <strong>requires no manual processing</strong>: your Firebase Authentication account, everything in your cloud space (including push tokens, your ledger list and your personal category assignments), your transaction photos in Cloud Storage, and the local data on that device are all removed.</p>
@@ -497,8 +498,7 @@
 <p>Fino is a bookkeeping tool for general adult users. It is <strong>not designed for children under 13</strong> and is not marketed to children. We do not knowingly collect personal data from children. If you are a parent or guardian and find that your child created a Fino account without your consent, email <a href="mailto:liokhgf@gmail.com">liokhgf@gmail.com</a> and we will delete the account and its data.</p>
 
 <h2 id="location">11. Where your data is stored</h2>
-<p>Fino's Firebase backend is configured in <strong><code>asia-east1</code> (Taiwan)</strong>, and the shared-ledger server-side notification functions are deployed in that same region, so your cloud data is primarily stored and processed in Taiwan.</p>
-<p><strong>One exception we should state plainly:</strong> the server-side function that cleans up transaction photos has <strong>no region specified</strong>, so it runs in Google's default region (the <strong>United States</strong>). When it runs it reads the fields of the transaction in question and deletes the matching photo file. That means your transaction photos and that transaction's fields <strong>are processed in a US data centre</strong> (solely for that clean-up, no other purpose). This is a known configuration issue we intend to fix.</p>
+<p>Fino's Firebase backend is configured in <strong><code>asia-east1</code> (Taiwan)</strong>, and every server-side function &mdash; shared-ledger notifications, transaction-photo clean-up and account deletion &mdash; is deployed in that same region, so your cloud data is primarily stored and processed in Taiwan.</p>
 <p>Beyond that, Firebase is a global service operated by Google, and in the course of delivering it (network transit, redundancy, notification delivery) <strong>Google may process data in facilities in other regions</strong>. That part is governed by Google's data processing terms and is outside our control. Likewise, iOS notifications travel through Apple's APNs, and on Android speech recognition may run on Google's servers when the system falls back to the cloud, in locations those companies determine.</p>
 
 <h2 id="security">12. Security</h2>
@@ -515,7 +515,7 @@
 <p>Questions about this policy: <a href="mailto:liokhgf@gmail.com">liokhgf@gmail.com</a>.</p>
 <footer>
   <p>Fino · <a href="index.html">Home</a> · <a href="mailto:liokhgf@gmail.com">liokhgf@gmail.com</a> · <a href="data-deletion.html">Account & data deletion</a> &middot; <a href="support.html">Support</a></p>
-  <p>Last updated: 12 September 2026</p>
+  <p>Last updated: 16 September 2026</p>
 </footer>
 
 </div>

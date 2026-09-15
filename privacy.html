@@ -229,7 +229,7 @@
 </nav>
 <p class="peer"><a href="data-deletion.html">帳號與資料刪除 →</a></p>
 <h1>Fino 隱私政策</h1>
-<p class="meta">最後更新：2026 年 9 月 12 日</p>
+<p class="meta">最後更新：2026 年 9 月 16 日</p>
 
 <div class="summary">
   <p><strong>一句話總結：</strong>Fino 的 AI 收據辨識<strong>完全在你的裝置上執行</strong>，收據原始圖片<strong>不會上傳</strong>到任何伺服器；Fino <strong>沒有任何廣告 SDK、沒有分析或崩潰追蹤 SDK、不販售你的資料</strong>。只有在你登入之後，你的記帳資料才會同步到你自己的雲端空間，方便你在多台裝置間使用。</p>
@@ -481,6 +481,7 @@
 
 <h2 id="retention">9. 資料保留與刪除</h2>
 <p>你登入後同步的資料會一直保留在你的雲端空間，直到你要求刪除。</p>
+<p><strong>交易照片的刪除時機：</strong>你刪除一筆交易、或在編輯交易時移除照片，這個動作會在下次同步時傳到雲端；之後雲端上的照片檔由每天執行一次的清理作業，在<strong>約 8 天內</strong>刪除，不是當下立刻消失。同一張照片如果附加在多筆交易上（例如同一張收據辨識出的多筆明細），要等這些交易都刪除或都移除照片後才會刪。<strong>刪除帳號則不同，照片會立即刪除</strong>（見下方）。</p>
 <div class="note">
   <p><strong>你可以隨時在 App 內刪除帳號：</strong>「設定」分頁最下方的<strong>「刪除帳號」</strong>。</p>
   <p>流程會請你先處置你管理的共享帳本（指定接手人或連同刪除）、確認後果並輸入確認字串，再用同一個 Google／Apple 帳號重新登入以確認身分。確認後刪除立即執行，<strong>不需要等待人工處理</strong>：你的 Firebase Authentication 帳號、雲端空間中的所有個人資料（含推播 token、共享帳本清單與個人分類標記）、Cloud Storage 上的交易照片，以及這台裝置上的本機資料都會一併清除。</p>
@@ -497,8 +498,7 @@
 <p>Fino 是給一般成年使用者的記帳工具，<strong>不針對 13 歲以下兒童設計</strong>，也不會刻意向兒童行銷。我們不會主動蒐集兒童的個人資料。如果你是家長或監護人，發現孩子在未經你同意的情況下建立了 Fino 帳號，請寄信到 <a href="mailto:liokhgf@gmail.com">liokhgf@gmail.com</a>，我們會刪除該帳號與相關資料。</p>
 
 <h2 id="location">11. 資料存放地點</h2>
-<p>Fino 的 Firebase 後端設定在 <strong><code>asia-east1</code>（台灣）</strong>，共享帳本的伺服器端推播函式也部署在同一區域。也就是說，你的雲端資料主要存放與處理於台灣。</p>
-<p><strong>一個要誠實講的例外：</strong>負責清理交易照片的那個伺服器端函式<strong>沒有指定區域</strong>，因此會在 Google 的預設區域（<strong>美國</strong>）執行。它在執行時會讀到該筆交易的欄位、並刪掉對應的照片檔。也就是說，你的交易照片與該筆交易的欄位<strong>會在美國的機房被處理</strong>（僅用於刪除對帳，不用於其他用途）。這是我們已知、待修正的設定。</p>
+<p>Fino 的 Firebase 後端設定在 <strong><code>asia-east1</code>（台灣）</strong>，所有伺服器端函式——包括共享帳本推播、交易照片清理與帳號刪除——也都部署在同一區域。也就是說，你的雲端資料主要存放與處理於台灣。</p>
 <p>此外 Firebase 是 Google 營運的全球性服務，Google 在提供服務的過程中（例如網路傳輸、備援、推播派送）<strong>可能在其他地區的機房處理資料</strong>，這部分適用 Google 的資料處理政策，不由我們控制。同樣地，iOS 推播經由 Apple 的 APNs，Android 的語音辨識在改用雲端時會經由 Google 的伺服器，其地點由該公司決定。</p>
 
 <h2 id="security">12. 安全措施</h2>
@@ -515,7 +515,7 @@
 <p>對本政策有任何疑問，請寄信到 <a href="mailto:liokhgf@gmail.com">liokhgf@gmail.com</a>。</p>
 <footer>
   <p>Fino · <a href="index.html">首頁</a> · <a href="mailto:liokhgf@gmail.com">liokhgf@gmail.com</a> · <a href="data-deletion.html">帳號與資料刪除</a> ・ <a href="support.html">支援</a></p>
-  <p>最後更新：2026 年 9 月 12 日</p>
+  <p>最後更新：2026 年 9 月 16 日</p>
 </footer>
 
 </div>
