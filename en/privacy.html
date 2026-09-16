@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Fino Privacy Policy</title>
-<meta name="description" content="Privacy policy for the Fino personal finance app: on-device AI receipt recognition, receipt images never uploaded, no ad or tracking SDKs.">
+<meta name="description" content="Privacy policy for the Fino personal finance app: on-device AI receipt recognition, receipt images not uploaded unless you choose to save them, no ad or tracking SDKs.">
 <style>
   :root {
     --bg: #ffffff;
@@ -229,10 +229,10 @@
 </nav>
 <p class="peer"><a href="data-deletion.html">Account & Data Deletion →</a></p>
 <h1>Fino Privacy Policy</h1>
-<p class="meta">Last updated: 16 September 2026</p>
+<p class="meta">Last updated: 17 September 2026</p>
 
 <div class="summary">
-  <p><strong>The short version:</strong> Fino's AI receipt scanning runs <strong>entirely on your device</strong>, and receipt images are <strong>never uploaded</strong> to any server. Fino contains <strong>no advertising SDKs, no analytics SDKs, no crash-reporting SDKs, and we do not sell your data</strong>. Your bookkeeping data syncs to your own cloud space only after you sign in, so you can use it across devices.</p>
+  <p><strong>The short version:</strong> Fino's AI receipt scanning runs <strong>entirely on your device</strong>, and receipt images are <strong>not uploaded</strong> to any server <strong>unless you choose to save one</strong> on the confirmation screen. Fino contains <strong>no advertising SDKs, no analytics SDKs, no crash-reporting SDKs, and we do not sell your data</strong>. Your bookkeeping data syncs to your own cloud space only after you sign in, so you can use it across devices.</p>
 </div>
 
 <nav class="toc" aria-label="On this page">
@@ -277,8 +277,8 @@
     </tr>
     <tr>
       <td>Transaction records (all fields)</td>
-      <td>Amount, original currency, exchange rate, income/expense type, category, date, <strong>note text</strong>, account, travel-mode flag, source flag, plus the technical fields that tie records together (attached-photo ID, receipt/voice group ID, recurring-rule ID, line index, source ledger name, created and updated timestamps).<br><strong>About the note text:</strong> if you typed the entry by hand, the note is what you typed. If the entry came from AI receipt scanning or voice entry, <strong>the note is the recognised item name or the transcribed text</strong>. In other words: the receipt <strong>image</strong> and the <strong>audio</strong> are never uploaded, but the <strong>text</strong> you confirm and save does sync to the cloud with the transaction.</td>
-      <td>你的雲端空間（Firestore）</td>
+      <td>Amount, original currency, exchange rate, income/expense type, category, date, <strong>note text</strong>, account, travel-mode flag, source flag, plus the technical fields that tie records together (attached-photo ID, receipt/voice group ID, recurring-rule ID, line index, source ledger name, created and updated timestamps).<br><strong>About the note text:</strong> if you typed the entry by hand, the note is what you typed. If the entry came from AI receipt scanning or voice entry, <strong>the note is the recognised item name or the transcribed text</strong>. In other words: the <strong>audio</strong> is never uploaded, and neither is the receipt <strong>image</strong> unless you choose to save it, but the <strong>text</strong> you confirm and save does sync to the cloud with the transaction.</td>
+      <td>Your cloud space (Firestore)</td>
     </tr>
     <tr>
       <td>Settings and rules</td>
@@ -286,14 +286,14 @@
       <td>Your cloud space (Firestore)</td>
     </tr>
     <tr>
-      <td><strong>Photos you manually attach to a transaction</strong></td>
-      <td>Photos you deliberately attach while editing a transaction. They are compressed to WebP before upload (roughly 224KB each, 5MB max per photo). <strong>These photos are uploaded to the cloud</strong> so they are still there when you switch devices.</td>
-      <td>你的雲端空間（Cloud Storage）</td>
+      <td><strong>Photos you attach to a transaction</strong></td>
+      <td>Photos you deliberately attach while editing a transaction, and receipt photos you <strong>choose to save</strong> on the AI receipt confirmation screen (all the entries recognised from one receipt share that single photo; the cloud keeps one copy). They are compressed to WebP before upload (roughly 224KB each, 5MB max per photo). <strong>These photos are uploaded to the cloud</strong> so they are still there when you switch devices.</td>
+      <td>Your cloud space (Cloud Storage)</td>
     </tr>
     <tr>
       <td>Shared ledger content</td>
       <td>See the "Shared ledgers" section below. This only exists if you create or join a ledger yourself.</td>
-      <td>該共享帳本的雲端空間（Firestore）</td>
+      <td>That shared ledger's cloud space (Firestore)</td>
     </tr>
     <tr>
       <td>Your personal shared-ledger side data</td>
@@ -323,7 +323,7 @@
   <tbody>
     <tr>
       <td><strong>Original images from AI receipt scanning</strong></td>
-      <td><strong>On-device only; never uploaded.</strong> Receipts you photograph with the camera or pick from your photo library stay in the app's own scratch area on your device, for on-device recognition. The corresponding cloud-path field in the database is always null, and the local-path field is not populated either — there is no code path in Fino that sends an original receipt image to the cloud.</td>
+      <td><strong>On-device only by default; not uploaded.</strong> Receipts you photograph with the camera or pick from your photo library stay in the app's own scratch area on your device, for on-device recognition. <strong>The one exception is when you choose to save it:</strong> the confirmation screen shown after recognition has an &ldquo;Save receipt photo&rdquo; switch that is <strong>off by default</strong> and is off again every time you reach that screen. If you turn it on and save, the receipt is compressed to WebP and becomes a transaction photo shared by that batch of entries, uploaded with cloud sync once you are signed in (handled the same way as &ldquo;Photos you attach to a transaction&rdquo; above). If you leave it off, the original receipt image is only used for recognition — it is neither saved nor uploaded.</td>
     </tr>
     <tr>
       <td><strong>Receipt text recognition and AI inference</strong></td>
@@ -419,7 +419,7 @@
     <tr>
       <td>Cloud Storage</td>
       <td>Google</td>
-      <td>Photos you manually attach to transactions (WebP). <strong>Not</strong> the original images from AI receipt scanning.</td>
+      <td>Photos you attach to transactions (WebP), including receipt photos you choose to save on the AI receipt confirmation screen. <strong>Not</strong> the original images from AI receipt scanning that you did not choose to save.</td>
     </tr>
     <tr>
       <td>Cloud Functions</td>
@@ -506,7 +506,7 @@
   <li><strong>Firestore security rules:</strong> server-side rules control who can read and write each document. Personal data is readable and writable only by its owner; shared-ledger data only by members of that ledger. The one deliberate exception, readable by all signed-in users, is the invite-code lookup table (see "Shared ledgers").</li>
   <li><strong>Firebase App Check:</strong> uses Android Play Integrity and iOS App Attest to verify that requests come from the genuine Fino app, blocking forged clients from abusing the backend.</li>
   <li><strong>Encryption in transit:</strong> all connections between the app and our backend, and to third-party services, use HTTPS/TLS.</li>
-  <li><strong>Minimised uploads:</strong> anything that can be done on the device is not sent to the cloud. Keeping original receipt images and AI inference local is itself the strongest protection.</li>
+  <li><strong>Minimised uploads:</strong> anything that can be done on the device is not sent to the cloud. Keeping AI inference local, and uploading an original receipt image only when you choose to save it, is itself the strongest protection.</li>
 </ul>
 <p>To be honest about it: no system is perfectly secure. Fino is run by one independent developer. We use the standard security mechanisms the platforms provide and do our best, but we cannot guarantee that nothing will ever go wrong. If an incident affects the security of your data, we will explain it here and in the app.</p>
 
@@ -515,7 +515,7 @@
 <p>Questions about this policy: <a href="mailto:liokhgf@gmail.com">liokhgf@gmail.com</a>.</p>
 <footer>
   <p>Fino · <a href="index.html">Home</a> · <a href="mailto:liokhgf@gmail.com">liokhgf@gmail.com</a> · <a href="data-deletion.html">Account & data deletion</a> &middot; <a href="support.html">Support</a></p>
-  <p>Last updated: 16 September 2026</p>
+  <p>Last updated: 17 September 2026</p>
 </footer>
 
 </div>
