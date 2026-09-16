@@ -296,7 +296,7 @@
       <li>Settings such as your primary currency</li>
     </ul>
   </li>
-  <li><strong>Transaction photos in Cloud Storage</strong> — photos you attached to transactions, including receipt photos you chose to save on the AI receipt confirmation screen.</li>
+  <li><strong>Transaction photos in Cloud Storage</strong> — photos you attached to transactions, including receipt photos you chose to save on the AI receipt confirmation screen. Photos attached to shared-ledger entries, or still used by other members' entries, are not included (see &ldquo;Data that may be retained or cannot be fully deleted&rdquo; below).</li>
   <li><strong>Push notification (FCM) tokens</strong> — you will no longer receive Fino push notifications.</li>
   <li><strong>Your personal shared-ledger side data</strong> — the list of ledgers you belong to and the private personal categories and rate snapshots you assigned to shared line items.</li>
 </ul>
@@ -328,9 +328,9 @@
   </thead>
   <tbody>
     <tr>
-      <td>Shared-ledger content you shared with other members (entries, splits, item names, entry notes, repayment records)</td>
+      <td>Shared-ledger content you shared with other members (entries, splits, item names, entry notes, photos on entries, repayment records)</td>
       <td>These records also belong to the other members of the same ledger and form their joint accounting history; deleting them outright would break their settlement balances.</td>
-      <td>The entries <strong>stay</strong> in that ledger. We clear your <strong>display name and avatar from that ledger's member record</strong>, so other members will see <strong>“Deleted user”</strong> where your name used to be; entries, splits and repayments still carry your <strong>internal account identifier (uid)</strong>, because that is the field that determines whose money is whose &mdash; removing it would break the other members' balances outright. The <strong>item names and entry notes you typed are kept as-is</strong> (they are the ledger's content, which the other members still need to reconcile their accounts), so avoid putting personal information you would not want left behind into shared-ledger free-text fields.</td>
+      <td>The entries <strong>stay</strong> in that ledger. We clear your <strong>display name and avatar from that ledger's member record</strong>, so other members will see <strong>“Deleted user”</strong> where your name used to be; entries, splits and repayments still carry your <strong>internal account identifier (uid)</strong>, because that is the field that determines whose money is whose &mdash; removing it would break the other members' balances outright. The <strong>item names and entry notes you typed are kept as-is</strong> (they are the ledger's content, which the other members still need to reconcile their accounts), and <strong>photos you attached to shared entries are kept too</strong> and remain visible to other members, so avoid putting personal information you would not want left behind into shared-ledger free-text fields or photos.</td>
     </tr>
     <tr>
       <td>Shared-ledger activity history (including previous and new values of changes)</td>
@@ -373,8 +373,8 @@
       about 8 days</strong>; if the same photo is attached to several transactions, it is only deleted once all of
       them have been deleted or had the photo removed. (When you delete your account, photos are deleted
       immediately.)</li>
-  <li><strong>Shared ledgers</strong>: you can leave a ledger. Entries you already recorded stay in that
-      ledger (otherwise the other members&rsquo; settlements would no longer add up), but your display name
+  <li><strong>Shared ledgers</strong>: you can leave a ledger. Entries you already recorded (including photos on
+      them) stay in that ledger (otherwise the other members&rsquo; settlements would no longer add up), but your display name
       and avatar can be anonymised on request &mdash; just email us.</li>
   <li><strong>Anything else</strong>: if what you want removed isn&rsquo;t covered above, or you would rather
       not do it yourself, email <a href="mailto:liokhgf@gmail.com">liokhgf@gmail.com</a> from the address you
