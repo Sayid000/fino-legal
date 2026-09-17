@@ -229,7 +229,7 @@
 </nav>
 <p class="peer"><a href="data-deletion.html">帳號與資料刪除 →</a></p>
 <h1>Fino 隱私政策</h1>
-<p class="meta">最後更新：2026 年 9 月 17 日</p>
+<p class="meta">最後更新：2026 年 9 月 18 日</p>
 
 <div class="summary">
   <p><strong>一句話總結：</strong>Fino 的 AI 收據辨識<strong>完全在你的裝置上執行</strong>，收據原始圖片<strong>除非你在確認頁選擇儲存</strong>，否則<strong>不會上傳</strong>到任何伺服器；Fino <strong>沒有任何廣告 SDK、沒有分析或崩潰追蹤 SDK、不販售你的資料</strong>。只有在你登入之後，你的記帳資料才會同步到你自己的雲端空間，方便你在多台裝置間使用。</p>
@@ -262,7 +262,7 @@
 <p>下面分成兩類：<strong>會離開你裝置的</strong>，以及<strong>只留在你裝置上的</strong>。這是完整清單，沒有「其他」這一項。</p>
 
 <h3>一、會離開裝置的資料（記帳資料只在你登入後才同步）</h3>
-<p>Fino 的雲端後端是 Google 的 Firebase。<strong>如果你不登入，你的記帳資料完全不會有任何雲端同步。</strong>但即使你不登入，App 仍會為了四件事連上網路：下載裝置內 AI 模型（<code>huggingface.co</code>）、下載翻譯語言包（Android，由 Google 提供）、查詢匯率（<code>tw.rter.info</code>）、以及裝置完整性驗證（Firebase App Check）。這四件事都不會傳送你的記帳內容。</p>
+<p>Fino 的雲端後端是 Google 的 Firebase。<strong>如果你不登入，你的記帳資料完全不會有任何雲端同步。</strong>但即使你不登入，App 仍會為了六件事連上網路：下載裝置內 AI 模型（<code>huggingface.co</code>）、下載翻譯語言包（Android，由 Google 提供）、查詢匯率（<code>tw.rter.info</code>）、裝置完整性驗證（Firebase App Check）、在 App 啟動時替這台裝置註冊推播（Firebase Cloud Messaging 與 Firebase Installations），以及 Google 的 SDK 自動回報的技術資訊（見下表「裝置與 App 的技術資訊」）。這六件事都不會傳送你的記帳內容。</p>
 
 <div class="tablescroll">
 <table>
@@ -302,13 +302,18 @@
     </tr>
     <tr>
       <td>推播 token</td>
-      <td>Firebase Cloud Messaging（FCM）配發給你這台裝置的推播識別碼。你登入後會把它寫進你自己的雲端空間，伺服器才知道要推給哪台裝置。推播訊息內容可能包含成員名字、金額、帳本名稱。</td>
+      <td>Firebase Cloud Messaging（FCM）配發給你這台裝置的推播識別碼。<strong>App 一啟動就會向 Google 註冊並取得它</strong>（同時產生一組 Firebase 安裝識別碼；iPhone 上還會連結 Apple 配發的推播識別碼），這一步不以你登入為前提；你登入後才會把它寫進你自己的雲端空間，伺服器才知道要推給哪台裝置。推播訊息內容可能包含成員名字、金額、帳本名稱。</td>
       <td>你的雲端空間；Google FCM；iOS 再經 Apple APNs 送達</td>
     </tr>
     <tr>
       <td>裝置完整性訊號</td>
       <td>Android 的 Play Integrity 與 iOS 的 App Attest 訊號（透過 Firebase App Check）。這是平台產生的技術性證明，不包含你的個人資料，用來阻止他人偽造 App 濫用我們的後端。<strong>這一項在 App 啟動時就會啟用，不以你登入為前提。</strong></td>
       <td>Google / Apple 平台服務與 Firebase App Check</td>
+    </tr>
+    <tr>
+      <td>裝置與 App 的技術資訊</td>
+      <td>Fino 使用的 Google SDK 運作時會自動把一些技術資訊回傳給 Google，<strong>不以你登入為前提</strong>：<br>・<strong>Firebase</strong>（推播、App Check、登入與雲端同步所用的 SDK）連線時會附帶裝置型號、作業系統版本、App 識別碼與版本，以及使用的 Firebase SDK 版本（Android 另含 App 的安裝來源，例如 Play 商店）；推播註冊時會送出 Firebase 安裝識別碼，iPhone 上還包含裝置的語言與時區。<br>・<strong>Google ML Kit</strong>（僅 Android，用於收據文字辨識、QR 碼掃描、品項名稱翻譯與語言辨識）在你使用這些功能時，會回報裝置製造商、型號與系統版本、可用的機器學習硬體加速器、App 套件名稱與版本、每次安裝的識別碼（Google 表示這不是用來識別你本人或你的手機）、效能指標（例如處理耗時）、設定參數（例如圖片格式與解析度）、輸入與輸出的大小、功能版本、事件類型與錯誤代碼。翻譯另外會回報來源與目標語言代碼，並透過 Firebase 的遠端設定服務送出國家與語言代碼、時區與系統版本；語言辨識會回報偵測到的語言。<br>Google 將這些資料用於其服務的診斷與使用統計。<strong>它們不包含收據圖片、辨識出的文字或任何記帳內容。</strong></td>
+      <td>Google（Firebase、ML Kit）</td>
     </tr>
   </tbody>
 </table>
@@ -327,7 +332,7 @@
     </tr>
     <tr>
       <td><strong>收據的文字辨識與 AI 推論</strong></td>
-      <td><strong>完全在你的裝置上執行。</strong>Android 使用 ML Kit 做文字辨識（OCR）＋裝置內的 Gemma 模型做理解；iOS 使用 Apple Vision 做文字辨識＋Apple Foundation Models 或裝置內的 MLX Qwen3-VL 模型做理解。整個過程沒有任何雲端 AI 呼叫——我們的程式碼裡完全沒有 Gemini、Vertex AI、OpenAI 或 Cloud Vision 的呼叫。</td>
+      <td><strong>完全在你的裝置上執行。</strong>Android 使用 ML Kit 做文字辨識（OCR）＋裝置內的 Gemma 模型做理解；iOS 使用 Apple Vision 做文字辨識＋Apple Foundation Models、裝置內的 Gemma 模型或裝置內的 MLX Qwen3-VL 模型做理解（依你在設定中選擇的引擎）。整個過程沒有任何雲端 AI 呼叫——我們的程式碼裡完全沒有 Gemini、Vertex AI、OpenAI 或 Cloud Vision 的呼叫。</td>
     </tr>
     <tr>
       <td><strong>品項名稱的翻譯</strong></td>
@@ -346,7 +351,9 @@
 </div>
 
 <div class="note">
-  <p><strong>關於作業系統的備份，這裡要誠實說明：</strong>上面這些檔案存在 App 自己的沙盒裡，Fino 不會把它們傳到 Fino 的後端。但<strong>如果你開啟了作業系統的備份功能</strong>（Android 的自動備份、iPhone 的 iCloud 備份），作業系統可能把 App 沙盒內的資料庫與圖檔一併備份到<strong>你自己的</strong> Google 或 Apple 帳號。那是平台功能、由你的裝置設定決定，備份內容<strong>我們讀不到、也拿不到</strong>；你可以在系統設定中關閉對 Fino 的備份。</p>
+  <p><strong>關於作業系統的備份，這裡要誠實說明：</strong>上面這些檔案存在 App 自己的沙盒裡，Fino 不會把它們傳到 Fino 的後端。兩個平台的情況不同：</p>
+  <p><strong>Android：</strong>Fino 關閉了系統的備份功能，App 的資料庫與圖檔<strong>不會</strong>被 Android 的自動備份存到你的 Google 帳號。但依 Android 官方說明，在部分品牌的手機上，換機時的「裝置對裝置傳輸」仍可能把 App 資料直接搬到你的新手機。</p>
+  <p><strong>iPhone：</strong><strong>如果你開啟了 iCloud 備份</strong>，系統可能把 App 沙盒內的資料庫與圖檔一併備份到<strong>你自己的</strong> Apple 帳號（已下載的 AI 模型檔已被排除在備份之外）。那是平台功能、由你的裝置設定決定，備份內容<strong>我們讀不到、也拿不到</strong>；你可以在系統設定中關閉對 Fino 的 iCloud 備份。</p>
 </div>
 
 <h2 id="why">3. 我們為什麼需要這些資料</h2>
@@ -357,6 +364,7 @@
   <li><strong>共享帳本內容</strong>：讓帳本成員看到同一份帳並正確攤帳。</li>
   <li><strong>推播 token</strong>：在共享帳本有新記錄或還款時通知你。沒有推播 token 就無法送通知。</li>
   <li><strong>裝置完整性訊號</strong>：防止有人用改造過的客戶端濫用或攻擊我們的後端。這是安全用途，不用於識別你。</li>
+  <li><strong>裝置與 App 的技術資訊</strong>：這不是 Fino 自己要蒐集的，而是我們用來做推播、登入、同步與裝置內辨識的 Firebase 與 Google ML Kit SDK 自動回傳給 Google 的，Google 將它用於其服務的診斷與使用統計。</li>
 </ul>
 <p>我們不會把上述任何資料用在原本目的以外的地方。</p>
 
@@ -381,20 +389,23 @@
 
 <h2 id="permissions">5. 裝置權限</h2>
 <ul>
-  <li><strong>相機</strong>（Android <code>CAMERA</code> / iOS Camera）：拍攝收據，用於裝置內的 AI 收據辨識。</li>
+  <li><strong>相機</strong>（Android <code>CAMERA</code> / iOS Camera）：拍攝收據，用於裝置內的 AI 收據辨識；拍攝要附加到交易或共享帳本帳目的照片；掃描共享帳本的邀請 QR 碼以加入帳本。</li>
   <li><strong>麥克風</strong>（Android <code>RECORD_AUDIO</code> / iOS Microphone）：語音記帳，讓你講一句話就記下一筆帳。詳見下一節。</li>
-  <li><strong>照片圖庫</strong>（iOS PhotoLibrary）：從相簿選取收據圖片，或選取要附加到交易的照片。</li>
-  <li><strong>通知</strong>（Android <code>POST_NOTIFICATIONS</code>）：共享帳本的新記錄與還款提醒。</li>
+  <li><strong>照片圖庫</strong>（iOS PhotoLibrary）：從相簿選取收據圖片，或選取要附加到交易或共享帳本帳目的照片。</li>
+  <li><strong>通知</strong>（Android <code>POST_NOTIFICATIONS</code> / iOS 通知）：共享帳本的新記錄與還款提醒、定期記帳的提醒，以及 AI 模型下載完成或失敗的通知。</li>
   <li><strong>語音辨識</strong>（iOS SpeechRecognition）：把你的語音轉成文字。</li>
   <li><strong>網路</strong>（Android <code>INTERNET</code>）：雲端同步、匯率查詢、AI 模型下載。</li>
+  <li><strong>網路狀態</strong>（Android <code>ACCESS_NETWORK_STATE</code>）：下載翻譯語言包前判斷你是否正在使用行動網路，以便先提醒你流量。這是一般權限，不會跳出詢問。</li>
   <li><strong>前景服務</strong>（Android <code>FOREGROUND_SERVICE</code> / <code>FOREGROUND_SERVICE_DATA_SYNC</code>）：讓 AI 模型檔案能在背景穩定下載完成，不會因為你切到別的 App 而中斷。</li>
 </ul>
-<p>以上權限都只在對應功能被你使用時才會被請求。你可以拒絕，只是相關功能會無法使用。</p>
+<p>此外，Android 版內含的 Firebase 推播與背景工作函式庫會自動加入幾項一般權限（例如 <code>WAKE_LOCK</code>、<code>RECEIVE_BOOT_COMPLETED</code> 與接收推播用的權限），讓推播能送達、背景下載在需要時繼續執行；這些權限不會跳出詢問，也不讓 Fino 讀取你的個人資料。</p>
+<p><strong>請求時機：</strong>通知權限會在你<strong>登入時</strong>請求（定期記帳提醒與共享帳本推播都需要它；iPhone 上第一次下載 AI 模型時也可能詢問）。其他需要你同意的權限，都只在你第一次使用對應功能時才會請求。你可以拒絕，只是相關功能（或通知）會無法使用。</p>
 
 <h2 id="voice">6. 語音記帳（請務必讀這段）</h2>
 <div class="note">
   <p><strong>iOS 與 Android 的保證強度不一樣，請依你使用的平台閱讀。</strong></p>
   <p><strong>iOS：音訊完全不離開你的裝置。</strong>Fino 使用 <code>SFSpeechRecognizer</code> 並強制開啟裝置端辨識。開始聆聽前我們也會先確認該語言支援裝置端辨識，若不支援就直接顯示「無法使用」，<strong>不會</strong>改用 Apple 的伺服器。</p>
+  <p><strong>iOS 的 Siri 記帳是另一條路：</strong>如果你是對 Siri 說話來記帳，收音與語音轉文字是由 <strong>Siri</strong> 處理，不經過上面那套 Fino 的語音辨識，因此上面的保證不適用；這部分適用 Apple 的隱私政策（請另見 Apple 官方網站的隱私權政策，以及 iPhone 設定中關於 Siri 的說明）。Fino 只會收到 Siri 轉出的文字。</p>
   <p><strong>Android：優先在裝置上辨識，但無法保證。</strong>Fino 使用系統語音辨識服務並要求偏好離線辨識。但這在 Android 上只是「偏好」而非強制——當你的裝置沒有該語言的本機模型時，<strong>系統仍可能改用 Google 的伺服器辨識，且不會通知我們</strong>。因此在 Android 上，<strong>你的錄音內容有可能被送到 Google 的語音辨識伺服器處理</strong>。</p>
   <p>音訊若確實離開裝置，該處理適用<strong>該平台自己的隱私政策</strong>：請另見 Google 的隱私政策（Google 官方網站的隱私權政策，以及 Android 系統設定中關於語音與語音輸入的說明）。我們刻意不在此處放外部網址，以免連結日後失效。</p>
   <p><strong>Fino 自己的立場：</strong>我們<strong>不儲存</strong>你的音訊、<strong>不</strong>把音訊送到 Fino 的後端、<strong>不</strong>保留錄音檔。我們只使用辨識出來的文字來產生一筆記帳。如果你在 Android 上不希望音訊有任何可能離開裝置，請不要使用語音記帳功能——手動輸入與收據掃描完全不涉及語音。</p>
@@ -430,12 +441,12 @@
     <tr>
       <td>Firebase App Check</td>
       <td>Google（搭配 Play Integrity / Apple App Attest）</td>
-      <td>裝置完整性證明，不含個人資料。</td>
+      <td>裝置完整性證明，不含個人資料；連線時也會附帶 Firebase SDK 共通的裝置與 App 技術資訊（見第 2 節「裝置與 App 的技術資訊」）。</td>
     </tr>
     <tr>
-      <td>Firebase Cloud Messaging（FCM）</td>
+      <td>Firebase Cloud Messaging（FCM）與 Firebase Installations</td>
       <td>Google</td>
-      <td>你的推播 token 與推播訊息內容（可能含成員名字、金額、帳本名稱）。</td>
+      <td>App 啟動時註冊推播用的 Firebase 安裝識別碼與推播 token、裝置與 App 的技術資訊（iPhone 上含語言與時區，見第 2 節），以及推播訊息內容（可能含成員名字、金額、帳本名稱）。</td>
     </tr>
     <tr>
       <td>Apple Push Notification service（APNs）</td>
@@ -448,9 +459,9 @@
       <td>你選擇用哪一家登入，該公司就會知道你登入了 Fino，並提供給我們你的 email 與（如有）頭像與顯示名稱。</td>
     </tr>
     <tr>
-      <td>Google Play 服務（ML Kit 文字辨識與翻譯模型）</td>
+      <td>Google ML Kit（文字辨識、QR 碼掃描、翻譯、語言辨識）</td>
       <td>Google</td>
-      <td>僅 Android：為了在<strong>裝置內</strong>做文字辨識，中文／日文／韓文 OCR 模型會由 Google Play 服務下載到你的裝置；品項名稱翻譯所需的語言包同樣由 Google 下載。<strong>不傳送收據圖片，也不傳送任何記帳資料</strong>。依 Google 的官方揭露，ML Kit 翻譯會回報<strong>來源與目標語言代碼</strong>、語言辨識會回報<strong>偵測到的語言</strong>，用於診斷與使用統計——送出的是語言代碼，<strong>不是你的品項文字</strong>。</td>
+      <td>僅 Android：文字辨識（含中文／日文／韓文）、QR 碼掃描與語言辨識的模型<strong>直接打包在 App 裡</strong>，在<strong>裝置內</strong>執行；品項名稱翻譯所需的語言包則在你同意後由 Google 的伺服器下載。<strong>不傳送收據圖片，也不傳送任何記帳資料</strong>。依 Google 的官方揭露，ML Kit 的每一項功能都會回報裝置與 App 的技術資訊、每次安裝的識別碼、效能指標與錯誤代碼，翻譯另會回報<strong>來源與目標語言代碼</strong>、語言辨識回報<strong>偵測到的語言</strong>，用於診斷與使用統計（完整項目見第 2 節「裝置與 App 的技術資訊」）——送出的是這些技術資訊與語言代碼，<strong>不是你的收據圖片或品項文字</strong>。</td>
     </tr>
     <tr>
       <td><code>huggingface.co</code></td>
@@ -466,14 +477,14 @@
 </table>
 </div>
 
-<p><strong>對這些第三方的要求：</strong>我們只會把資料交給能提供與本政策<strong>同等或更高保護水準</strong>的第三方服務。上表中的每一項服務都受其自身的隱私政策與資料處理條款約束，我們僅在提供 Fino 功能的必要範圍內使用它們，<strong>不會</strong>為了廣告、分析或使用者剖繪而把你的資料交給任何第三方。我們也沒有嵌入任何廣告聯播網、分析或追蹤用的第三方 SDK。</p>
+<p><strong>對這些第三方的要求：</strong>我們只會把資料交給能提供與本政策<strong>同等或更高保護水準</strong>的第三方服務。上表中的每一項服務都受其自身的隱私政策與資料處理條款約束，我們僅在提供 Fino 功能的必要範圍內使用它們，<strong>不會</strong>為了廣告、分析或使用者剖繪而把你的資料交給任何第三方。我們也沒有嵌入任何廣告聯播網、分析或追蹤用的第三方 SDK。（上表中 Firebase 與 ML Kit 的 SDK 會自行回報技術資訊給 Google，範圍見第 2 節「裝置與 App 的技術資訊」。）</p>
 
 <h2 id="we-dont">8. 我們不做的事</h2>
 <ul>
   <li><strong>不販售你的資料</strong>，也不與任何人交換或出租你的資料。</li>
   <li><strong>不把你的資料用於廣告</strong>。App 內沒有廣告。</li>
   <li><strong>沒有廣告 SDK</strong>、<strong>沒有第三方追蹤 SDK</strong>。</li>
-  <li><strong>沒有使用分析工具，也沒有崩潰回報工具</strong>——沒有 Firebase Analytics、沒有 Crashlytics。我們看不到你怎麼操作 App、也收不到你的崩潰紀錄。</li>
+  <li><strong>沒有使用分析工具，也沒有崩潰回報工具</strong>——沒有 Firebase Analytics、沒有 Crashlytics。我們看不到你怎麼操作 App、也收不到你的崩潰紀錄。（Firebase 與 Google ML Kit 的 SDK 會自行把裝置與 App 的技術資訊回報給 Google，供 Google 做其服務的診斷與使用統計，見第 2 節；那不是我們加裝的分析工具，也不包含你的記帳內容。）</li>
   <li><strong>不使用廣告識別碼</strong>（Android 廣告 ID / iOS IDFA）。</li>
   <li><strong>不對你做剖繪</strong>，不從你的消費紀錄推導任何用於行銷或評分的畫像。</li>
   <li><strong>AI 推論不送雲端</strong>：收據的文字辨識與內容理解完全在你的裝置上完成。</li>
@@ -493,14 +504,14 @@
 <p><strong>清除本機資料不等於刪除雲端資料</strong>——只要帳號還在，用同一個帳號重新登入，雲端的資料就會同步回來。要真正刪除雲端資料，請用上面的「刪除帳號」。</p>
 <p><strong>刪除帳號後，共享帳本裡的帳目會保留，但你會被匿名化</strong>：你的顯示名稱與頭像會被清除，其他成員之後看到的是「已刪除的使用者」。帳目、攤帳與還款仍以你的內部帳號代號標記（那是「這筆錢算誰的」所必需，移除會讓其他人的帳直接壞掉），你自己輸入的<strong>品項名稱與帳目備註也會原樣保留</strong>——那是帳本內容本身。<strong>你附加在共享帳目上的照片也會保留</strong>，其他成員仍看得到。請避免在共享帳本的自由文字欄位與照片裡放入你不希望留下的個人資訊。</p>
 <p>共享帳本的<strong>操作留痕是 append-only：伺服器端規則禁止任何修改與刪除</strong>。你退出或帳號被刪除後，帳本中既有的留痕紀錄仍會原樣留在該帳本裡（其他成員仍需要那份紀錄來核對帳目）。留痕只記錄操作者的內部帳號代號與變更前後的值，不含你的顯示名稱或 email。這一點在你加入帳本前就請一併考量。</p>
-<p>此外，第三方服務各有自己的保留機制：Google（Firebase / FCM、Android 雲端語音辨識）與 Apple（APNs）依其自身政策保留與刪除資料，我們無法代為刪除他們那一側的紀錄。</p>
+<p>此外，第三方服務各有自己的保留機制：Google（Firebase / FCM、ML Kit、Android 雲端語音辨識）與 Apple（APNs、Siri）依其自身政策保留與刪除資料，我們無法代為刪除他們那一側的紀錄。</p>
 
 <h2 id="children">10. 兒童</h2>
 <p>Fino 是給一般成年使用者的記帳工具，<strong>不針對 13 歲以下兒童設計</strong>，也不會刻意向兒童行銷。我們不會主動蒐集兒童的個人資料。如果你是家長或監護人，發現孩子在未經你同意的情況下建立了 Fino 帳號，請寄信到 <a href="mailto:liokhgf@gmail.com">liokhgf@gmail.com</a>，我們會刪除該帳號與相關資料。</p>
 
 <h2 id="location">11. 資料存放地點</h2>
 <p>Fino 的 Firebase 後端設定在 <strong><code>asia-east1</code>（台灣）</strong>，所有伺服器端函式——包括共享帳本推播、交易照片清理與帳號刪除——也都部署在同一區域。也就是說，你的雲端資料主要存放與處理於台灣。</p>
-<p>此外 Firebase 是 Google 營運的全球性服務，Google 在提供服務的過程中（例如網路傳輸、備援、推播派送）<strong>可能在其他地區的機房處理資料</strong>，這部分適用 Google 的資料處理政策，不由我們控制。同樣地，iOS 推播經由 Apple 的 APNs，Android 的語音辨識在改用雲端時會經由 Google 的伺服器，其地點由該公司決定。</p>
+<p>此外 Firebase 是 Google 營運的全球性服務，Google 在提供服務的過程中（例如網路傳輸、備援、推播派送）<strong>可能在其他地區的機房處理資料</strong>，這部分適用 Google 的資料處理政策，不由我們控制。同樣地，iOS 推播經由 Apple 的 APNs、Siri 記帳的語音由 Apple 處理，Android 的語音辨識在改用雲端時會經由 Google 的伺服器，ML Kit 回報的技術資訊由 Google 接收，其地點由該公司決定。</p>
 
 <h2 id="security">12. 安全措施</h2>
 <ul>
@@ -516,7 +527,7 @@
 <p>對本政策有任何疑問，請寄信到 <a href="mailto:liokhgf@gmail.com">liokhgf@gmail.com</a>。</p>
 <footer>
   <p>Fino · <a href="index.html">首頁</a> · <a href="mailto:liokhgf@gmail.com">liokhgf@gmail.com</a> · <a href="data-deletion.html">帳號與資料刪除</a> ・ <a href="support.html">支援</a></p>
-  <p>最後更新：2026 年 9 月 17 日</p>
+  <p>最後更新：2026 年 9 月 18 日</p>
 </footer>
 
 </div>
