@@ -229,10 +229,10 @@
 </nav>
 <p class="peer"><a href="data-deletion.html">Account & Data Deletion →</a></p>
 <h1>Fino Privacy Policy</h1>
-<p class="meta">Last updated: 18 September 2026</p>
+<p class="meta">Last updated: 28 September 2026</p>
 
 <div class="summary">
-  <p><strong>The short version:</strong> Fino's AI receipt scanning runs <strong>entirely on your device</strong>, and receipt images are <strong>not uploaded</strong> to any server <strong>unless you choose to save one</strong> on the confirmation screen. Fino contains <strong>no advertising SDKs, no analytics SDKs, no crash-reporting SDKs, and we do not sell your data</strong>. Your bookkeeping data syncs to your own cloud space only after you sign in, so you can use it across devices.</p>
+  <p><strong>The short version:</strong> Fino's AI receipt scanning runs <strong>entirely on your device</strong>, and receipt images are <strong>not uploaded</strong> to any server <strong>unless you choose to save one</strong> on the confirmation screen. Fino contains <strong>no advertising SDKs and no analytics SDKs, and we do not sell your data</strong>; when the app crashes it <strong>reports the crash automatically</strong> through Google's Firebase Crashlytics, which you can turn off in Settings. Your bookkeeping data syncs to your own cloud space only after you sign in, so you can use it across devices. Separately, only when you <strong>choose to send a problem report</strong> does the app send diagnostic information, its activity log and crash records to the developer along with it.</p>
 </div>
 
 <nav class="toc" aria-label="On this page">
@@ -256,13 +256,13 @@
 
 <h2 id="who">1. Who we are</h2>
 <p>Fino is a personal bookkeeping app for Android (package <code>com.fino.android</code>) and iOS (bundle ID <code>com.fino.iosApp</code>). Fino is built and operated by a single independent developer, not a company.</p>
-<p>For any privacy question, a data deletion request, or to ask what data we hold about you, email <a href="mailto:liokhgf@gmail.com">liokhgf@gmail.com</a>. This is the only contact channel, and the developer reads it personally.</p>
+<p>For any privacy question, a data deletion request, or to ask what data we hold about you, email <a href="mailto:liokhgf@gmail.com">liokhgf@gmail.com</a>. Please use this address for all privacy and data requests; the developer reads it personally. General questions and feature suggestions can also be sent from inside the app via <strong>Feedback &amp; suggestions</strong> in the Settings tab (see &ldquo;Problem reports&rdquo; in section 2).</p>
 
 <h2 id="collect">2. What data we collect</h2>
 <p>Below is the split between <strong>what leaves your device</strong> and <strong>what stays on your device</strong>. This is the complete list; there is no "and other data" catch-all.</p>
 
 <h3>1. Data that leaves your device (bookkeeping data syncs only after you sign in)</h3>
-<p>Fino's cloud backend is Google Firebase. <strong>If you never sign in, none of your bookkeeping data is ever synced.</strong> Even without signing in, however, the app still makes six kinds of network request: downloading on-device AI models (<code>huggingface.co</code>), downloading translation language packs (on Android, from Google), fetching exchange rates (<code>tw.rter.info</code>), device integrity verification (Firebase App Check), registering this device for push notifications when the app launches (Firebase Cloud Messaging and Firebase Installations), and the technical information Google's SDKs report automatically (see &ldquo;Device and app technical information&rdquo; in the table below). None of these send your bookkeeping content.</p>
+<p>Fino's cloud backend is Google Firebase. <strong>If you never sign in, none of your bookkeeping data is ever synced.</strong> Even without signing in, however, the app still makes seven kinds of network request: downloading on-device AI models (<code>huggingface.co</code>), downloading translation language packs (on Android, from Google), fetching exchange rates (<code>tw.rter.info</code>), device integrity verification (Firebase App Check), registering this device for push notifications when the app launches (Firebase Cloud Messaging and Firebase Installations), automatic crash reports after the app crashes (Firebase Crashlytics, which you can turn off in Settings; see &ldquo;Crash reports&rdquo; in the table below), and the technical information Google's SDKs report automatically (see &ldquo;Device and app technical information&rdquo; in the table below). None of these seven send your bookkeeping content. <strong>The only case in which content you wrote is uploaded without signing in is when you choose to send a problem report</strong> (see the three &ldquo;Problem reports&rdquo; rows in the table below).</p>
 
 <div class="tablescroll">
 <table>
@@ -302,13 +302,33 @@
     </tr>
     <tr>
       <td>Push notification token</td>
-      <td>The Firebase Cloud Messaging (FCM) token issued to this device. <strong>The app registers with Google and obtains it as soon as it launches</strong> (which also creates a Firebase installation ID, and on iPhone links the push identifier Apple issues); this step does not require you to sign in. Only once you sign in is the token written to your own cloud space, so the server knows which device to notify. Notification content may include a member's name, an amount, and a ledger name.</td>
-      <td>Your cloud space; Google FCM; on iOS, delivered onward via Apple APNs</td>
+      <td>The Firebase Cloud Messaging (FCM) token issued to this device. <strong>The app registers with Google and obtains it as soon as it launches</strong> (which also creates a Firebase installation ID, and on iPhone links the push identifier Apple issues); this step does not require you to sign in. Only once you sign in is the token written to your own cloud space, so the server knows which device to notify. <strong>When you send a problem report, the token is also stored on that report (whether or not you are signed in)</strong> so the developer's reply can notify you. Notification content may include a member's name, an amount, a ledger name, or the opening text of the developer's reply.</td>
+      <td>Your cloud space; the problem-report cloud space; Google FCM; on iOS, delivered onward via Apple APNs</td>
+    </tr>
+    <tr>
+      <td><strong>Problem reports (only when you choose to send one)</strong></td>
+      <td>What you send from <strong>Feedback &amp; suggestions</strong> in the Settings tab: the type (problem or suggestion), title, description, <strong>up to 3 screenshots</strong> (compressed to WebP before upload, 5MB max each), and the messages you and the developer exchange afterwards. The report also records the platform, app version, OS version, device model, language, whether you were signed in, and this device's push token (see &ldquo;Push notification token&rdquo; above).<br><strong>You do not need to sign in to send one.</strong> If you are not signed in, the report is identified only by a randomly generated report number that is kept on this phone alone &mdash; after you switch phones or uninstall the app, you can no longer find those reports in the app. If you later sign in on this phone, its reports are <strong>linked to your account automatically</strong> and you can see them on any device you sign in to.</td>
+      <td>The problem-report cloud space (Firestore; screenshots in Cloud Storage). <strong>The developer can read every report</strong>; other users cannot</td>
+    </tr>
+    <tr>
+      <td><strong>Diagnostic information attached to reports</strong></td>
+      <td>Each time you send a message, the app captures its current state and sends it along; before sending you can tap &ldquo;View details&rdquo; to see all of it. It contains:<br>&bull; <strong>App</strong>: version and build number, whether initial setup is complete, sign-in method (Google / Apple / not signed in), and, if you are signed in, <strong>your internal account identifier</strong><br>&bull; <strong>Device</strong>: platform, OS version, device model, memory size, free storage, screen size, display density and font scale, system language and region settings, time zone, whether dark mode is on, network type (Wi-Fi, mobile data, etc.) and whether the connection is metered, the permission status for camera / microphone / photos / notifications / speech recognition, and whether a push token has been obtained<br>&bull; <strong>App settings</strong>: theme, app language, primary currency, travel mode with its currency and exchange rate, the order and visibility of sections on the home and entry screens, calculator auto-open, budget chart and sort mode, the history screen's filter type (only whether a category filter is set &mdash; not which category, and never your search text), and how many tutorials you have seen<br>&bull; <strong>Record counts</strong>: how many transactions, categories, recurring rules, quick-add presets, receipt groups and shared ledgers you have, the number and total size of photos, and how many deletions are pending &mdash; <strong>counts only, never any entry content</strong><br>&bull; <strong>Sync status</strong>: time and result of the last sync, current state, error type and error message, number of conflicts<br>&bull; <strong>AI</strong>: the recognition engine and model you chose, whether each model is downloaded and its size, whether the device is supported, Apple Intelligence availability, whether inference runs on GPU or CPU, and the translation languages downloaded<br>&bull; <strong>Recently visited screens</strong>: the names and times of roughly the last 20 screens you opened (screen names only, never what was on them)</td>
+      <td>The problem-report cloud space (Firestore); <strong>readable by the developer</strong></td>
+    </tr>
+    <tr>
+      <td><strong>App activity log and crash records</strong></td>
+      <td>Fino keeps a log of what its own code does, plus crash records, on your phone (see &ldquo;Data that stays on your device&rdquo; below). <strong>They are compressed and uploaded only when you send a problem report</strong>: the first time, everything currently kept on the phone is attached; later messages in the same report attach only what was added since the last upload.<br><strong>Please note: the log may contain the item names and amounts parsed from receipt recognition</strong>, but not the full text recognised on the receipt, the store name, or the voice-entry transcript verbatim &mdash; those are reduced to a summary (such as character count, line count, elapsed time, and success/failure). The log does <strong>not</strong> contain your internal account identifier or the original file names of photos, but may contain technical details such as error messages.<br>Crash records are program errors that Fino catches itself (the error type and the call stack) &mdash; Fino's own record, separate from the automatic Crashlytics crash reports above: it is <strong>not affected by the &ldquo;Send crash reports&rdquo; switch</strong> and leaves the phone only when you send a problem report. Not every kind of crash can be captured, and only the most recent one is kept on the phone.<br><strong>Only the developer can read these two kinds of file</strong>; once sent, you cannot view them in the app either.</td>
+      <td>The problem-report cloud file storage (Cloud Storage), readable only by the developer</td>
     </tr>
     <tr>
       <td>Device integrity signals</td>
       <td>Android Play Integrity and iOS App Attest signals, via Firebase App Check. These are platform-generated technical attestations; they contain no personal data and exist to stop tampered clients from abusing our backend. <strong>This one is enabled at app launch and does not require you to sign in.</strong></td>
       <td>Google / Apple platform services and Firebase App Check</td>
+    </tr>
+    <tr>
+      <td><strong>Crash reports (Firebase Crashlytics)</strong></td>
+      <td><strong>On by default; does not require you to sign in.</strong> When the app crashes, Google's Firebase Crashlytics automatically records a crash report and uploads it the next time you open the app: the call stack and error message at the moment of the crash, the app's state at that time, device information (manufacturer, model, OS version), the app identifier and version, and the Crashlytics installation identifier and Firebase installation ID. The Firebase Sessions feature that Crashlytics depends on also records each session in which you use the app (a randomly generated session ID, when the app came to the foreground, network type, and app and device information) so crash rates can be calculated.<br><strong>Crash reports are not linked to your Fino account</strong>: we set no user ID and attach no custom logs or bookkeeping content.<br><strong>You can turn this off under &ldquo;Send crash reports&rdquo; in the Settings tab</strong>: uploads stop immediately and crash reports on the phone that have not yet been sent are deleted; reports already sent cannot be recalled with this switch (see section 9 for how long they are kept).</td>
+      <td>Google (Firebase Crashlytics); the developer can view them in the Firebase console</td>
     </tr>
     <tr>
       <td>Device and app technical information</td>
@@ -332,7 +352,7 @@
     </tr>
     <tr>
       <td><strong>Receipt text recognition and AI inference</strong></td>
-      <td><strong>Runs entirely on your device.</strong> On Android: ML Kit for text recognition (OCR) plus an on-device Gemma model for understanding. On iOS: Apple Vision for text recognition plus Apple Foundation Models, an on-device Gemma model, or an on-device MLX Qwen3-VL model (whichever engine you choose in Settings). No cloud AI is involved at any point — our codebase contains no calls to Gemini, Vertex AI, OpenAI, or Cloud Vision.</td>
+      <td><strong>Runs entirely on your device.</strong> On Android: ML Kit for text recognition (OCR) plus an on-device Gemma model for understanding. On iOS: Apple Vision for text recognition plus Apple Foundation Models, an on-device Gemma model, or an on-device MLX Qwen3-VL model (whichever engine you choose in Settings). No cloud AI is involved at any point — our codebase contains no calls to Gemini, Vertex AI, OpenAI, or Cloud Vision. The recognition process does not write the receipt's full text verbatim into the app activity log &mdash; what is recorded is a summary such as the parsed item names, amounts, and elapsed time (see below) &mdash; and it is uploaded to the developer with that log <strong>only if you choose to send a problem report</strong>.</td>
     </tr>
     <tr>
       <td><strong>Translation of item names</strong></td>
@@ -341,6 +361,14 @@
     <tr>
       <td>Local database</td>
       <td>An on-device Room database (5 personal tables plus 9 shared-ledger tables). This is what lets the app work offline.</td>
+    </tr>
+    <tr>
+      <td>App activity log, crash records and screen trail</td>
+      <td>Kept in the app's own storage on your phone. By default: the general log keeps the last 3 days, up to about 2MB; the receipt-recognition log keeps the last 10 receipts; only the most recent crash record is kept; the screen trail keeps roughly the last 20 entries (the developer can adjust these limits remotely). <strong>Never uploaded automatically</strong> &mdash; only attached when you send a problem report. Cleared when you delete your account.</td>
+    </tr>
+    <tr>
+      <td>Problem-report numbers and unsent items</td>
+      <td>This phone remembers the numbers of the reports you have sent so it can list them for you; reports and screenshots that could not be sent while offline wait on the phone and are sent automatically once you are back online.</td>
     </tr>
     <tr>
       <td>Preferences</td>
@@ -362,7 +390,9 @@
   <li><strong>Transactions, categories, budgets, recurring rules, templates, currency setting:</strong> this is the app's core function, and it is what lets your data sync between phone and tablet and survive a device change.</li>
   <li><strong>Transaction photos:</strong> so you can keep a receipt attached to a specific expense and still see it after switching devices.</li>
   <li><strong>Shared ledger content:</strong> so ledger members see the same set of records and splits are calculated correctly.</li>
-  <li><strong>Push token:</strong> to notify you when there is a new entry or a repayment in a shared ledger. Without the token, notifications cannot be delivered.</li>
+  <li><strong>Push token:</strong> to notify you when there is a new entry or a repayment in a shared ledger, and when the developer replies to your problem report. Without the token, notifications cannot be delivered.</li>
+  <li><strong>Crash reports (Crashlytics):</strong> so the developer knows where the app crashes and how many devices are affected, and can fix it. Not used for advertising, marketing or analysing how you use the app.</li>
+  <li><strong>Problem reports, diagnostic information, app activity log and crash records:</strong> so the developer can understand, reproduce and fix the problem you reported, and reply to you. They are used only to handle your report, never to analyse how you use the app.</li>
   <li><strong>Device integrity signals:</strong> to stop modified clients from abusing or attacking our backend. This is a security measure and is not used to identify you.</li>
   <li><strong>Device and app technical information:</strong> Fino does not collect this for itself. It is sent back to Google automatically by the Firebase and Google ML Kit SDKs we use for push notifications, sign-in, sync and on-device recognition, and Google uses it for diagnostics and usage statistics for its services.</li>
 </ul>
@@ -389,17 +419,17 @@
 
 <h2 id="permissions">5. Device permissions</h2>
 <ul>
-  <li><strong>Camera</strong> (Android <code>CAMERA</code> / iOS Camera): to photograph receipts for on-device AI receipt scanning; to take photos to attach to a transaction or a shared-ledger entry; and to scan a shared ledger's invite QR code to join it.</li>
+  <li><strong>Camera</strong> (Android <code>CAMERA</code> / iOS Camera): to photograph receipts for on-device AI receipt scanning; to take photos to attach to a transaction or a shared-ledger entry; to scan a shared ledger's invite QR code to join it; and to take a photo to attach in a problem-report conversation.</li>
   <li><strong>Microphone</strong> (Android <code>RECORD_AUDIO</code> / iOS Microphone): for voice entry, so you can record an expense by saying one sentence. See the next section.</li>
-  <li><strong>Photo library</strong> (iOS PhotoLibrary): to pick a receipt image from your library, or a photo to attach to a transaction or a shared-ledger entry.</li>
-  <li><strong>Notifications</strong> (Android <code>POST_NOTIFICATIONS</code> / iOS Notifications): for shared-ledger entry and repayment alerts, recurring-transaction reminders, and notices that an AI model download has finished or failed.</li>
+  <li><strong>Photo library</strong> (iOS PhotoLibrary): to pick a receipt image from your library, or a photo or screenshot to attach to a transaction, a shared-ledger entry or a problem report.</li>
+  <li><strong>Notifications</strong> (Android <code>POST_NOTIFICATIONS</code> / iOS Notifications): for shared-ledger entry and repayment alerts, recurring-transaction reminders, replies from the developer to your problem reports, and notices that an AI model download has finished or failed.</li>
   <li><strong>Speech recognition</strong> (iOS SpeechRecognition): to turn your speech into text.</li>
-  <li><strong>Internet</strong> (Android <code>INTERNET</code>): cloud sync, exchange-rate lookup, and AI model downloads.</li>
-  <li><strong>Network state</strong> (Android <code>ACCESS_NETWORK_STATE</code>): to check whether you are on mobile data before downloading a translation language pack, so we can warn you about data usage first. This is a normal permission and is never prompted for.</li>
+  <li><strong>Internet</strong> (Android <code>INTERNET</code>): cloud sync, exchange-rate lookup, AI model downloads, and sending problem reports.</li>
+  <li><strong>Network state</strong> (Android <code>ACCESS_NETWORK_STATE</code>): to check whether you are on mobile data before downloading a translation language pack, so we can warn you about data usage first; and, for problem reports, to tell whether you are online (holding a report until you reconnect) and to record the network type in the diagnostic information. This is a normal permission and is never prompted for.</li>
   <li><strong>Foreground service</strong> (Android <code>FOREGROUND_SERVICE</code> / <code>FOREGROUND_SERVICE_DATA_SYNC</code>): so AI model files can finish downloading reliably in the background instead of being killed when you switch apps.</li>
 </ul>
 <p>In addition, the Firebase push-notification and background-work libraries included in the Android app automatically add a few normal permissions (for example <code>WAKE_LOCK</code>, <code>RECEIVE_BOOT_COMPLETED</code> and the permission used to receive push messages) so that notifications can be delivered and background downloads can resume when needed. These are never prompted for and do not let Fino read your personal data.</p>
-<p><strong>When permissions are requested:</strong> the notification permission is requested <strong>when you sign in</strong> (recurring-transaction reminders and shared-ledger notifications both need it; on iPhone you may also be asked the first time you download an AI model). Every other permission that needs your consent is requested only the first time you use the feature that needs it. You can decline; the related feature (or notification) simply will not work.</p>
+<p><strong>When permissions are requested:</strong> the notification permission is requested <strong>when you sign in</strong> (recurring-transaction reminders and shared-ledger notifications both need it; on iPhone you may also be asked the first time you download an AI model; you are also asked the first time you send a problem report, so the developer's reply can reach you). Every other permission that needs your consent is requested only the first time you use the feature that needs it. You can decline; the related feature (or notification) simply will not work.</p>
 
 <h2 id="voice">6. Voice entry (please read this section)</h2>
 <div class="note">
@@ -426,17 +456,17 @@
     <tr>
       <td>Cloud Firestore</td>
       <td>Google</td>
-      <td>All fields of your transactions (including your note text), categories, budgets, recurring rules, templates, currency setting, shared-ledger content and audit trail, and the invite-code lookup table.</td>
+      <td>All fields of your transactions (including your note text), categories, budgets, recurring rules, templates, currency setting, shared-ledger content and audit trail, the invite-code lookup table, and the problem reports, conversations and diagnostic information you send.</td>
     </tr>
     <tr>
       <td>Cloud Storage</td>
       <td>Google</td>
-      <td>Photos you attach to transactions (WebP), including receipt photos you choose to save on the AI receipt confirmation screen, and photos attached to shared-ledger entries. <strong>Not</strong> the original images from AI receipt scanning that you did not choose to save.</td>
+      <td>Photos you attach to transactions (WebP), including receipt photos you choose to save on the AI receipt confirmation screen, and photos attached to shared-ledger entries; screenshots you attach to problem reports, and the app activity log and crash records attached when you send one. <strong>Not</strong> the original images from AI receipt scanning that you did not choose to save.</td>
     </tr>
     <tr>
       <td>Cloud Functions</td>
       <td>Google</td>
-      <td>Runs server-side logic (for example shared-ledger notifications and consistency handling), which touches the Firestore data above while doing so.</td>
+      <td>Runs server-side logic (for example notifications for shared ledgers and problem reports, and consistency handling), which touches the Firestore data above while doing so.</td>
     </tr>
     <tr>
       <td>Firebase App Check</td>
@@ -446,7 +476,12 @@
     <tr>
       <td>Firebase Cloud Messaging (FCM) and Firebase Installations</td>
       <td>Google</td>
-      <td>The Firebase installation ID and push token registered when the app launches, device and app technical information (on iPhone including language and time zone; see section 2), and the notification content (which may include a member's name, an amount, and a ledger name).</td>
+      <td>The Firebase installation ID and push token registered when the app launches, device and app technical information (on iPhone including language and time zone; see section 2), and the notification content (which may include a member's name, an amount, a ledger name, or a problem report's title and the opening text of a message).</td>
+    </tr>
+    <tr>
+      <td>Firebase Crashlytics (including the Firebase Sessions feature it depends on)</td>
+      <td>Google</td>
+      <td>Crash reports and session data (full list under &ldquo;Crash reports&rdquo; in section 2). Not linked to your Fino account; can be turned off under &ldquo;Send crash reports&rdquo; in Settings.</td>
     </tr>
     <tr>
       <td>Apple Push Notification service (APNs)</td>
@@ -477,14 +512,15 @@
 </table>
 </div>
 
-<p><strong>What we require of these third parties:</strong> we only share data with third-party services that provide <strong>the same or equal protection of user data</strong> as stated in this policy. Each service listed above is governed by its own privacy policy and data processing terms, and we use them solely to the extent necessary to deliver Fino's features. We do <strong>not</strong> hand your data to any third party for advertising, analytics, or user profiling, and we embed no third-party advertising networks, analytics, or tracking SDKs. (The Firebase and ML Kit SDKs in the table above report technical information to Google on their own; see &ldquo;Device and app technical information&rdquo; in section 2 for what that covers.)</p>
+<p><strong>What we require of these third parties:</strong> we only share data with third-party services that provide <strong>the same or equal protection of user data</strong> as stated in this policy. Each service listed above is governed by its own privacy policy and data processing terms, and we use them solely to the extent necessary to deliver Fino's features. We do <strong>not</strong> hand your data to any third party for advertising, analytics, or user profiling, and we embed no third-party advertising networks, analytics, or tracking SDKs; Firebase Crashlytics is used only for crash reporting, not tracking, and can be turned off. (The Firebase and ML Kit SDKs in the table above report technical information to Google on their own; see &ldquo;Device and app technical information&rdquo; in section 2 for what that covers.)</p>
 
 <h2 id="we-dont">8. What we do not do</h2>
 <ul>
   <li><strong>We do not sell your data</strong>, and we do not trade or rent it to anyone.</li>
   <li><strong>We do not use your data for advertising.</strong> There are no ads in the app.</li>
   <li><strong>No advertising SDKs. No third-party tracking SDKs.</strong></li>
-  <li><strong>No analytics and no crash reporting</strong> — no Firebase Analytics, no Crashlytics. We cannot see how you use the app and we do not receive your crash reports. (The Firebase and Google ML Kit SDKs do report device and app technical information to Google on their own, which Google uses for diagnostics and usage statistics for its services — see section 2. That is not an analytics tool we added, and it contains none of your bookkeeping content.)</li>
+  <li><strong>No analytics</strong> — no Firebase Analytics. We cannot see which screens you view or what you tap in the app; the only exception is the diagnostic information attached when you choose to send a problem report (including the screens you recently visited; see section 2).</li>
+  <li><strong>Crash reporting only through Firebase Crashlytics, and you can turn it off</strong>: on by default, it reports crashes automatically (see &ldquo;Crash reports&rdquo; in section 2); once you turn off &ldquo;Send crash reports&rdquo; in Settings, nothing more is sent and crash reports on the phone that have not been sent yet are deleted. Separately, the crash records and activity log Fino keeps itself are attached only when you choose to send a problem report. (The Firebase and Google ML Kit SDKs do report device and app technical information to Google on their own, which Google uses for diagnostics and usage statistics for its services — see section 2. That is not an analytics tool we added, and it contains none of your bookkeeping content.)</li>
   <li><strong>No advertising identifiers</strong> (Android Advertising ID / iOS IDFA).</li>
   <li><strong>No profiling.</strong> We do not derive any marketing or scoring profile from your spending.</li>
   <li><strong>No cloud AI inference.</strong> Receipt text recognition and understanding happen entirely on your device.</li>
@@ -496,26 +532,29 @@
 <p><strong>When transaction photos are deleted:</strong> when you delete a transaction, or remove its photo while editing it, that change reaches the cloud on the next sync; the photo file in the cloud is then removed by a clean-up job that runs once a day, <strong>within about 8 days</strong> &mdash; not the moment you delete it. If the same photo is attached to several transactions (for example several items recognised from one receipt), it is only deleted once all of those transactions have been deleted or had the photo removed. Photos on shared-ledger entries work the same way: they are only deleted once no entry in the ledger uses them and no member's entries brought back into a personal ledger use them either. <strong>Deleting your account is different: your own photos are deleted immediately</strong> (see below).</p>
 <div class="note">
   <p><strong>You can delete your account from inside the app at any time:</strong> the <strong>Delete Account</strong> entry at the bottom of the <strong>Settings</strong> tab.</p>
-  <p>The flow first asks you to deal with any shared ledgers you administer (hand them over or delete them), then to confirm the consequences and type a confirmation phrase, then to sign in again with the same Google/Apple account so we know it is you. Deletion runs immediately after that and <strong>requires no manual processing</strong>: your Firebase Authentication account, everything in your cloud space (including push tokens, your ledger list and your personal category assignments), your transaction photos in Cloud Storage, and the local data on that device are all removed. The only photos kept are those <strong>attached to shared-ledger entries, or still used by other members' entries</strong> (see the shared-ledger paragraph below).</p>
+  <p>The flow first asks you to deal with any shared ledgers you administer (hand them over or delete them), then to confirm the consequences and type a confirmation phrase, then to sign in again with the same Google/Apple account so we know it is you. Deletion runs immediately after that and <strong>requires no manual processing</strong>: your Firebase Authentication account, everything in your cloud space (including push tokens, your ledger list and your personal category assignments), your transaction photos in Cloud Storage, and the local data on that device are all removed. The only photos kept are those <strong>attached to shared-ledger entries, or still used by other members' entries</strong> (see the shared-ledger paragraph below). <strong>Problem reports you have sent are not deleted but anonymised and kept</strong> (see below).</p>
   <p>If you have already uninstalled the app or cannot sign in, you can still <strong>email <a href="mailto:liokhgf@gmail.com">liokhgf@gmail.com</a></strong> from the address you use to sign in to Fino (so we can confirm it is you); the developer will complete the same deletion <strong>within 30 days of receiving the request</strong>.</p>
   <p>Full instructions: <a href="data-deletion.html">Account and data deletion</a>.</p>
 </div>
-<p><strong>There are two ways to clear the local data on a device:</strong> (1)&nbsp;<strong>Delete Account</strong> (above) &mdash; once the cloud deletion finishes, the app also wipes that device's transactions, categories, budgets, recurring rules, quick-add presets, receipt groups, shared-ledger cache, transaction photos and preferences; (2)&nbsp;<strong>uninstall the app</strong>, which additionally removes any downloaded AI model files. Separately, the change-main-currency wizard offers a &ldquo;reset data&rdquo; option, but that only clears historical transactions as part of switching currency &mdash; it is not a full reset.</p>
+<p><strong>There are two ways to clear the local data on a device:</strong> (1)&nbsp;<strong>Delete Account</strong> (above) &mdash; once the cloud deletion finishes, the app also wipes that device's transactions, categories, budgets, recurring rules, quick-add presets, receipt groups, shared-ledger cache, transaction photos, app activity log and crash records, problem-report numbers, and preferences; (2)&nbsp;<strong>uninstall the app</strong>, which additionally removes any downloaded AI model files. Separately, the change-main-currency wizard offers a &ldquo;reset data&rdquo; option, but that only clears historical transactions as part of switching currency &mdash; it is not a full reset.</p>
 <p><strong>Clearing local data is not the same as deleting cloud data</strong> &mdash; as long as the account still exists, signing in again with it syncs your cloud data back. To actually delete cloud data, use <strong>Delete Account</strong> above.</p>
 <p><strong>After account deletion, shared-ledger entries are kept but you are anonymised</strong>: your display name and avatar are cleared, and other members see &ldquo;Deleted user&rdquo; in your place. Entries, splits and repayments still carry your internal account identifier (it determines whose money is whose &mdash; removing it would break the other members' balances outright), and the <strong>item names and entry notes you typed are kept as-is</strong>, because they are the ledger's content. <strong>Photos you attached to shared entries are kept too</strong>, and other members can still see them. Avoid putting personal information you would not want left behind into shared-ledger free-text fields or photos.</p>
 <p>The shared-ledger <strong>audit trail is append-only: the server-side rules forbid any update or deletion</strong>. If you leave a ledger or your account is deleted, the audit entries already written stay in that ledger exactly as they are, because the remaining members still need that record to reconcile their accounts. The audit trail records only the actor's internal account identifier and the before/after values — not your display name or email. Please factor this in before joining a ledger.</p>
-<p>Third-party services also have their own retention behaviour: Google (Firebase, FCM, ML Kit, Android cloud speech recognition) and Apple (APNs, Siri) retain and delete data according to their own policies, and we cannot delete records on their side on your behalf.</p>
+<p><strong>Problem-report retention:</strong> the reports, conversations, screenshots and diagnostic information you send are kept in the problem-report cloud space <strong>with no automatic deletion period</strong>; the app activity log and crash-record files uploaded with a report are deleted automatically <strong>90 days after upload</strong>. &ldquo;Deleting&rdquo; a report in the app <strong>only removes it from your list</strong>, and you can no longer read it yourself; <strong>the developer keeps the full record of that report</strong> (conversation, screenshots, diagnostic information and log files) to deal with the problem. If you want the developer to erase a report completely, email <a href="mailto:liokhgf@gmail.com">liokhgf@gmail.com</a> with the report's title and roughly when you sent it, and the developer will action it within 30 days of receiving the request.</p>
+<p><strong>After account deletion, your problem reports are kept but anonymised</strong>: the link between each report and your account, the push token stored on it, and the internal account identifier in every message and in the diagnostic information are all cleared; the report content, screenshots, remaining diagnostic information and log files are kept. Log files are not rewritten one by one, so they may still contain your internal account identifier; they are deleted automatically under the 90-day period above. Reports you sent while not signed in, and that were never linked to an account, are outside the scope of account deletion (to have them deleted, use the email route above).</p>
+<p><strong>Crash-report retention:</strong> according to Firebase's official documentation, Crashlytics keeps crash stack traces and associated identifiers (Crashlytics installation identifiers and Firebase installation IDs) for <strong>90 days</strong> before starting to remove them from live and backup systems. Crash reports are not linked to your account, so <strong>deleting your account does not, and cannot, delete crash reports already sent by account</strong>; they are removed on that schedule. If you do not want any more sent, turn off &ldquo;Send crash reports&rdquo;.</p>
+<p>Third-party services also have their own retention behaviour: Google (Firebase, FCM, Crashlytics, ML Kit, Android cloud speech recognition) and Apple (APNs, Siri) retain and delete data according to their own policies, and we cannot delete records on their side on your behalf.</p>
 
 <h2 id="children">10. Children</h2>
 <p>Fino is a bookkeeping tool for general adult users. It is <strong>not designed for children under 13</strong> and is not marketed to children. We do not knowingly collect personal data from children. If you are a parent or guardian and find that your child created a Fino account without your consent, email <a href="mailto:liokhgf@gmail.com">liokhgf@gmail.com</a> and we will delete the account and its data.</p>
 
 <h2 id="location">11. Where your data is stored</h2>
-<p>Fino's Firebase backend is configured in <strong><code>asia-east1</code> (Taiwan)</strong>, and every server-side function &mdash; shared-ledger notifications, transaction-photo clean-up and account deletion &mdash; is deployed in that same region, so your cloud data is primarily stored and processed in Taiwan.</p>
-<p>Beyond that, Firebase is a global service operated by Google, and in the course of delivering it (network transit, redundancy, notification delivery) <strong>Google may process data in facilities in other regions</strong>. That part is governed by Google's data processing terms and is outside our control. Likewise, iOS notifications travel through Apple's APNs, speech for recording with Siri is processed by Apple, on Android speech recognition may run on Google's servers when the system falls back to the cloud, and the technical information ML Kit reports is received by Google, in locations those companies determine.</p>
+<p>Fino's Firebase backend is configured in <strong><code>asia-east1</code> (Taiwan)</strong>, and every server-side function &mdash; shared-ledger notifications, problem-report notifications, transaction-photo clean-up and account deletion &mdash; is deployed in that same region, so your cloud data is primarily stored and processed in Taiwan.</p>
+<p>Beyond that, Firebase is a global service operated by Google, and in the course of delivering it (network transit, redundancy, notification delivery) <strong>Google may process data in facilities in other regions</strong>. That part is governed by Google's data processing terms and is outside our control. Likewise, iOS notifications travel through Apple's APNs, speech for recording with Siri is processed by Apple, on Android speech recognition may run on Google's servers when the system falls back to the cloud, and the technical information ML Kit reports is received by Google, in locations those companies determine. <strong>Firebase Crashlytics is a global Google service not bound by the <code>asia-east1</code> setting above</strong>: crash reports may be processed and stored in Google data centres outside Taiwan.</p>
 
 <h2 id="security">12. Security</h2>
 <ul>
-  <li><strong>Firestore security rules:</strong> server-side rules control who can read and write each document. Personal data is readable and writable only by its owner; shared-ledger data only by members of that ledger. The one deliberate exception, readable by all signed-in users, is the invite-code lookup table (see "Shared ledgers").</li>
+  <li><strong>Firestore security rules:</strong> server-side rules control who can read and write each document. Personal data is readable and writable only by its owner; shared-ledger data only by members of that ledger. The one deliberate exception, readable by all signed-in users, is the invite-code lookup table (see "Shared ledgers"). Problem reports have their own rules: <strong>the developer can read every report</strong> (log files are readable only by the developer); ordinary users can read only their own reports &mdash; a report sent while not signed in can be read only by someone holding its random report number, and the rules do not allow listing or searching other people's reports.</li>
   <li><strong>Firebase App Check:</strong> uses Android Play Integrity and iOS App Attest to verify that requests come from the genuine Fino app, blocking forged clients from abusing the backend.</li>
   <li><strong>Encryption in transit:</strong> all connections between the app and our backend, and to third-party services, use HTTPS/TLS.</li>
   <li><strong>Minimised uploads:</strong> anything that can be done on the device is not sent to the cloud. Keeping AI inference local, and uploading an original receipt image only when you choose to save it, is itself the strongest protection.</li>
@@ -527,7 +566,7 @@
 <p>Questions about this policy: <a href="mailto:liokhgf@gmail.com">liokhgf@gmail.com</a>.</p>
 <footer>
   <p>Fino · <a href="index.html">Home</a> · <a href="mailto:liokhgf@gmail.com">liokhgf@gmail.com</a> · <a href="data-deletion.html">Account & data deletion</a> &middot; <a href="support.html">Support</a></p>
-  <p>Last updated: 18 September 2026</p>
+  <p>Last updated: 28 September 2026</p>
 </footer>
 
 </div>

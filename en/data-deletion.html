@@ -231,7 +231,7 @@
 <h1>Fino — Account &amp; Data Deletion</h1>
 <p class="meta">
   App: Fino ｜ Android package: <code>com.fino.android</code> ｜ iOS bundle ID: <code>com.fino.iosApp</code><br>
-  Last updated: 18 September 2026
+  Last updated: 28 September 2026
 </p>
 
 <p>
@@ -300,6 +300,7 @@
   <li><strong>Transaction photos in Cloud Storage</strong> — photos you attached to transactions, including receipt photos you chose to save on the AI receipt confirmation screen. Photos attached to shared-ledger entries, or still used by other members' entries, are not included (see &ldquo;Data that may be retained or cannot be fully deleted&rdquo; below).</li>
   <li><strong>Push notification (FCM) tokens</strong> — you will no longer receive Fino push notifications.</li>
   <li><strong>Your personal shared-ledger side data</strong> — the list of ledgers you belong to and the private personal categories and rate snapshots you assigned to shared line items.</li>
+  <li><strong>The fields on your problem reports that identify you</strong> — the link between each report and your account, the push token stored on it, and the internal account identifier in every message and in the diagnostic information. The report content itself is not deleted but anonymised and kept (see section 3).</li>
 </ul>
 
 <div class="summary">
@@ -307,6 +308,9 @@
     <strong>For clarity:</strong> receipt images captured or selected for AI receipt scanning, along with OCR text
     recognition and AI inference, are processed <strong>entirely on your device and are not uploaded to the cloud</strong>.
     There is therefore no cloud copy of those images or of the inference to delete. The one exception is a receipt photo you <strong>chose to save</strong> on the confirmation screen &mdash; it becomes a transaction photo, falls under &ldquo;Transaction photos in Cloud Storage&rdquo; above, and is deleted with them. To clear the cached receipt images from the device, uninstall the app.
+  </p>
+  <p>
+    <strong>One more exception:</strong> the item names and amounts parsed from recognition (not the receipt's full recognised text, the store name, or the voice-entry transcript) are written to the app activity log on your phone as a summary. <strong>If you have ever sent a problem report</strong>, the log at that time went to the developer with the report and is retained as described in the &ldquo;problem reports&rdquo; row of section 3.
   </p>
   <p>
     ⚠️ One distinction to keep in mind: the recognition results you <strong>confirm and save</strong> (item names, amounts)
@@ -318,8 +322,8 @@
 <h2 id="what-retained">3. Data that may be retained or cannot be fully deleted</h2>
 
 <p>
-  To preserve the integrity of other users' shared bookkeeping records and to comply with legal requirements,
-  the following may remain after your account is deleted:
+  To preserve the integrity of other users' shared bookkeeping records, to keep the record of problem reports being handled,
+  and to comply with legal requirements, the following may remain after your account is deleted:
 </p>
 
 <div class="wrap">
@@ -337,6 +341,16 @@
       <td>Shared-ledger activity history (including previous and new values of changes)</td>
       <td>This history is append-only by design — the server-side rules <strong>explicitly forbid any update or deletion</strong> — so members can trace changes and resolve disputes.</td>
       <td><strong>Entries are retained exactly as written; we can neither edit nor delete them</strong> (the developer is bound by the same rules; only an out-of-band admin operation could alter them, and we do not do that). The history itself records only the actor's internal account identifier (uid), the field name and the before/after values — <strong>not</strong> your display name or email.</td>
+    </tr>
+    <tr>
+      <td>Problem reports you sent (title, description, conversation, screenshots, diagnostic information, app activity log and crash records)</td>
+      <td>They are the developer's record of handling a problem and are &ldquo;anonymised and kept&rdquo;, as with shared ledgers: deleting them would remove the basis for problems already being worked on or fixed.</td>
+      <td>Reports are <strong>kept</strong>, but we clear the link between each report and your account, the push token stored on it, and the internal account identifier (uid) in every message and in the diagnostic information; from then on the developer sees only &ldquo;account deleted&rdquo; and no further notifications are sent to you. Report content, screenshots and the remaining diagnostic information are kept as-is with no automatic deletion period; <strong>app activity log and crash-record files are not rewritten one by one and are deleted automatically 90 days after upload</strong>. The log may contain item names and amounts parsed from receipt recognition, but <strong>not</strong> the receipt's full recognised text, the store name, the voice-entry transcript, or your internal account identifier. If you want a report erased completely, email us with its title and roughly when you sent it, and the developer will action it within 30 days of receiving the request.</td>
+    </tr>
+    <tr>
+      <td>Automatically sent crash reports (Firebase Crashlytics)</td>
+      <td>Crash reports are not linked to your Fino account (we set no user ID), so they cannot be found and deleted by account.</td>
+      <td>Kept by Google: according to Firebase's official documentation, crash stack traces and associated identifiers are kept for <strong>90 days</strong> before removal from live and backup systems begins. Deleting your account does not affect them. If you do not want any more sent, turn off &ldquo;Send crash reports&rdquo; in Settings; turning it off also deletes crash reports on the phone that have not been sent yet.</td>
     </tr>
     <tr>
       <td>The minimum records required by law or for abuse / fraud prevention</td>
@@ -360,7 +374,8 @@
   <li><strong>Email request (fallback):</strong> deletion is completed <strong>within 30 days of receiving your request</strong> (identity verification included in that window), and you will receive a confirmation reply.</li>
   <li><strong>Backup residue:</strong> after deletion, short-lived residual copies may still exist in the backend provider's (Firebase) backup and logging systems.
       These residual copies are cleared within a reasonable period as part of the routine backup cycle and are no longer used to provide the service.</li>
-  <li>Fino keeps no additional copies of personal data for marketing or analytics — the app contains no analytics, advertising or tracking SDKs.</li>
+  <li><strong>Problem reports:</strong> app activity log and crash-record files uploaded with a report are deleted automatically <strong>90 days</strong> after upload; reports, conversations, screenshots and diagnostic information have no automatic deletion period (they are anonymised when you delete your account &mdash; see section 3).</li>
+  <li>Fino keeps no additional copies of personal data for marketing or analytics — the app contains no analytics, advertising or tracking SDKs; its only third-party crash reporting is Firebase Crashlytics, retained as described in section 3.</li>
 </ul>
 
 <h2 id="partial">Deleting some of your data without deleting your account</h2>
@@ -377,6 +392,7 @@
   <li><strong>Shared ledgers</strong>: you can leave a ledger. Entries you already recorded (including photos on
       them) stay in that ledger (otherwise the other members&rsquo; settlements would no longer add up), but your display name
       and avatar can be anonymised on request &mdash; just email us.</li>
+  <li><strong>Problem reports</strong>: deleting a report from your report list in the app <strong>only removes it from your list</strong>, and you can no longer read it yourself; <strong>the developer still keeps the full record</strong> (conversation, screenshots, diagnostic information and log files). To have the developer erase it completely, email <a href="mailto:liokhgf@gmail.com">liokhgf@gmail.com</a> with the report's title and roughly when you sent it; the developer will action it and reply within 30 days of receiving the request.</li>
   <li><strong>Anything else</strong>: if what you want removed isn&rsquo;t covered above, or you would rather
       not do it yourself, email <a href="mailto:liokhgf@gmail.com">liokhgf@gmail.com</a> from the address you
       use to sign in to Fino (so we can confirm it is you). The developer will action it and reply within
@@ -388,7 +404,13 @@
 
 <p>
   If you do not want to delete your account and only want the data on this device gone, <strong>uninstall Fino</strong> &mdash;
-  that clears everything Fino-related from the device, including any downloaded AI model files.
+  that clears everything Fino-related from the device, including any downloaded AI model files, the app activity log and crash records.
+</p>
+
+<p>
+  <strong>About problem reports:</strong> reports sent while not signed in can only be found through the report numbers remembered on that phone.
+  After you uninstall, you can no longer see them in the app, but the reports themselves are still kept on the developer's side (to have them deleted,
+  email us as described under &ldquo;Problem reports&rdquo; above). Reports sent while signed in are linked to your account, so you see them again when you sign back in.
 </p>
 
 <p>
@@ -417,7 +439,7 @@
 </p>
 <footer>
   <p>Fino · <a href="index.html">Home</a> · <a href="mailto:liokhgf@gmail.com">liokhgf@gmail.com</a> · <a href="privacy.html">Privacy Policy</a> &middot; <a href="support.html">Support</a></p>
-  <p>Last updated: 18 September 2026</p>
+  <p>Last updated: 28 September 2026</p>
 </footer>
 
 </div>

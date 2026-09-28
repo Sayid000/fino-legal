@@ -229,10 +229,10 @@
 </nav>
 <p class="peer"><a href="data-deletion.html">帳號與資料刪除 →</a></p>
 <h1>Fino 隱私政策</h1>
-<p class="meta">最後更新：2026 年 9 月 18 日</p>
+<p class="meta">最後更新：2026 年 9 月 28 日</p>
 
 <div class="summary">
-  <p><strong>一句話總結：</strong>Fino 的 AI 收據辨識<strong>完全在你的裝置上執行</strong>，收據原始圖片<strong>除非你在確認頁選擇儲存</strong>，否則<strong>不會上傳</strong>到任何伺服器；Fino <strong>沒有任何廣告 SDK、沒有分析或崩潰追蹤 SDK、不販售你的資料</strong>。只有在你登入之後，你的記帳資料才會同步到你自己的雲端空間，方便你在多台裝置間使用。</p>
+  <p><strong>一句話總結：</strong>Fino 的 AI 收據辨識<strong>完全在你的裝置上執行</strong>，收據原始圖片<strong>除非你在確認頁選擇儲存</strong>，否則<strong>不會上傳</strong>到任何伺服器；Fino <strong>沒有任何廣告 SDK、沒有分析 SDK、不販售你的資料</strong>；App 當機時會透過 Google 的 Firebase Crashlytics <strong>自動回報當機資訊</strong>，你可以在設定中關閉。只有在你登入之後，你的記帳資料才會同步到你自己的雲端空間，方便你在多台裝置間使用。另外，只有在你<strong>主動送出問題回報</strong>時，App 才會把診斷資訊、App 的運作紀錄與閃退紀錄一併送給開發者。</p>
 </div>
 
 <nav class="toc" aria-label="本頁內容">
@@ -256,13 +256,13 @@
 
 <h2 id="who">1. 我們是誰</h2>
 <p>Fino 是一款個人記帳 App，支援 Android（套件名稱 <code>com.fino.android</code>）與 iOS（Bundle ID <code>com.fino.iosApp</code>）。Fino 由一位個人開發者獨立開發與維運，不屬於任何公司。</p>
-<p>關於隱私的任何問題、要求刪除資料，或想知道我們手上有你哪些資料，請寄信到：<a href="mailto:liokhgf@gmail.com">liokhgf@gmail.com</a>。這是唯一的聯絡管道，信件由開發者本人閱讀。</p>
+<p>關於隱私的任何問題、要求刪除資料，或想知道我們手上有你哪些資料，請寄信到：<a href="mailto:liokhgf@gmail.com">liokhgf@gmail.com</a>。隱私與資料相關的請求請一律用這個信箱，信件由開發者本人閱讀。一般的問題與功能建議，也可以用 App 內「設定」分頁的「問題回報與建議」送出（見第 2 節「問題回報」）。</p>
 
 <h2 id="collect">2. 我們蒐集哪些資料</h2>
 <p>下面分成兩類：<strong>會離開你裝置的</strong>，以及<strong>只留在你裝置上的</strong>。這是完整清單，沒有「其他」這一項。</p>
 
 <h3>一、會離開裝置的資料（記帳資料只在你登入後才同步）</h3>
-<p>Fino 的雲端後端是 Google 的 Firebase。<strong>如果你不登入，你的記帳資料完全不會有任何雲端同步。</strong>但即使你不登入，App 仍會為了六件事連上網路：下載裝置內 AI 模型（<code>huggingface.co</code>）、下載翻譯語言包（Android，由 Google 提供）、查詢匯率（<code>tw.rter.info</code>）、裝置完整性驗證（Firebase App Check）、在 App 啟動時替這台裝置註冊推播（Firebase Cloud Messaging 與 Firebase Installations），以及 Google 的 SDK 自動回報的技術資訊（見下表「裝置與 App 的技術資訊」）。這六件事都不會傳送你的記帳內容。</p>
+<p>Fino 的雲端後端是 Google 的 Firebase。<strong>如果你不登入，你的記帳資料完全不會有任何雲端同步。</strong>但即使你不登入，App 仍會為了七件事連上網路：下載裝置內 AI 模型（<code>huggingface.co</code>）、下載翻譯語言包（Android，由 Google 提供）、查詢匯率（<code>tw.rter.info</code>）、裝置完整性驗證（Firebase App Check）、在 App 啟動時替這台裝置註冊推播（Firebase Cloud Messaging 與 Firebase Installations），App 當機後自動回報當機報告（Firebase Crashlytics，可在設定關閉，見下表「當機報告」），以及 Google 的 SDK 自動回報的技術資訊（見下表「裝置與 App 的技術資訊」）。這七件事都不會傳送你的記帳內容。<strong>唯一不需登入就會上傳你自己寫的內容的情況，是你主動送出問題回報</strong>（見下表「問題回報」三列）。</p>
 
 <div class="tablescroll">
 <table>
@@ -302,13 +302,33 @@
     </tr>
     <tr>
       <td>推播 token</td>
-      <td>Firebase Cloud Messaging（FCM）配發給你這台裝置的推播識別碼。<strong>App 一啟動就會向 Google 註冊並取得它</strong>（同時產生一組 Firebase 安裝識別碼；iPhone 上還會連結 Apple 配發的推播識別碼），這一步不以你登入為前提；你登入後才會把它寫進你自己的雲端空間，伺服器才知道要推給哪台裝置。推播訊息內容可能包含成員名字、金額、帳本名稱。</td>
-      <td>你的雲端空間；Google FCM；iOS 再經 Apple APNs 送達</td>
+      <td>Firebase Cloud Messaging（FCM）配發給你這台裝置的推播識別碼。<strong>App 一啟動就會向 Google 註冊並取得它</strong>（同時產生一組 Firebase 安裝識別碼；iPhone 上還會連結 Apple 配發的推播識別碼），這一步不以你登入為前提；你登入後才會把它寫進你自己的雲端空間，伺服器才知道要推給哪台裝置。<strong>你送出問題回報時，這個 token 也會存在那則回報上（不論是否登入）</strong>，讓開發者回覆時能通知你。推播訊息內容可能包含成員名字、金額、帳本名稱，或開發者回覆的開頭文字。</td>
+      <td>你的雲端空間；問題回報的雲端空間；Google FCM；iOS 再經 Apple APNs 送達</td>
+    </tr>
+    <tr>
+      <td><strong>問題回報（只在你主動送出時）</strong></td>
+      <td>你在「設定」分頁的「問題回報與建議」送出的類型（問題或建議）、標題、描述、<strong>最多 3 張截圖</strong>（上傳前壓縮成 WebP，單張上限 5MB），以及之後你和開發者之間的往返訊息。回報上另外記錄平台、App 版本、系統版本、裝置型號、語言、是否登入，以及這台裝置的推播 token（見上方「推播 token」）。<br><strong>不需要登入也能送出。</strong>未登入時，回報只以一組隨機產生的單號識別，這組單號只存在你這支手機上——換手機或解除安裝 App 之後，你就無法在 App 內再找回這些回報。你之後在這支手機登入，這裡的回報會<strong>自動綁到你的帳號</strong>，換手機登入也看得到。</td>
+      <td>問題回報的雲端空間（Firestore；截圖在 Cloud Storage）。<strong>開發者讀得到全部回報</strong>；其他使用者讀不到</td>
+    </tr>
+    <tr>
+      <td><strong>回報附帶的診斷資訊</strong></td>
+      <td>你每送出一則訊息，App 就擷取一次當下的狀態一起送出；送出前可以在畫面上點「查看內容」看到完整內容。項目如下：<br>・<strong>App</strong>：版本與組建號、是否完成初始設定、登入方式（Google／Apple／未登入），以及已登入時<strong>你的帳號內部代號</strong><br>・<strong>裝置</strong>：平台、系統版本、裝置型號、記憶體容量、剩餘儲存空間、螢幕尺寸、顯示密度與字級、系統語言與地區設定、時區、是否深色模式、網路類型（Wi-Fi／行動網路等）與是否為計量連線、相機／麥克風／相簿／通知／語音辨識的授權狀態、是否已取得推播 token<br>・<strong>App 設定</strong>：主題、App 語言、主要幣別、旅行模式與其幣別和匯率、首頁與記帳頁的區塊排序與隱藏、計算機自動開啟、預算圖表與排序方式、紀錄頁的篩選類型（只記有沒有篩選分類，不記是哪個分類，也不記搜尋字）、看過幾個操作教學<br>・<strong>資料筆數</strong>：交易、分類、定期記帳規則、快速記帳範本、收據群組、共享帳本各有幾筆，照片張數與總大小，待刪除的筆數——<strong>只有數量，不含任何帳目內容</strong><br>・<strong>同步狀態</strong>：上次同步的時間與結果、目前狀態、錯誤類型與錯誤訊息、衝突數<br>・<strong>AI</strong>：選用的辨識引擎與模型、各模型是否已下載與檔案大小、裝置是否支援、Apple Intelligence 的可用狀態、推論用 GPU 或 CPU、已下載的翻譯語言<br>・<strong>最近進入過的畫面</strong>：最近約 20 個畫面的名稱與時間（只記畫面名稱，不記畫面上的內容）</td>
+      <td>問題回報的雲端空間（Firestore），<strong>開發者讀得到</strong></td>
+    </tr>
+    <tr>
+      <td><strong>App 運作紀錄（log）與閃退紀錄</strong></td>
+      <td>Fino 會把自己程式的運作紀錄與閃退紀錄存在你的手機上（見下方「只留在你裝置上的資料」），<strong>只有你送出問題回報時才會壓縮後上傳</strong>：第一次送出時附上手機上目前保存的全部紀錄，之後在同一則回報裡只附上次送出後新增的部分。<br><strong>請注意：運作紀錄可能包含收據辨識解析出的品項名稱與金額</strong>；但整張收據的原始辨識文字、店名，以及語音記帳的逐字稿都不會整段寫入，只留摘要（例如字數、行數、耗時、是否成功）。運作紀錄<strong>不含</strong>你的帳號內部代號或照片的原始檔名，但可能包含錯誤訊息等技術資訊。<br>閃退紀錄是 Fino 自己攔截到的程式錯誤（錯誤類型與程式呼叫的堆疊），這是 Fino 自己的紀錄，與上方 Crashlytics 的自動當機報告是兩回事，<strong>不受「自動傳送當機報告」開關影響</strong>，只在你送出問題回報時才離開手機；並非所有類型的閃退都記錄得到，手機上只保留最近一次。<br>這兩種檔案<strong>只有開發者讀得到</strong>，送出後你在 App 內也看不到。</td>
+      <td>問題回報的雲端檔案空間（Cloud Storage），只有開發者讀得到</td>
     </tr>
     <tr>
       <td>裝置完整性訊號</td>
       <td>Android 的 Play Integrity 與 iOS 的 App Attest 訊號（透過 Firebase App Check）。這是平台產生的技術性證明，不包含你的個人資料，用來阻止他人偽造 App 濫用我們的後端。<strong>這一項在 App 啟動時就會啟用，不以你登入為前提。</strong></td>
       <td>Google / Apple 平台服務與 Firebase App Check</td>
+    </tr>
+    <tr>
+      <td><strong>當機報告（Firebase Crashlytics）</strong></td>
+      <td><strong>預設開啟，不以登入為前提。</strong>App 當機時，Google 的 Firebase Crashlytics 會自動記錄並在下次開啟 App 時上傳一份當機報告：當機當下的程式呼叫堆疊與錯誤訊息、當時的 App 狀態、裝置資訊（製造商、型號、系統版本）、App 識別碼與版本，以及 Crashlytics 安裝識別碼與 Firebase 安裝識別碼。Crashlytics 依附的 Firebase 工作階段功能另會記錄你每次使用 App 的工作階段（隨機產生的工作階段 ID、App 切到前景的時間、網路類型與 App、裝置資訊），用來計算當機率。<br><strong>當機報告不與你的 Fino 帳號綁定</strong>：我們沒有設定使用者 ID，也不附加自訂紀錄或記帳內容。<br><strong>你可以在「設定」分頁的「自動傳送當機報告」關閉它</strong>：關閉後立即停止上傳，並刪除手機上尚未送出的報告；已經送出的報告無法經由這個開關收回（保存期限見第 9 節）。</td>
+      <td>Google（Firebase Crashlytics），開發者可在 Firebase 主控台查看</td>
     </tr>
     <tr>
       <td>裝置與 App 的技術資訊</td>
@@ -332,7 +352,7 @@
     </tr>
     <tr>
       <td><strong>收據的文字辨識與 AI 推論</strong></td>
-      <td><strong>完全在你的裝置上執行。</strong>Android 使用 ML Kit 做文字辨識（OCR）＋裝置內的 Gemma 模型做理解；iOS 使用 Apple Vision 做文字辨識＋Apple Foundation Models、裝置內的 Gemma 模型或裝置內的 MLX Qwen3-VL 模型做理解（依你在設定中選擇的引擎）。整個過程沒有任何雲端 AI 呼叫——我們的程式碼裡完全沒有 Gemini、Vertex AI、OpenAI 或 Cloud Vision 的呼叫。</td>
+      <td><strong>完全在你的裝置上執行。</strong>Android 使用 ML Kit 做文字辨識（OCR）＋裝置內的 Gemma 模型做理解；iOS 使用 Apple Vision 做文字辨識＋Apple Foundation Models、裝置內的 Gemma 模型或裝置內的 MLX Qwen3-VL 模型做理解（依你在設定中選擇的引擎）。整個過程沒有任何雲端 AI 呼叫——我們的程式碼裡完全沒有 Gemini、Vertex AI、OpenAI 或 Cloud Vision 的呼叫。辨識過程不會把整張收據的文字逐字寫進 App 運作紀錄，記錄的是解析出的品項名稱、金額與耗時等摘要（見下方），<strong>只有你主動送出問題回報時</strong>才會隨紀錄上傳給開發者。</td>
     </tr>
     <tr>
       <td><strong>品項名稱的翻譯</strong></td>
@@ -341,6 +361,14 @@
     <tr>
       <td>本機資料庫</td>
       <td>裝置上的 Room 資料庫（5 張個人資料表 ＋ 9 張共享帳本表）。這是 App 離線也能用的基礎。</td>
+    </tr>
+    <tr>
+      <td>App 運作紀錄、閃退紀錄與畫面軌跡</td>
+      <td>存在手機上 App 自己的空間。預設保留：一般運作紀錄最近 3 天、最多約 2MB；收據辨識的紀錄保留最近 10 張收據；閃退紀錄只留最近一次；畫面軌跡只留最近約 20 筆（這些上限開發者可以從後台調整）。<strong>不會自動上傳</strong>，只有你送出問題回報時才會附上。刪除帳號時會一併清除。</td>
+    </tr>
+    <tr>
+      <td>問題回報的單號與待送內容</td>
+      <td>這支手機記得你送過的回報單號，用來在列表中找回它們；網路不通時還沒送出的回報與截圖會先存在手機上，恢復連線後自動送出。</td>
     </tr>
     <tr>
       <td>偏好設定</td>
@@ -362,7 +390,9 @@
   <li><strong>交易紀錄、分類、預算、定期記帳、範本、幣別設定</strong>：這些就是 App 的功能本體，也讓你的資料能在手機與平板之間同步、換機不遺失。</li>
   <li><strong>交易照片</strong>：讓你為一筆支出留存單據，並在換裝置後仍看得到。</li>
   <li><strong>共享帳本內容</strong>：讓帳本成員看到同一份帳並正確攤帳。</li>
-  <li><strong>推播 token</strong>：在共享帳本有新記錄或還款時通知你。沒有推播 token 就無法送通知。</li>
+  <li><strong>推播 token</strong>：在共享帳本有新記錄或還款時通知你，以及開發者回覆你的問題回報時通知你。沒有推播 token 就無法送通知。</li>
+  <li><strong>當機報告（Crashlytics）</strong>：讓開發者知道 App 在哪裡當機、影響多少裝置，以便修正。不用於廣告、行銷或分析你的使用習慣。</li>
+  <li><strong>問題回報、診斷資訊、App 運作紀錄與閃退紀錄</strong>：讓開發者了解、重現並修正你回報的問題，並回覆你。只用於處理回報，不用於分析你的使用習慣。</li>
   <li><strong>裝置完整性訊號</strong>：防止有人用改造過的客戶端濫用或攻擊我們的後端。這是安全用途，不用於識別你。</li>
   <li><strong>裝置與 App 的技術資訊</strong>：這不是 Fino 自己要蒐集的，而是我們用來做推播、登入、同步與裝置內辨識的 Firebase 與 Google ML Kit SDK 自動回傳給 Google 的，Google 將它用於其服務的診斷與使用統計。</li>
 </ul>
@@ -389,17 +419,17 @@
 
 <h2 id="permissions">5. 裝置權限</h2>
 <ul>
-  <li><strong>相機</strong>（Android <code>CAMERA</code> / iOS Camera）：拍攝收據，用於裝置內的 AI 收據辨識；拍攝要附加到交易或共享帳本帳目的照片；掃描共享帳本的邀請 QR 碼以加入帳本。</li>
+  <li><strong>相機</strong>（Android <code>CAMERA</code> / iOS Camera）：拍攝收據，用於裝置內的 AI 收據辨識；拍攝要附加到交易或共享帳本帳目的照片；掃描共享帳本的邀請 QR 碼以加入帳本；在問題回報的對話中拍照附上。</li>
   <li><strong>麥克風</strong>（Android <code>RECORD_AUDIO</code> / iOS Microphone）：語音記帳，讓你講一句話就記下一筆帳。詳見下一節。</li>
-  <li><strong>照片圖庫</strong>（iOS PhotoLibrary）：從相簿選取收據圖片，或選取要附加到交易或共享帳本帳目的照片。</li>
-  <li><strong>通知</strong>（Android <code>POST_NOTIFICATIONS</code> / iOS 通知）：共享帳本的新記錄與還款提醒、定期記帳的提醒，以及 AI 模型下載完成或失敗的通知。</li>
+  <li><strong>照片圖庫</strong>（iOS PhotoLibrary）：從相簿選取收據圖片，或選取要附加到交易、共享帳本帳目或問題回報的照片與截圖。</li>
+  <li><strong>通知</strong>（Android <code>POST_NOTIFICATIONS</code> / iOS 通知）：共享帳本的新記錄與還款提醒、定期記帳的提醒、開發者回覆你的問題回報，以及 AI 模型下載完成或失敗的通知。</li>
   <li><strong>語音辨識</strong>（iOS SpeechRecognition）：把你的語音轉成文字。</li>
-  <li><strong>網路</strong>（Android <code>INTERNET</code>）：雲端同步、匯率查詢、AI 模型下載。</li>
-  <li><strong>網路狀態</strong>（Android <code>ACCESS_NETWORK_STATE</code>）：下載翻譯語言包前判斷你是否正在使用行動網路，以便先提醒你流量。這是一般權限，不會跳出詢問。</li>
+  <li><strong>網路</strong>（Android <code>INTERNET</code>）：雲端同步、匯率查詢、AI 模型下載、送出問題回報。</li>
+  <li><strong>網路狀態</strong>（Android <code>ACCESS_NETWORK_STATE</code>）：下載翻譯語言包前判斷你是否正在使用行動網路，以便先提醒你流量；問題回報判斷目前是否連線（離線時先存著、恢復後再送），並在診斷資訊中記錄網路類型。這是一般權限，不會跳出詢問。</li>
   <li><strong>前景服務</strong>（Android <code>FOREGROUND_SERVICE</code> / <code>FOREGROUND_SERVICE_DATA_SYNC</code>）：讓 AI 模型檔案能在背景穩定下載完成，不會因為你切到別的 App 而中斷。</li>
 </ul>
 <p>此外，Android 版內含的 Firebase 推播與背景工作函式庫會自動加入幾項一般權限（例如 <code>WAKE_LOCK</code>、<code>RECEIVE_BOOT_COMPLETED</code> 與接收推播用的權限），讓推播能送達、背景下載在需要時繼續執行；這些權限不會跳出詢問，也不讓 Fino 讀取你的個人資料。</p>
-<p><strong>請求時機：</strong>通知權限會在你<strong>登入時</strong>請求（定期記帳提醒與共享帳本推播都需要它；iPhone 上第一次下載 AI 模型時也可能詢問）。其他需要你同意的權限，都只在你第一次使用對應功能時才會請求。你可以拒絕，只是相關功能（或通知）會無法使用。</p>
+<p><strong>請求時機：</strong>通知權限會在你<strong>登入時</strong>請求（定期記帳提醒與共享帳本推播都需要它；iPhone 上第一次下載 AI 模型時也可能詢問；第一次送出問題回報時也會詢問，讓開發者回覆時能通知你）。其他需要你同意的權限，都只在你第一次使用對應功能時才會請求。你可以拒絕，只是相關功能（或通知）會無法使用。</p>
 
 <h2 id="voice">6. 語音記帳（請務必讀這段）</h2>
 <div class="note">
@@ -426,17 +456,17 @@
     <tr>
       <td>Cloud Firestore</td>
       <td>Google</td>
-      <td>你的交易紀錄全欄位（含備註文字）、分類、預算、定期記帳、範本、幣別設定、共享帳本內容與操作留痕、邀請碼反查表。</td>
+      <td>你的交易紀錄全欄位（含備註文字）、分類、預算、定期記帳、範本、幣別設定、共享帳本內容與操作留痕、邀請碼反查表，以及你送出的問題回報、對話與診斷資訊。</td>
     </tr>
     <tr>
       <td>Cloud Storage</td>
       <td>Google</td>
-      <td>你附加到交易的照片（WebP），包括你在 AI 收據確認頁選擇儲存的收據照片，以及共享帳本帳目上附加的照片。<strong>不含</strong>你沒有選擇儲存的 AI 收據掃描原始圖片。</td>
+      <td>你附加到交易的照片（WebP），包括你在 AI 收據確認頁選擇儲存的收據照片，以及共享帳本帳目上附加的照片；你附在問題回報上的截圖，以及送出回報時附上的 App 運作紀錄與閃退紀錄。<strong>不含</strong>你沒有選擇儲存的 AI 收據掃描原始圖片。</td>
     </tr>
     <tr>
       <td>Cloud Functions</td>
       <td>Google</td>
-      <td>執行伺服器端邏輯（例如共享帳本的通知與一致性處理），處理過程中會接觸到上述 Firestore 資料。</td>
+      <td>執行伺服器端邏輯（例如共享帳本與問題回報的通知、一致性處理），處理過程中會接觸到上述 Firestore 資料。</td>
     </tr>
     <tr>
       <td>Firebase App Check</td>
@@ -446,7 +476,12 @@
     <tr>
       <td>Firebase Cloud Messaging（FCM）與 Firebase Installations</td>
       <td>Google</td>
-      <td>App 啟動時註冊推播用的 Firebase 安裝識別碼與推播 token、裝置與 App 的技術資訊（iPhone 上含語言與時區，見第 2 節），以及推播訊息內容（可能含成員名字、金額、帳本名稱）。</td>
+      <td>App 啟動時註冊推播用的 Firebase 安裝識別碼與推播 token、裝置與 App 的技術資訊（iPhone 上含語言與時區，見第 2 節），以及推播訊息內容（可能含成員名字、金額、帳本名稱，或問題回報的標題與訊息開頭文字）。</td>
+    </tr>
+    <tr>
+      <td>Firebase Crashlytics（含其依附的 Firebase 工作階段功能）</td>
+      <td>Google</td>
+      <td>當機報告與工作階段資料（完整項目見第 2 節「當機報告」）。不與你的 Fino 帳號綁定；可在「設定」的「自動傳送當機報告」關閉。</td>
     </tr>
     <tr>
       <td>Apple Push Notification service（APNs）</td>
@@ -477,14 +512,15 @@
 </table>
 </div>
 
-<p><strong>對這些第三方的要求：</strong>我們只會把資料交給能提供與本政策<strong>同等或更高保護水準</strong>的第三方服務。上表中的每一項服務都受其自身的隱私政策與資料處理條款約束，我們僅在提供 Fino 功能的必要範圍內使用它們，<strong>不會</strong>為了廣告、分析或使用者剖繪而把你的資料交給任何第三方。我們也沒有嵌入任何廣告聯播網、分析或追蹤用的第三方 SDK。（上表中 Firebase 與 ML Kit 的 SDK 會自行回報技術資訊給 Google，範圍見第 2 節「裝置與 App 的技術資訊」。）</p>
+<p><strong>對這些第三方的要求：</strong>我們只會把資料交給能提供與本政策<strong>同等或更高保護水準</strong>的第三方服務。上表中的每一項服務都受其自身的隱私政策與資料處理條款約束，我們僅在提供 Fino 功能的必要範圍內使用它們，<strong>不會</strong>為了廣告、分析或使用者剖繪而把你的資料交給任何第三方。我們也沒有嵌入任何廣告聯播網、分析或追蹤用的第三方 SDK；Firebase Crashlytics 只用於當機回報、不用於追蹤，而且可以關閉。（上表中 Firebase 與 ML Kit 的 SDK 會自行回報技術資訊給 Google，範圍見第 2 節「裝置與 App 的技術資訊」。）</p>
 
 <h2 id="we-dont">8. 我們不做的事</h2>
 <ul>
   <li><strong>不販售你的資料</strong>，也不與任何人交換或出租你的資料。</li>
   <li><strong>不把你的資料用於廣告</strong>。App 內沒有廣告。</li>
   <li><strong>沒有廣告 SDK</strong>、<strong>沒有第三方追蹤 SDK</strong>。</li>
-  <li><strong>沒有使用分析工具，也沒有崩潰回報工具</strong>——沒有 Firebase Analytics、沒有 Crashlytics。我們看不到你怎麼操作 App、也收不到你的崩潰紀錄。（Firebase 與 Google ML Kit 的 SDK 會自行把裝置與 App 的技術資訊回報給 Google，供 Google 做其服務的診斷與使用統計，見第 2 節；那不是我們加裝的分析工具，也不包含你的記帳內容。）</li>
+  <li><strong>沒有使用分析工具</strong>——沒有 Firebase Analytics。我們看不到你在 App 裡看了哪些畫面、點了什麼；唯一的例外是你主動送出問題回報時附上的診斷資訊（含最近進入過的畫面，見第 2 節）。</li>
+  <li><strong>當機回報只用 Firebase Crashlytics，而且你可以關閉</strong>：預設開啟，App 當機時自動回報當機報告（見第 2 節「當機報告」）；在「設定」的「自動傳送當機報告」關閉後就不再傳送，並刪除手機上尚未送出的報告。另外，只有在你主動送出問題回報時，才會附上 Fino 自己保存的閃退紀錄與 App 運作紀錄。（Firebase 與 Google ML Kit 的 SDK 會自行把裝置與 App 的技術資訊回報給 Google，供 Google 做其服務的診斷與使用統計，見第 2 節；那不是我們加裝的分析工具，也不包含你的記帳內容。）</li>
   <li><strong>不使用廣告識別碼</strong>（Android 廣告 ID / iOS IDFA）。</li>
   <li><strong>不對你做剖繪</strong>，不從你的消費紀錄推導任何用於行銷或評分的畫像。</li>
   <li><strong>AI 推論不送雲端</strong>：收據的文字辨識與內容理解完全在你的裝置上完成。</li>
@@ -496,26 +532,29 @@
 <p><strong>交易照片的刪除時機：</strong>你刪除一筆交易、或在編輯交易時移除照片，這個動作會在下次同步時傳到雲端；之後雲端上的照片檔由每天執行一次的清理作業，在<strong>約 8 天內</strong>刪除，不是當下立刻消失。同一張照片如果附加在多筆交易上（例如同一張收據辨識出的多筆明細），要等這些交易都刪除或都移除照片後才會刪。共享帳本帳目上的照片也一樣：要等帳本裡的帳目不再使用它、而且成員併回個人帳本的記帳也都不再使用它，才會刪除。<strong>刪除帳號則不同，你自己的照片會立即刪除</strong>（見下方）。</p>
 <div class="note">
   <p><strong>你可以隨時在 App 內刪除帳號：</strong>「設定」分頁最下方的<strong>「刪除帳號」</strong>。</p>
-  <p>流程會請你先處置你管理的共享帳本（指定接手人或連同刪除）、確認後果並輸入確認字串，再用同一個 Google／Apple 帳號重新登入以確認身分。確認後刪除立即執行，<strong>不需要等待人工處理</strong>：你的 Firebase Authentication 帳號、雲端空間中的所有個人資料（含推播 token、共享帳本清單與個人分類標記）、Cloud Storage 上的交易照片，以及這台裝置上的本機資料都會一併清除。唯一保留的照片是<strong>附在共享帳本帳目上、或其他成員的記帳仍在使用的照片</strong>（見下方關於共享帳本的說明）。</p>
+  <p>流程會請你先處置你管理的共享帳本（指定接手人或連同刪除）、確認後果並輸入確認字串，再用同一個 Google／Apple 帳號重新登入以確認身分。確認後刪除立即執行，<strong>不需要等待人工處理</strong>：你的 Firebase Authentication 帳號、雲端空間中的所有個人資料（含推播 token、共享帳本清單與個人分類標記）、Cloud Storage 上的交易照片，以及這台裝置上的本機資料都會一併清除。唯一保留的照片是<strong>附在共享帳本帳目上、或其他成員的記帳仍在使用的照片</strong>（見下方關於共享帳本的說明）。你送出過的<strong>問題回報不會刪除，而是匿名化保留</strong>（見下方）。</p>
   <p>如果你已經解除安裝 App 或無法登入，仍可<strong>寄信到 <a href="mailto:liokhgf@gmail.com">liokhgf@gmail.com</a></strong>（請用你登入 Fino 的那個 email 寄出，以便確認是你本人），開發者會在<strong>收到請求後 30 天內</strong>完成同樣範圍的刪除。</p>
   <p>詳細步驟另見：<a href="data-deletion.html">帳號與資料刪除說明</a>。</p>
 </div>
-<p><strong>要清除這台裝置上的本機資料，有兩個途徑：</strong>①&nbsp;<strong>刪除帳號</strong>（見上）會在雲端刪除完成後，一併清空這台裝置上的交易紀錄、分類、預算、定期記帳規則、快速記帳範本、收據群組、共享帳本快取、交易照片與偏好設定；②&nbsp;把 <strong>App 從裝置解除安裝</strong>，這會連同已下載的 AI 模型檔一起移除。另外，變更主要幣別的精靈裡有一個「初始化資料」選項，它只清除歷史交易紀錄，是換幣別時的資料處理方式，不是完整的重設。</p>
+<p><strong>要清除這台裝置上的本機資料，有兩個途徑：</strong>①&nbsp;<strong>刪除帳號</strong>（見上）會在雲端刪除完成後，一併清空這台裝置上的交易紀錄、分類、預算、定期記帳規則、快速記帳範本、收據群組、共享帳本快取、交易照片、App 運作紀錄與閃退紀錄、問題回報單號，以及偏好設定；②&nbsp;把 <strong>App 從裝置解除安裝</strong>，這會連同已下載的 AI 模型檔一起移除。另外，變更主要幣別的精靈裡有一個「初始化資料」選項，它只清除歷史交易紀錄，是換幣別時的資料處理方式，不是完整的重設。</p>
 <p><strong>清除本機資料不等於刪除雲端資料</strong>——只要帳號還在，用同一個帳號重新登入，雲端的資料就會同步回來。要真正刪除雲端資料，請用上面的「刪除帳號」。</p>
 <p><strong>刪除帳號後，共享帳本裡的帳目會保留，但你會被匿名化</strong>：你的顯示名稱與頭像會被清除，其他成員之後看到的是「已刪除的使用者」。帳目、攤帳與還款仍以你的內部帳號代號標記（那是「這筆錢算誰的」所必需，移除會讓其他人的帳直接壞掉），你自己輸入的<strong>品項名稱與帳目備註也會原樣保留</strong>——那是帳本內容本身。<strong>你附加在共享帳目上的照片也會保留</strong>，其他成員仍看得到。請避免在共享帳本的自由文字欄位與照片裡放入你不希望留下的個人資訊。</p>
 <p>共享帳本的<strong>操作留痕是 append-only：伺服器端規則禁止任何修改與刪除</strong>。你退出或帳號被刪除後，帳本中既有的留痕紀錄仍會原樣留在該帳本裡（其他成員仍需要那份紀錄來核對帳目）。留痕只記錄操作者的內部帳號代號與變更前後的值，不含你的顯示名稱或 email。這一點在你加入帳本前就請一併考量。</p>
-<p>此外，第三方服務各有自己的保留機制：Google（Firebase / FCM、ML Kit、Android 雲端語音辨識）與 Apple（APNs、Siri）依其自身政策保留與刪除資料，我們無法代為刪除他們那一側的紀錄。</p>
+<p><strong>問題回報的保留：</strong>你送出的回報、對話、截圖與診斷資訊會保留在問題回報的雲端空間，<strong>沒有自動刪除的期限</strong>；隨回報上傳的 App 運作紀錄與閃退紀錄檔，會在<strong>上傳後 90 天</strong>自動刪除。你在 App 內「刪除」一則回報，<strong>只會把它從你的列表移除</strong>、你自己之後也讀不到；<strong>開發者仍保留這則回報的完整紀錄</strong>（含對話、截圖、診斷資訊與紀錄檔），用於處理問題。如果你希望開發者徹底刪除某則回報，請寄信到 <a href="mailto:liokhgf@gmail.com">liokhgf@gmail.com</a>，說明回報的標題與大約送出時間，開發者會在收到請求後 30 天內處理。</p>
+<p><strong>刪除帳號後，你的問題回報會保留，但會被匿名化</strong>：回報與你帳號的綁定、回報上的推播 token，以及每則訊息與診斷資訊裡的帳號內部代號都會被清除；回報內容、截圖、其餘診斷資訊與紀錄檔會保留。紀錄檔不會逐一改寫，因此裡面仍可能留有你的帳號內部代號，會隨上面的 90 天期限自動刪除。你在未登入時送出、且從未綁定到帳號的回報，不在刪除帳號的處理範圍內（如需刪除，請用上面的 email 方式）。</p>
+<p><strong>當機報告的保留：</strong>依 Firebase 官方說明，Crashlytics 保存當機堆疊與相關識別碼（Crashlytics 安裝識別碼、Firebase 安裝識別碼）<strong>90 天</strong>，之後開始從線上與備份系統移除。當機報告不與你的帳號綁定，因此<strong>刪除帳號不會、也無法依帳號刪除已送出的當機報告</strong>，它們依上述期限清除；不希望再傳送，請關閉「自動傳送當機報告」。</p>
+<p>此外，第三方服務各有自己的保留機制：Google（Firebase / FCM、Crashlytics、ML Kit、Android 雲端語音辨識）與 Apple（APNs、Siri）依其自身政策保留與刪除資料，我們無法代為刪除他們那一側的紀錄。</p>
 
 <h2 id="children">10. 兒童</h2>
 <p>Fino 是給一般成年使用者的記帳工具，<strong>不針對 13 歲以下兒童設計</strong>，也不會刻意向兒童行銷。我們不會主動蒐集兒童的個人資料。如果你是家長或監護人，發現孩子在未經你同意的情況下建立了 Fino 帳號，請寄信到 <a href="mailto:liokhgf@gmail.com">liokhgf@gmail.com</a>，我們會刪除該帳號與相關資料。</p>
 
 <h2 id="location">11. 資料存放地點</h2>
-<p>Fino 的 Firebase 後端設定在 <strong><code>asia-east1</code>（台灣）</strong>，所有伺服器端函式——包括共享帳本推播、交易照片清理與帳號刪除——也都部署在同一區域。也就是說，你的雲端資料主要存放與處理於台灣。</p>
-<p>此外 Firebase 是 Google 營運的全球性服務，Google 在提供服務的過程中（例如網路傳輸、備援、推播派送）<strong>可能在其他地區的機房處理資料</strong>，這部分適用 Google 的資料處理政策，不由我們控制。同樣地，iOS 推播經由 Apple 的 APNs、Siri 記帳的語音由 Apple 處理，Android 的語音辨識在改用雲端時會經由 Google 的伺服器，ML Kit 回報的技術資訊由 Google 接收，其地點由該公司決定。</p>
+<p>Fino 的 Firebase 後端設定在 <strong><code>asia-east1</code>（台灣）</strong>，所有伺服器端函式——包括共享帳本推播、問題回報推播、交易照片清理與帳號刪除——也都部署在同一區域。也就是說，你的雲端資料主要存放與處理於台灣。</p>
+<p>此外 Firebase 是 Google 營運的全球性服務，Google 在提供服務的過程中（例如網路傳輸、備援、推播派送）<strong>可能在其他地區的機房處理資料</strong>，這部分適用 Google 的資料處理政策，不由我們控制。同樣地，iOS 推播經由 Apple 的 APNs、Siri 記帳的語音由 Apple 處理，Android 的語音辨識在改用雲端時會經由 Google 的伺服器，ML Kit 回報的技術資訊由 Google 接收，其地點由該公司決定。<strong>Firebase Crashlytics 是 Google 的全球性服務，不受上面 <code>asia-east1</code> 的設定約束</strong>：當機報告可能在台灣以外的 Google 資料中心處理與存放。</p>
 
 <h2 id="security">12. 安全措施</h2>
 <ul>
-  <li><strong>Firestore 安全規則</strong>：伺服器端規則限制每份資料誰能讀寫。個人資料只有帳號本人能讀寫；共享帳本資料只有該帳本的成員能存取。唯一刻意公開給所有已登入使用者讀取的是邀請碼反查表（見「共享帳本」一節）。</li>
+  <li><strong>Firestore 安全規則</strong>：伺服器端規則限制每份資料誰能讀寫。個人資料只有帳號本人能讀寫；共享帳本資料只有該帳本的成員能存取。唯一刻意公開給所有已登入使用者讀取的是邀請碼反查表（見「共享帳本」一節）。問題回報另有規則：<strong>開發者可以讀取所有回報</strong>（紀錄檔只有開發者讀得到）；一般使用者只讀得到自己的回報——未登入時送出的回報，要持有那組隨機單號才讀得到，規則不允許列出或搜尋別人的回報。</li>
   <li><strong>Firebase App Check</strong>：透過 Android Play Integrity 與 iOS App Attest 驗證請求來自真正的 Fino App，阻擋偽造客戶端濫用後端。</li>
   <li><strong>傳輸加密</strong>：App 與後端之間、以及與第三方服務之間的所有連線都走 HTTPS/TLS 加密。</li>
   <li><strong>最小化上傳</strong>：能在裝置上做的就不上雲。AI 推論留在本機，收據原圖也只在你選擇儲存時才會上傳，這本身就是最有效的保護。</li>
@@ -527,7 +566,7 @@
 <p>對本政策有任何疑問，請寄信到 <a href="mailto:liokhgf@gmail.com">liokhgf@gmail.com</a>。</p>
 <footer>
   <p>Fino · <a href="index.html">首頁</a> · <a href="mailto:liokhgf@gmail.com">liokhgf@gmail.com</a> · <a href="data-deletion.html">帳號與資料刪除</a> ・ <a href="support.html">支援</a></p>
-  <p>最後更新：2026 年 9 月 18 日</p>
+  <p>最後更新：2026 年 9 月 28 日</p>
 </footer>
 
 </div>
